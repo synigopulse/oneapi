@@ -5,9 +5,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Synigo.Framework.Interfaces\Synigo.OneApi.Interfaces.csproj" />
-    <ProjectReference Include="..\Synigo.Framework.Model\Synigo.OneApi.Model.csproj" />
     <ProjectReference Include="..\Synigo.OneApi.Common\Synigo.OneApi.Common.csproj" />
+    <ProjectReference Include="..\Synigo.OneApi.Interfaces\Synigo.OneApi.Interfaces.csproj" />
+    <ProjectReference Include="..\Synigo.OneApi.Model\Synigo.OneApi.Model.csproj" />
   </ItemGroup>
   <ItemGroup>
     <None Remove="Cache\" />

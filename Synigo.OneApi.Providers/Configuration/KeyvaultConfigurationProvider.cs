@@ -1,5 +1,6 @@
-﻿using Azure.Core;
+﻿using System;
 using Azure.Security.KeyVault.Secrets;
+using Synigo.OneApi.Model.Exceptions;
 
 namespace Synigo.OneApi.Providers.Configuration
 {
@@ -7,13 +8,15 @@ namespace Synigo.OneApi.Providers.Configuration
     {
         private readonly SecretClient _client;
         
-        public KeyvaultConfigurationProvider(string vaultUri)
+        public KeyvaultConfigurationProvider(string keyvaultUri)
         {
-            new UserPasswordCredential();
+            if (!Uri.TryCreate(keyvaultUri, UriKind.Absolute, out var vaultUri))
+            {
+                throw new ConfigurationException($"Could not parse URI to connect to Keyvault:{keyvaultUri}");
+            }
 
-            _client = new SecretClient(vaultUri);
+            var credential = new Azure.Identity.ClientSecretCredential("", "", "");
+            _client = new SecretClient(vaultUri, credential);
         }
-
-
     }
 }

@@ -11,6 +11,6 @@
     <Folder Include="Model\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Synigo.Framework.Model\Synigo.OneApi.Model.csproj" />
+    <ProjectReference Include="..\Synigo.OneApi.Model\Synigo.OneApi.Model.csproj" />
   </ItemGroup>
 </Project>
