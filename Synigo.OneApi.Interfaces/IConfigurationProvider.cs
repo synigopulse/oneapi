@@ -15,5 +15,10 @@ namespace Synigo.OneApi.Interfaces
         /// <returns>The value or null if not found</returns>
         /// <exception cref="ConfigurationException">When something goes wrong</exception>
         public Task<string> GetAsync(string key);
+
+        /// <summary>
+        /// Resets the configuration, in order to reload possible configuration changes
+        /// </summary>
+        public void Reset();
     }
 }

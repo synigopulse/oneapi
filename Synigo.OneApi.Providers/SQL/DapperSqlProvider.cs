@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Threading.Tasks;
 using Dapper;
@@ -9,37 +10,53 @@ namespace Synigo.OneApi.Providers.SQL
 {
     public class DapperSqlProvider<T1> : ISqlProvider<T1> where T1 : AbstractEntity
     { 
-        private readonly string _connectionString;
+        private readonly string _sqlConnectionString;
 
-        public DapperSqlProvider(string connectionString)
+        public DapperSqlProvider(string sqlConnectionString)
         {
-            if (string.IsNullOrEmpty(connectionString))
+            if (string.IsNullOrEmpty(sqlConnectionString))
             {
-                throw new ArgumentException(nameof(connectionString));
+                throw new ArgumentException(null, nameof(sqlConnectionString));
             }
 
-            _connectionString = connectionString;
+            _sqlConnectionString = sqlConnectionString;
         }
 
-        public async Task DeleteAsync(string sql)
+        public async Task DeleteAsync(string sql, object param)
         {
-            using var sqlConnection = new SqlConnection(_connectionString);
-            await sqlConnection.ExecuteAsync(sql, new { });
+            using var sqlConnection = new SqlConnection(_sqlConnectionString);
+
+            await sqlConnection.ExecuteAsync(sql, param);
         }
 
-        public Task<T1> GetAsync(string Id)
+        public async Task<T1> GetAsync(string sql, object param)
         {
-            throw new NotImplementedException();
+            using var sqlConnection = new SqlConnection(_sqlConnectionString);
+
+            return await sqlConnection.QueryFirstOrDefaultAsync<T1>(sql, param);      
         }
 
-        public Task<System.Collections.Generic.List<T1>> StorAsync(System.Collections.Generic.List<T1> items)
+        public async Task<IEnumerable<T1>> GetListAsync(string sql, object param)
         {
-            throw new NotImplementedException();
+            using var sqlConnection = new SqlConnection(_sqlConnectionString);
+
+            return await sqlConnection.QueryAsync<T1>(sql, param);
         }
 
-        public Task<T1> StoreAsync(T1 item)
+        public async Task<List<T1>> StoreAsync(string sql, List<T1> items)
         {
-            throw new NotImplementedException();
+            using var sqlConnection = new SqlConnection(_sqlConnectionString);
+            await sqlConnection.ExecuteAsync(sql, items);
+
+            return items;
+        }
+
+        public async Task<T1> StoreAsync(string sql, T1 item)
+        {
+            using var sqlConnection = new SqlConnection(_sqlConnectionString);
+            await sqlConnection.ExecuteAsync(sql, item);
+
+            return item;
         }
     }
 }
