@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Security.Principal;
 using System.Threading.Tasks;
+using Synigo.OneApi.Interfaces.Model;
 using Synigo.OneApi.Model.Exceptions;
 
 namespace Synigo.OneApi.Interfaces
@@ -20,9 +21,9 @@ namespace Synigo.OneApi.Interfaces
         /// Validate the execution context and check if the executing
         /// user is authorized to perform this action
         /// </summary>
-        /// <param name="scope">When using scopes, you can check one or more scopes</param>
-        /// <returns>True, if authorized, otherwise false</returns>
-        public Task<bool> IsAuthorizedAsync(params string[] scope);
+        /// <param name="scopes">When using scopes, you can check one or more scopes</param>
+        /// <returns>A result indicating if current request is authorized and if not a message why</returns>
+        public Task<ValidationResult> IsAuthorizedAsync(params string[] scopes);
 
         /// <summary>
         /// Get a reference to the parameters belonging to this request.
@@ -35,7 +36,7 @@ namespace Synigo.OneApi.Interfaces
         /// </summary>
         /// <typeparam name="T">The type of object you want to get</typeparam>
         /// <returns>The object or null if empty</returns>
-        /// <exception cref="DeSerializationException">When the data failed to deserialize into T</exception>
-        public T GetData<T>();
+        /// <exception cref="SerializationException">When the data failed to deserialize into T</exception>
+        public Task<T> GetDataAsync<T>();
     }
 }

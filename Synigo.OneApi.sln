@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Synigo.OneApi.Interfaces", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Synigo.OneApi.Model", "Synigo.OneApi.Model\Synigo.OneApi.Model.csproj", "{605CA9F4-6F6A-475C-BBB3-FA590B4306D0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Synigo.OneAPi.Core", "Synigo.OneAPi.Core\Synigo.OneAPi.Core.csproj", "{CF77F7CD-DBB8-4B48-ACCC-BDD8D15671FD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{605CA9F4-6F6A-475C-BBB3-FA590B4306D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{605CA9F4-6F6A-475C-BBB3-FA590B4306D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{605CA9F4-6F6A-475C-BBB3-FA590B4306D0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CF77F7CD-DBB8-4B48-ACCC-BDD8D15671FD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CF77F7CD-DBB8-4B48-ACCC-BDD8D15671FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CF77F7CD-DBB8-4B48-ACCC-BDD8D15671FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CF77F7CD-DBB8-4B48-ACCC-BDD8D15671FD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,4 +1,5 @@
-﻿using Synigo.OneApi.Model;
+﻿using System.Collections.Generic;
+using Synigo.OneApi.Model;
 
 namespace Synigo.OneApi.Interfaces
 {
@@ -28,6 +29,11 @@ namespace Synigo.OneApi.Interfaces
         /// Get an implementation of <see cref="ILogProvider"/>
         /// </summary>
         public ILogProvider LogProvider { get; }
+
+        /// <summary>
+        /// Get a list of validation mechanisms to validate the current request.
+        /// </summary>
+        public List<IRequestValidationProvider> Validators { get; }
 
         /// <summary>
         /// Get an implementation of <see cref="BaseEntityProvider{T}"/>
