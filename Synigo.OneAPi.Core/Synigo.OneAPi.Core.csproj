@@ -1,0 +1,29 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Execution\" />
+    <None Remove="Microsoft.Extensions.Logging" />
+    <None Remove="Microsoft.Extensions.Hosting" />
+    <None Remove="Microsoft.Extensions.Http" />
+    <None Remove="Microsoft.AspNetCore.Http" />
+    <None Remove="Authorization\" />
+    <None Remove="Logic\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Execution\" />
+    <Folder Include="Authorization\" />
+    <Folder Include="Logic\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Synigo.OneApi.Interfaces\Synigo.OneApi.Interfaces.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Logging" Version="2.1.0" />
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="2.1.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Http" Version="2.1.0" />
+  </ItemGroup>
+</Project>
