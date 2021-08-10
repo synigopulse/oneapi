@@ -23,6 +23,7 @@
     <None Remove="Azure.Identity" />
     <None Remove="Azure.Storage.Blobs" />
     <None Remove="Azure.Data.Tables" />
+    <None Remove="RequestValidators\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Cache\" />
@@ -30,6 +31,7 @@
     <Folder Include="SQL\" />
     <Folder Include="Configuration\" />
     <Folder Include="Log\" />
+    <Folder Include="RequestValidators\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.Extensions.Logging" Version="5.0.0" />

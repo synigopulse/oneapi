@@ -12,11 +12,14 @@
     <None Remove="Microsoft.AspNetCore.Http" />
     <None Remove="Authorization\" />
     <None Remove="Logic\" />
+    <None Remove="Microsoft.Azure.Functions.Extensions" />
+    <None Remove="Extensions\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Execution\" />
     <Folder Include="Authorization\" />
     <Folder Include="Logic\" />
+    <Folder Include="Extensions\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Synigo.OneApi.Interfaces\Synigo.OneApi.Interfaces.csproj" />
@@ -25,5 +28,6 @@
     <PackageReference Include="Microsoft.Extensions.Logging" Version="2.1.0" />
     <PackageReference Include="Microsoft.Extensions.Hosting" Version="2.1.0" />
     <PackageReference Include="Microsoft.AspNetCore.Http" Version="2.1.0" />
+    <PackageReference Include="Microsoft.Azure.Functions.Extensions" Version="1.1.0" />
   </ItemGroup>
 </Project>

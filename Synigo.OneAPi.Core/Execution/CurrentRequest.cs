@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Security.Principal;
 using System.Text.Json;
@@ -18,9 +17,9 @@ namespace Synigo.OneAPi.Core.Execution
         private Dictionary<string, string> _parameters;
         private readonly HttpRequest _request;
         private readonly AuthorizationLevel _authorizationLevel;
-        private readonly List<IRequestValidationProvider> _requestValidators;
+        private readonly IEnumerable<IRequestValidationProvider> _requestValidators;
 
-        public CurrentRequest(HttpRequest request, AuthorizationLevel authorizationLevel, List<IRequestValidationProvider> requestValidators)
+        public CurrentRequest(HttpRequest request, AuthorizationLevel authorizationLevel, IEnumerable<IRequestValidationProvider> requestValidators)
         {
             _request = request;
             _authorizationLevel = authorizationLevel;
@@ -88,8 +87,7 @@ namespace Synigo.OneAPi.Core.Execution
         {
             try
             {
-                using var stream = new MemoryStream();
-                return await JsonSerializer.DeserializeAsync<T>(stream);
+                return await JsonSerializer.DeserializeAsync<T>(_request.Body);
             }
             catch (Exception ex)
             {

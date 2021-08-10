@@ -65,7 +65,7 @@ namespace Synigo.OneApi.Providers.Cache
 
             try
             {
-                item = JsonSerializer.Deserialize<T>(data);
+                item = data.Deserialize<T>();
             }
             catch (Exception ex)
             {
@@ -84,7 +84,7 @@ namespace Synigo.OneApi.Providers.Cache
 
             try
             {
-                data = JsonSerializer.Serialize(item);
+                data = item.Serialize();
             }
             catch (Exception ex)
             {

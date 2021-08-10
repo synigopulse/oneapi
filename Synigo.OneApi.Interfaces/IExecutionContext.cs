@@ -31,9 +31,9 @@ namespace Synigo.OneApi.Interfaces
         public ILogProvider LogProvider { get; }
 
         /// <summary>
-        /// Get a list of validation mechanisms to validate the current request.
+        /// Get an enumerable of validation mechanisms to validate the current request.
         /// </summary>
-        public List<IRequestValidationProvider> Validators { get; }
+        public IEnumerable<IRequestValidationProvider> Validators { get; }
 
         /// <summary>
         /// Get an implementation of <see cref="BaseEntityProvider{T}"/>

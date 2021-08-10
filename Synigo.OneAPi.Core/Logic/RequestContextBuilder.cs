@@ -12,7 +12,7 @@ namespace Synigo.OneAPi.Core.Logic
         {
         }
 
-        public ICurrent CreateCurrent(HttpRequest request, List<IRequestValidationProvider> validators, AuthorizationLevel authorizationLevel)
+        public ICurrent CreateCurrent(HttpRequest request, IEnumerable<IRequestValidationProvider> validators, AuthorizationLevel authorizationLevel)
         {
             return new CurrentRequest(request, authorizationLevel, validators);
         }
