@@ -13,7 +13,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Synigo.OneApi.Interfaces", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Synigo.OneApi.Model", "Synigo.OneApi.Model\Synigo.OneApi.Model.csproj", "{605CA9F4-6F6A-475C-BBB3-FA590B4306D0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Synigo.OneAPi.Core", "Synigo.OneAPi.Core\Synigo.OneAPi.Core.csproj", "{CF77F7CD-DBB8-4B48-ACCC-BDD8D15671FD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Synigo.OneApi.Core", "Synigo.OneAPi.Core\Synigo.OneApi.Core.csproj", "{CF77F7CD-DBB8-4B48-ACCC-BDD8D15671FD}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Synigo.OneApi.Test", "Synigo.OneApi.Test\Synigo.OneApi.Test.csproj", "{FFB495DA-F921-483F-829A-6FC3BDCEBC94}"
 EndProject
@@ -57,5 +57,8 @@ Global
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {913DD3C5-38B0-4844-B8AD-E3193D55D048}
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		version = 1.0.0.1
 	EndGlobalSection
 EndGlobal
