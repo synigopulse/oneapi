@@ -20,7 +20,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <None Remove="Execution\" />
     <None Remove="Microsoft.Extensions.Logging" />
     <None Remove="Microsoft.Extensions.Hosting" />
     <None Remove="Microsoft.Extensions.Http" />
@@ -28,17 +27,16 @@
     <None Remove="Authorization\" />
     <None Remove="Logic\" />
     <None Remove="Microsoft.Azure.Functions.Extensions" />
-    <None Remove="Extensions\" />
     <None Remove="Microsoft.AspNetCore.Mvc" />
     <None Remove="Microsoft.Azure.WebJobs" />
     <None Remove="Microsoft.Azure.WebJobs.Extensions.Http" />
     <None Remove="Microsoft.NET.Sdk.Functions" />
+    <None Remove="Execution\" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Execution\" />
     <Folder Include="Authorization\" />
     <Folder Include="Logic\" />
-    <Folder Include="Extensions\" />
+    <Folder Include="Execution\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Synigo.OneApi.Interfaces\Synigo.OneApi.Interfaces.csproj">

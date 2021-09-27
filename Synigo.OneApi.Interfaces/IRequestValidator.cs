@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using Synigo.OneApi.Interfaces.Model;
-using Synigo.OneAPi.Interfaces.Model;
 
 namespace Synigo.OneApi.Interfaces
 {

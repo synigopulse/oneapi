@@ -3,8 +3,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Synigo.OneApi.Interfaces;
-using Synigo.OneAPi.Core.Execution;
-using Synigo.OneAPi.Interfaces.Model;
+using Synigo.OneApi.Core.Execution;
+using Synigo.OneApi.Interfaces.Model;
 
 namespace Synigo.OneApi.Test.Mock
 {

@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Azure.WebJobs;
 using Microsoft.Azure.WebJobs.Extensions.Http;
 using Microsoft.AspNetCore.Http;
-using Synigo.OneAPi.Core.Execution;
+using Synigo.OneApi.Core.Execution;
 using Synigo.OneApi.Interfaces;
 using System;
 
@@ -11,7 +11,7 @@ namespace Synigo.OneApi.Functions
 {
     public  class DemoFunction : AbstractRequestExecutor
     {
-        public DemoFunction(IExecutionContext context, OneAPi.Interfaces.Model.AuthorizationLevel authorizationLevel) : base(context, authorizationLevel)
+        public DemoFunction(IExecutionContext context, OneApi.Interfaces.Model.AuthorizationLevel authorizationLevel) : base(context, authorizationLevel)
         {
         }
 

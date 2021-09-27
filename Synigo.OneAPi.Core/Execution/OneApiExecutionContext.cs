@@ -4,7 +4,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Synigo.OneApi.Interfaces;
 using Synigo.OneApi.Model;
 
-namespace Synigo.OneAPi.Core.Execution
+namespace Synigo.OneApi.Core.Execution
 {
     public class OneApiExecutionContext: IExecutionContext
     {

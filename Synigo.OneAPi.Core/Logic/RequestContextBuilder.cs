@@ -1,12 +1,12 @@
 ﻿using System.Collections.Generic;
 using Microsoft.AspNetCore.Http;
 using Synigo.OneApi.Interfaces;
-using Synigo.OneAPi.Core.Execution;
-using Synigo.OneAPi.Interfaces.Model;
+using Synigo.OneApi.Core.Execution;
+using Synigo.OneApi.Interfaces.Model;
 
-namespace Synigo.OneAPi.Core.Logic
+namespace Synigo.OneApi.Core.Logic
 {
-    internal class RequestContextBuilder
+    public class RequestContextBuilder
     {
         public RequestContextBuilder()
         {

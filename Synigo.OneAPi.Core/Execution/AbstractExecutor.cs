@@ -3,10 +3,9 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Synigo.OneApi.Interfaces;
 using Synigo.OneApi.Interfaces.Model;
-using Synigo.OneAPi.Core.Logic;
-using Synigo.OneAPi.Interfaces.Model;
+using Synigo.OneApi.Core.Logic;
 
-namespace Synigo.OneAPi.Core.Execution
+namespace Synigo.OneApi.Core.Execution
 {
     public abstract class AbstractRequestExecutor : IRequestExecutor
     {

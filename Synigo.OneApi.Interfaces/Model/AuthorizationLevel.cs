@@ -1,4 +1,4 @@
-﻿namespace Synigo.OneAPi.Interfaces.Model
+﻿namespace Synigo.OneApi.Interfaces.Model
 {
 
     /// <summary>

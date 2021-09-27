@@ -1,0 +1,29 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <ReleaseVersion>1.0.0.1</ReleaseVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Synigo.OneAPi.Core\Synigo.OneApi.Core.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="Swashbuckle.AspNetCore" />
+    <None Remove="Microsoft.AspNetCore.Authentication.OpenIdConnect" />
+    <None Remove="Microsoft.AspNetCore.Authentication.JwtBearer" />
+    <None Remove="Microsoft.Identity.Web" />
+    <None Remove="Shared\" />
+    <None Remove="Microsoft.Graph" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.OpenIdConnect" Version="5.0.10" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="5.0.10" />
+    <PackageReference Include="Microsoft.Identity.Web" Version="1.17.0" />
+    <PackageReference Include="Microsoft.Graph" Version="4.6.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Shared\" />
+  </ItemGroup>
+</Project>

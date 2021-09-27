@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 using Synigo.OneApi.Interfaces;
 using Synigo.OneApi.Interfaces.Model;
-using Synigo.OneAPi.Interfaces.Model;
+using Synigo.OneApi.Interfaces.Model;
 
 namespace Synigo.OneApi.Providers.RequestValidators
 {

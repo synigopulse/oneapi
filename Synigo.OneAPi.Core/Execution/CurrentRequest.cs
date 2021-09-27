@@ -8,9 +8,9 @@ using Microsoft.AspNetCore.Http;
 using Synigo.OneApi.Interfaces;
 using Synigo.OneApi.Interfaces.Model;
 using Synigo.OneApi.Model.Exceptions;
-using Synigo.OneAPi.Interfaces.Model;
+using Synigo.OneApi.Interfaces.Model;
 
-namespace Synigo.OneAPi.Core.Execution
+namespace Synigo.OneApi.Core.Execution
 {
     public class CurrentRequest : ICurrent
     {

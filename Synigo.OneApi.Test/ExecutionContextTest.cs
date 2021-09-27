@@ -5,8 +5,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Synigo.OneApi.Providers.RequestValidators;
 using Synigo.OneApi.Test.Mock;
-using Synigo.OneAPi.Core.Extensions;
-using Synigo.OneAPi.Interfaces.Model;
+using Synigo.OneApi.Core.Extensions;
+using Synigo.OneApi.Interfaces.Model;
 
 namespace Synigo.OneApi.Test
 {
