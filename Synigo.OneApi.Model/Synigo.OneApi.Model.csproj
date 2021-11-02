@@ -12,14 +12,16 @@
     <PackageVersion>1.0.0.1</PackageVersion>
     <PackOnBuild>true</PackOnBuild>
     <IsPackable>true</IsPackable>
-    <ReleaseVersion>1.0.0.1</ReleaseVersion>
+    <ReleaseVersion>1.0.6.1</ReleaseVersion>
   </PropertyGroup>
 
   <ItemGroup>
     <None Remove="Exceptions\" />
     <None Remove="Azure.Identity" />
+    <None Remove="Common\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Exceptions\" />
+    <Folder Include="Common\" />
   </ItemGroup>
 </Project>

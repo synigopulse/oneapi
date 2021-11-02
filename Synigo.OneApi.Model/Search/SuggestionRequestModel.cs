@@ -18,5 +18,6 @@ namespace Synigo.OneApi.Model.Search
         /// </summary>
         [JsonPropertyName("top")]
         public int? Top { get; set; }
+
     }
 }
