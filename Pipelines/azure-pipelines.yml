@@ -6,50 +6,47 @@
 name: 1.9.0.$(Rev:r)
 
 variables:
-  solution: '**/*.sln'
-  buildPlatform: 'Any CPU'
-  buildConfiguration: 'Release'
-  project: 'Synigo.Integration.Model.csproj'
-  projectName: 'Synigo.OneApi.Model'
+    solution: '**/*.sln'
+    buildPlatform: 'Any CPU'
+    buildConfiguration: 'Release'
+    project: 'Synigo.Integration.Model.csproj'
+    projectName: 'Synigo.OneApi.Model'
+    projects:
+        - Synigo.OneApi.Model
 
 trigger:
-  branches:
-    include: 
-      - main
+    branches:
+        include: 
+            - main
 pool:
-  vmImage: 'windows-latest'
+    vmImage: 'windows-latest'
 
 steps:
-- task: NuGetToolInstaller@1
-  displayName: 'Install'
+- ${{ each query in variables.projects }}:
 
-- task: NuGetCommand@2
-  displayName: 'Restore'
-  inputs:
-    restoreSolution: '$(solution)'
+    - task: NuGetToolInstaller@1
+      displayName: 'Install'
 
-# Build
-#- task: DotNetCoreCLI@2
-#  displayName: 'Build $(projectName)'
-#  inputs:
-#    projects: '**/$(projectName).csproj'
-#    arguments: '--configuration $(BuildConfiguration)'
+    - task: NuGetCommand@2
+      displayName: 'Restore'
+      inputs:
+        restoreSolution: '$(solution)'
 
-# Package
-- task: DotNetCoreCLI@2
-  displayName: 'Pack $(projectName)'
-  inputs:
-    command: 'pack'
-    configuration: $(BuildConfiguration)
-    packagesToPack: '**/$(projectName).csproj'
-    packDirectory: '$(System.DefaultWorkingDirectory)'
-    versioningScheme: byBuildNumber # https://docs.microsoft.com/en-us/azure/devops/pipelines/tasks/build/dotnet-core-cli?view=azure-devops#yaml-snippet
+    # Package
+    - task: DotNetCoreCLI@2
+      displayName: 'Pack $(projectName)'
+      inputs:
+        command: 'pack'
+        configuration: $(BuildConfiguration)
+        packagesToPack: '**/$(projectName).csproj'
+        packDirectory: '$(System.DefaultWorkingDirectory)'
+        versioningScheme: byBuildNumber # https://docs.microsoft.com/en-us/azure/devops/pipelines/tasks/build/dotnet-core-cli?view=azure-devops#yaml-snippet
 
-# Publish
-- task: NuGetCommand@2
-  displayName: 'Publish $(projectName)'
-  inputs:
-    command: 'push'
-    packagesToPush: '$(System.DefaultWorkingDirectory)/**/*.nupkg'
-    nuGetFeedType: 'external'
+    # Publish
+    - task: NuGetCommand@2
+      displayName: 'Publish $(projectName)'
+      inputs:
+        command: 'push'
+        packagesToPush: '$(System.DefaultWorkingDirectory)/**/*.nupkg'
+        nuGetFeedType: 'external'
     publishFeedCredentials: 'Nuget Synigo'
