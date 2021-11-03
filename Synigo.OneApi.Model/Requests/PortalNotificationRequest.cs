@@ -1,4 +1,4 @@
-﻿namespace Synigo.OneApi.Model.Requests
+﻿namespace Synigo.OneApi.Model.Requests 
 {
     public class PortalNotificationRequest
     { 
