@@ -49,4 +49,4 @@ steps:
         command: 'push'
         packagesToPush: '$(System.DefaultWorkingDirectory)/**/*.nupkg'
         nuGetFeedType: 'external'
-    publishFeedCredentials: 'Nuget Synigo'
+        publishFeedCredentials: 'Nuget Synigo'
