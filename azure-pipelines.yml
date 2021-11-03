@@ -18,7 +18,7 @@ trigger:
       - main
   paths:
     include:
-      - '${projectName}'
+      - '${projectName}/*'
 
 pool:
   vmImage: 'windows-latest'
