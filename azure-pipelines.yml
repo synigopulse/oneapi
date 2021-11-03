@@ -49,6 +49,6 @@ steps:
   displayName: 'Publish $(projectName)'
   inputs:
     command: 'push'
-    packagesToPush: '$(build.artifactStagingDirectory)/$(projectName)*.nupkg'
+    packagesToPush: '$(System.DefaultWorkingDirectory)/**/*.nupkg'
     nuGetFeedType: 'external'
     publishFeedCredentials: 'Nuget Synigo'
