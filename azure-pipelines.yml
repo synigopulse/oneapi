@@ -40,7 +40,7 @@ steps:
   inputs:
     command: 'pack'
     configuration: $(BuildConfiguration)
-    packagesToPack: '**/$(ProjectName).csproj'
+    packagesToPack: '**/$(projectName).csproj'
     packDirectory: '$(build.artifactStagingDirectory)'
     versioningScheme: byBuildNumber # https://docs.microsoft.com/en-us/azure/devops/pipelines/tasks/build/dotnet-core-cli?view=azure-devops#yaml-snippet
 
@@ -49,6 +49,6 @@ steps:
   displayName: 'Publish $(projectName)'
   inputs:
     command: 'push'
-    packagesToPush: '$(build.artifactStagingDirectory)/$(ProjectName)*.nupkg'
+    packagesToPush: '$(build.artifactStagingDirectory)/$(projectName)*.nupkg'
     nuGetFeedType: 'external'
     publishFeedCredentials: 'Nuget Synigo'
