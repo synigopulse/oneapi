@@ -3,7 +3,7 @@
     public class PortalNotificationRequest
     {
         public PortalNotificationRequest()
-        {
+        { 
         }
     }
 }
