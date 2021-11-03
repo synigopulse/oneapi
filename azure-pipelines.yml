@@ -19,7 +19,7 @@ trigger:
       - main
   paths:
     include:
-      - 'oneapi/$(filePath)/*'
+      - 'oneapi/*'
 
 pool:
   vmImage: 'windows-latest'
