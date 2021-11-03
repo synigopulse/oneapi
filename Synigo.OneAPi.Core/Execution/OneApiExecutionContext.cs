@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Identity.Web;
 using Synigo.OneApi.Interfaces;
 using Synigo.OneApi.Model;
 
@@ -24,6 +25,8 @@ namespace Synigo.OneApi.Core.Execution
         public ILogProvider LogProvider => _serviceProvider.GetRequiredService<ILogProvider>();
 
         public IEnumerable<IRequestValidationProvider> Validators => _serviceProvider.GetServices<IRequestValidationProvider>();
+
+        public ITokenAcquisition TokenAcquisition => _serviceProvider.GetRequiredService<ITokenAcquisition>();
 
         public TEntityProviderType GetEntityProvider<TEntityProviderType, TForType>() where TForType : AbstractEntity
         {

@@ -2,7 +2,6 @@
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
-    <Authors>Derk van Lochem</Authors>
     <Copyright>Synigo B.V.</Copyright>
     <NeutralLanguage>en</NeutralLanguage>
     <Owners>Synigo</Owners>
@@ -10,29 +9,13 @@
     <Title>Synigo OneAPI Core</Title>
     <Description>Core Package for Synigo One API</Description>
     <PackageId>Synigo.OneAPI.Core</PackageId>
-    <PackageVersion>1.0.0.1</PackageVersion>
+    <PackageVersion>1.0.6.2</PackageVersion>
     <PackOnBuild>true</PackOnBuild>
     <IsPackable>true</IsPackable>
-    <ReleaseVersion>1.0.0.1</ReleaseVersion>
+    <ReleaseVersion>1.0.6.1</ReleaseVersion>
   </PropertyGroup>
 
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  <ItemGroup>
-    <None Remove="Microsoft.Extensions.Logging" />
-    <None Remove="Microsoft.Extensions.Hosting" />
-    <None Remove="Microsoft.Extensions.Http" />
-    <None Remove="Microsoft.AspNetCore.Http" />
-    <None Remove="Authorization\" />
-    <None Remove="Logic\" />
-    <None Remove="Microsoft.Azure.Functions.Extensions" />
-    <None Remove="Microsoft.AspNetCore.Mvc" />
-    <None Remove="Microsoft.Azure.WebJobs" />
-    <None Remove="Microsoft.Azure.WebJobs.Extensions.Http" />
-    <None Remove="Microsoft.NET.Sdk.Functions" />
-    <None Remove="Execution\" />
-  </ItemGroup>
+
   <ItemGroup>
     <Folder Include="Authorization\" />
     <Folder Include="Logic\" />
@@ -55,5 +38,6 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.Azure.Functions.Extensions" Version="1.1.0" />
     <PackageReference Include="Microsoft.NET.Sdk.Functions" Version="3.0.13" />
+    <PackageReference Include="Microsoft.Identity.Web" Version="1.17.0" />
   </ItemGroup>
 </Project>

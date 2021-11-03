@@ -2,17 +2,17 @@
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
-     <Copyright>Synigo B.V.</Copyright>
+    <Copyright>Synigo B.V.</Copyright>
     <NeutralLanguage>en</NeutralLanguage>
     <Owners>Synigo</Owners>
     <PackageProjectUrl>https://github.com/synigopulse/oneapi</PackageProjectUrl>
     <Title>Synigo OneAPI Interfaces</Title>
     <Description>Interfaces Package for Synigo One API</Description>
     <PackageId>Synigo.OneAPI.Interfaces</PackageId>
-    <PackageVersion>1.0.0.0</PackageVersion>
+    <PackageVersion>1.0.0.2</PackageVersion>
     <PackOnBuild>true</PackOnBuild>
     <IsPackable>true</IsPackable>
-    <ReleaseVersion>1.0.0.1</ReleaseVersion>
+    <ReleaseVersion>1.0.6.1</ReleaseVersion>
   </PropertyGroup>
 
   <ItemGroup>

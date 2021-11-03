@@ -2,7 +2,19 @@
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
-    <ReleaseVersion>1.0.0.1</ReleaseVersion>
+    <ReleaseVersion>1.0.6.1</ReleaseVersion>
+     <TargetFramework>net5.0</TargetFramework>
+    <Authors>Derk van Lochem</Authors>
+    <Copyright>Synigo B.V.</Copyright>
+    <NeutralLanguage>en</NeutralLanguage>
+    <Owners>Synigo</Owners>
+    <PackageProjectUrl>https://github.com/synigopulse/oneapi</PackageProjectUrl>
+    <Title>Synigo OneAPI Core Web Api</Title>
+    <Description>Web Api Core Package for Synigo One API</Description>
+    <PackageId>Synigo.OneAPI.Core.WebApi</PackageId>
+    <PackageVersion>1.0.6.2</PackageVersion>
+    <PackOnBuild>true</PackOnBuild>
+    <IsPackable>true</IsPackable>
   </PropertyGroup>
 
   <ItemGroup>
