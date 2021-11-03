@@ -6,7 +6,14 @@
 name: 1.9.0.$(Rev:r)
 
 trigger:
-- main
+  branches:
+    include: 
+      - main
+  paths:
+    include:
+      - '*'
+
+
 
 pool:
   vmImage: 'windows-latest'
@@ -41,7 +48,7 @@ steps:
     command: 'pack'
     configuration: $(BuildConfiguration)
     packagesToPack: '**/$(projectName).csproj'
-    packDirectory: '$(build.artifactStagingDirectory)'
+    packDirectory: '$(System.DefaultWorkingDirectory)'
     versioningScheme: byBuildNumber # https://docs.microsoft.com/en-us/azure/devops/pipelines/tasks/build/dotnet-core-cli?view=azure-devops#yaml-snippet
 
 # Publish
