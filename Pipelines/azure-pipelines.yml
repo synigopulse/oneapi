@@ -12,7 +12,7 @@ variables:
     project: 'Synigo.Integration.Model.csproj'
     projectName: 'Synigo.OneApi.Model'
     projects:
-        - Synigo.OneApi.Model
+        - 'Synigo.OneApi.Model'
 
 trigger:
     branches:
