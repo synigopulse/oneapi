@@ -11,6 +11,7 @@ variables:
   buildConfiguration: 'Release'
   project: 'Synigo.Integration.Model.csproj'
   projectName: 'Synigo.OneApi.Model'
+  filePath: 'Synigo_OneApi_Model'
 
 trigger:
   branches:
@@ -18,7 +19,7 @@ trigger:
       - main
   paths:
     include:
-      - '${projectName}/*'
+      - 'oneapi/${projectName}/*'
 
 pool:
   vmImage: 'windows-latest'
