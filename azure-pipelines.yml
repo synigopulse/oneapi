@@ -28,11 +28,11 @@ steps:
     restoreSolution: '$(solution)'
 
 # Build
-- task: DotNetCoreCLI@2
-  displayName: 'Build $(projectName)'
-  inputs:
-    projects: '**/$(projectName).csproj'
-    arguments: '--configuration $(BuildConfiguration)'
+#- task: DotNetCoreCLI@2
+#  displayName: 'Build $(projectName)'
+#  inputs:
+#    projects: '**/$(projectName).csproj'
+#    arguments: '--configuration $(BuildConfiguration)'
 
 # Package
 - task: DotNetCoreCLI@2
@@ -40,7 +40,7 @@ steps:
   inputs:
     command: 'pack'
     configuration: $(BuildConfiguration)
-    packagesToPack: '**/$(ProjectName)*.csproj'
+    packagesToPack: '**/$(ProjectName).csproj'
     packDirectory: '$(build.artifactStagingDirectory)'
     versioningScheme: byBuildNumber # https://docs.microsoft.com/en-us/azure/devops/pipelines/tasks/build/dotnet-core-cli?view=azure-devops#yaml-snippet
 
