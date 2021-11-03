@@ -19,7 +19,7 @@ trigger:
       - main
   paths:
     include:
-      - '$(projectName)/*'
+      - '$(filePath)/*'
 
 pool:
   vmImage: 'windows-latest'
