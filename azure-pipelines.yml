@@ -14,29 +14,31 @@ variables:
   buildPlatform: 'Any CPU'
   buildConfiguration: 'Release'
   project: 'Synigo.Integration.Model.csproj'
-  majorMinorVersion: 1.0
+  majorMinorVersion: 1.1
   # semanticVersion counter is automatically incremented by one in each execution of pipeline
   # second parameter is seed value to reset to every time the referenced majorMinorVersion is changed
   semanticVersion: $[counter(variables['majorMinorVersion'], 0)]
-  projectName: 'Synigo.Integration.Model'
+  projectName: 'Synigo.OneApi.Model'
 
 steps:
 - task: NuGetToolInstaller@1
+  displayName: 'Install'
 
 - task: NuGetCommand@2
+  displayName: 'Restore'
   inputs:
     restoreSolution: '$(solution)'
 
 # Build
 - task: DotNetCoreCLI@2
-  displayName: Build
+  displayName: 'Build $(projectName)'
   inputs:
     projects: '**/$(projectName).csproj'
     arguments: '--configuration $(BuildConfiguration)'
 
 # Package
 - task: DotNetCoreCLI@2
-  displayName: 'NuGet pack'
+  displayName: 'Pack $(projectName)'
   inputs:
     command: 'pack'
     configuration: $(BuildConfiguration)
@@ -46,6 +48,7 @@ steps:
 
 # Publish
 - task: NuGetCommand@2
+  displayName: 'Publish $(projectName)'
   inputs:
     command: 'push'
     packagesToPush: '$(build.artifactStagingDirectory)/$(ProjectName)*.nupkg'
