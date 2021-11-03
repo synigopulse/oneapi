@@ -1,0 +1,26 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+     <Copyright>Synigo B.V.</Copyright>
+    <NeutralLanguage>en</NeutralLanguage>
+    <Owners>Synigo</Owners>
+    <PackageProjectUrl>https://github.com/synigopulse/oneapi</PackageProjectUrl>
+    <Title>Synigo Open Education Api</Title>
+    <Description>Model Package for Open Education API</Description>
+    <PackageId>Synigo.OpenEducationAPI</PackageId>
+    <PackageVersion>0.0.0.1</PackageVersion>
+    <PackOnBuild>true</PackOnBuild>
+    <IsPackable>true</IsPackable>
+    <ReleaseVersion>1.0.6.1</ReleaseVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Model\" />
+    <None Remove="Model\V4\" />
+  </ItemGroup> 
+  <ItemGroup>
+    <Folder Include="Model\" />
+    <Folder Include="Model\V4\" />
+  </ItemGroup>
+</Project>
