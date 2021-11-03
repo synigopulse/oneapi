@@ -3,7 +3,7 @@ namespace Synigo.OneApi.Model.Widgets
 {
     public class NoticeModel
     {
-        public NoticeModel() 
+        public NoticeModel()
         {
         }
     }
