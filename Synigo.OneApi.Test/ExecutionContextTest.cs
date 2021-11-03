@@ -3,9 +3,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Synigo.OneApi.Providers.RequestValidators;
 using Synigo.OneApi.Test.Mock;
-using Synigo.OneApi.Core.Extensions;
 using Synigo.OneApi.Interfaces.Model;
 
 namespace Synigo.OneApi.Test
@@ -42,10 +40,14 @@ namespace Synigo.OneApi.Test
 
         private MockFunctionsHostBuilder BuildHost()
         {
+            
             var testConfig = new Dictionary<string, string>();
 
-            var hostBuilder = new MockFunctionsHostBuilder();
-            hostBuilder.AddOneApi()
+            return  new MockFunctionsHostBuilder();
+
+            /*
+            hostBuilder
+                .AddOneApi()
                 .AddCacheProvider((serviceProvider) => new MockCacheProvider())
                 .AddConfigurationProvider((serviceProvider) => new MockConfigurationProvider(testConfig))
                 .AddRequestValidationProvider((serviceprovider) => new NoneRequestValidationProvider())
@@ -53,6 +55,7 @@ namespace Synigo.OneApi.Test
 
             hostBuilder.FinishSetup();
             return hostBuilder;
+            */
         }
     }
 }
