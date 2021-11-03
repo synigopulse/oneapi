@@ -3,6 +3,8 @@
 # Add steps that publish symbols, save build artifacts, and more:
 # https://docs.microsoft.com/azure/devops/pipelines/languages/dotnet-core
 
+name: 1.9.0.$(Rev:r)
+
 trigger:
 - main
 
@@ -14,10 +16,6 @@ variables:
   buildPlatform: 'Any CPU'
   buildConfiguration: 'Release'
   project: 'Synigo.Integration.Model.csproj'
-  majorMinorVersion: 1.1
-  # semanticVersion counter is automatically incremented by one in each execution of pipeline
-  # second parameter is seed value to reset to every time the referenced majorMinorVersion is changed
-  semanticVersion: $[counter(variables['majorMinorVersion'], 0)]
   projectName: 'Synigo.OneApi.Model'
 
 steps:
