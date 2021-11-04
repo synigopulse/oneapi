@@ -48,7 +48,7 @@ steps:
       inputs:
         command: 'pack'
         configuration: $(BuildConfiguration)
-        arguments: '/p:IsPackable=True'
+        buildProperties: '/p:IsPackable=True'
         packagesToPack: '**/${{ projectName }}.csproj'
         packDirectory: '$(System.DefaultWorkingDirectory)'
         versioningScheme: byBuildNumber # https://docs.microsoft.com/en-us/azure/devops/pipelines/tasks/build/dotnet-core-cli?view=azure-devops#yaml-snippet
