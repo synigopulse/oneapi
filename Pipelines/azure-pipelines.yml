@@ -53,11 +53,11 @@ steps:
         versioningScheme: byBuildNumber # https://docs.microsoft.com/en-us/azure/devops/pipelines/tasks/build/dotnet-core-cli?view=azure-devops#yaml-snippet
 
     # Publish
-    - task: NuGetCommand@2
-      displayName: 'Publish ${{ projectName }}'
-      continueOnError: true
-      inputs:
-        command: 'push'
-        packagesToPush: '$(System.DefaultWorkingDirectory)/**/${{ projectName }}*.nupkg'
-        nuGetFeedType: 'external'
-        publishFeedCredentials: 'Nuget Synigo'
+  - task: NuGetCommand@2
+    displayName: 'Publish ${{ projectName }}'
+    continueOnError: true
+    inputs:
+      command: 'push'
+      packagesToPush: '$(System.DefaultWorkingDirectory)/**/*.nupkg'
+      nuGetFeedType: 'external'
+      publishFeedCredentials: 'Nuget Synigo'
