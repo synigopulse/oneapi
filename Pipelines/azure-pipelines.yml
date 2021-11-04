@@ -12,6 +12,10 @@ parameters:
   - Synigo.OneApi.Model
   - Synigo.OneApi.Common
   - Synigo.OneApi.Core
+  - Synigo.OneAPI.Interfaces
+  - Synigo.OneAPI.Providers
+  - Synigo.OneAPI.Core.WebApi
+  - Synigo.OpenEducationApi
 
 variables:
     solution: '**/*.sln'
@@ -27,16 +31,16 @@ pool:
     vmImage: 'windows-latest'
 
 steps:
-- ${{ each projectName in parameters.packages }}:
 
-    - task: NuGetToolInstaller@1
-      displayName: 'Install'
+  - task: NuGetToolInstaller@1
+    displayName: 'Install'
 
-    - task: NuGetCommand@2
-      displayName: 'Restore'
-      inputs:
-        restoreSolution: '$(solution)'
+  - task: NuGetCommand@2
+    displayName: 'Restore'
+    inputs:
+      restoreSolution: '$(solution)'
 
+  - ${{ each projectName in parameters.packages }}:
     # Package
     - task: DotNetCoreCLI@2
       displayName: 'Pack ${{ projectName }}'
