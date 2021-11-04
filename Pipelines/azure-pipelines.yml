@@ -12,9 +12,9 @@ parameters:
   - Synigo.OneApi.Model
   - Synigo.OneApi.Common
   - Synigo.OneApi.Core
-  - Synigo.OneAPI.Interfaces
-  - Synigo.OneAPI.Providers
-  - Synigo.OneAPI.Core.WebApi
+  - Synigo.OneApi.Interfaces
+  - Synigo.OneApi.Providers
+  - Synigo.OneApi.Core.WebApi
   - Synigo.OpenEducationApi
 
 variables:
@@ -58,6 +58,6 @@ steps:
       continueOnError: true
       inputs:
         command: 'push'
-        packagesToPush: '$(System.DefaultWorkingDirectory)/**/*.nupkg'
+        packagesToPush: '$(System.DefaultWorkingDirectory)/**/${{ projectName }}*.nupkg'
         nuGetFeedType: 'external'
         publishFeedCredentials: 'Nuget Synigo'
