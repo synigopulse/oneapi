@@ -3,7 +3,6 @@
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
     <ReleaseVersion>1.0.6.1</ReleaseVersion>
-     <TargetFramework>net5.0</TargetFramework>
     <Authors>Derk van Lochem</Authors>
     <Copyright>Synigo B.V.</Copyright>
     <NeutralLanguage>en</NeutralLanguage>

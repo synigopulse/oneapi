@@ -2,6 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
+    <ReleaseVersion>1.0.6.1</ReleaseVersion>
+    <Authors>Derk van Lochem</Authors>
     <Copyright>Synigo B.V.</Copyright>
     <NeutralLanguage>en</NeutralLanguage>
     <Owners>Synigo</Owners>
@@ -9,10 +11,10 @@
     <Title>Synigo OneAPI Core</Title>
     <Description>Core Package for Synigo One API</Description>
     <PackageId>Synigo.OneAPI.Core</PackageId>
-    <PackageVersion>1.0.6.2</PackageVersion>
+    <PackageVersion>1.0.6.19</PackageVersion>
     <PackOnBuild>true</PackOnBuild>
     <IsPackable>true</IsPackable>
-    <ReleaseVersion>1.0.6.1</ReleaseVersion>
+
   </PropertyGroup>
 
 
@@ -37,7 +39,6 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.Azure.Functions.Extensions" Version="1.1.0" />
-    <PackageReference Include="Microsoft.NET.Sdk.Functions" Version="3.0.13" />
     <PackageReference Include="Microsoft.Identity.Web" Version="1.17.0" />
   </ItemGroup>
 </Project>
