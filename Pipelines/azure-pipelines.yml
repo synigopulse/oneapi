@@ -54,7 +54,7 @@ steps:
 
     # Publish
   - task: NuGetCommand@2
-    displayName: 'Publish ${{ projectName }}'
+    displayName: 'Publish All'
     continueOnError: true
     inputs:
       command: 'push'
