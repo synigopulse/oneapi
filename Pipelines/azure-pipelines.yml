@@ -39,17 +39,17 @@ steps:
 
     # Package
     - task: DotNetCoreCLI@2
-      displayName: 'Pack $(projectName)'
+      displayName: 'Pack ${{ projectName }}'
       inputs:
         command: 'pack'
         configuration: $(BuildConfiguration)
-        packagesToPack: '**/$(projectName).csproj'
+        packagesToPack: '**/${{ projectName }}.csproj'
         packDirectory: '$(System.DefaultWorkingDirectory)'
         versioningScheme: byBuildNumber # https://docs.microsoft.com/en-us/azure/devops/pipelines/tasks/build/dotnet-core-cli?view=azure-devops#yaml-snippet
 
     # Publish
     - task: NuGetCommand@2
-      displayName: 'Publish $(projectName)'
+      displayName: 'Publish ${{ projectName }}'
       inputs:
         command: 'push'
         packagesToPush: '$(System.DefaultWorkingDirectory)/**/*.nupkg'
