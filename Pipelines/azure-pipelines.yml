@@ -9,13 +9,13 @@ parameters:
 - name: 'packages'
   type: object
   default: 
-  - Synigo.OneApi.Model
-  - Synigo.OneApi.Common
+  #- Synigo.OneApi.Model
+  #- Synigo.OneApi.Common
   - Synigo.OneApi.Core
-  - Synigo.OneApi.Interfaces
-  - Synigo.OneApi.Providers
-  - Synigo.OneApi.Core.WebApi
-  - Synigo.OpenEducationApi
+  #- Synigo.OneApi.Interfaces
+  #- Synigo.OneApi.Providers
+  #- Synigo.OneApi.Core.WebApi
+  #- Synigo.OpenEducationApi
 
 variables:
     solution: '**/*.sln'
@@ -48,6 +48,7 @@ steps:
       inputs:
         command: 'pack'
         configuration: $(BuildConfiguration)
+        arguments: '/p:IsPackable=True'
         packagesToPack: '**/${{ projectName }}.csproj'
         packDirectory: '$(System.DefaultWorkingDirectory)'
         versioningScheme: byBuildNumber # https://docs.microsoft.com/en-us/azure/devops/pipelines/tasks/build/dotnet-core-cli?view=azure-devops#yaml-snippet
