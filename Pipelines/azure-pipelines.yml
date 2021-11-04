@@ -5,15 +5,20 @@
 
 name: 1.9.0.$(Rev:r)
 
+parameters:
+- name: 'packages'
+  type: object
+  default: 
+  - Synigo.OneApi.Model
+  - Synigo.OneApi.Common
+  - Synigo.OneApi.Core
+
 variables:
     solution: '**/*.sln'
     buildPlatform: 'Any CPU'
     buildConfiguration: 'Release'
     project: 'Synigo.Integration.Model.csproj'
-    projectName: 'Synigo.OneApi.Model'
-    projects:
-        - 'Synigo.OneApi.Model'
-
+    
 trigger:
     branches:
         include: 
@@ -22,7 +27,7 @@ pool:
     vmImage: 'windows-latest'
 
 steps:
-- ${{ each query in variables.projects }}:
+- ${{ each projectName in parameters.packages }}:
 
     - task: NuGetToolInstaller@1
       displayName: 'Install'
