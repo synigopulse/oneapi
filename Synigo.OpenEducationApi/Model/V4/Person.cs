@@ -8,7 +8,7 @@ namespace Synigo.OpenEducationApi.Model.V4
     /// <summary>
     /// A person that has a relationship with this institution
     /// </summary>
-    public class PersonModel
+    public class Person
     {
         public static readonly string Type = "https://openonderwijsapi.nl/v4/model#person";
         /// <summary>
