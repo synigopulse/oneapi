@@ -9,13 +9,13 @@ parameters:
 - name: 'packages'
   type: object
   default: 
-  #- Synigo.OneApi.Model
-  #- Synigo.OneApi.Common
+  - Synigo.OneApi.Model
+  - Synigo.OneApi.Common
   - Synigo.OneApi.Core
-  #- Synigo.OneApi.Interfaces
-  #- Synigo.OneApi.Providers
-  #- Synigo.OneApi.Core.WebApi
-  #- Synigo.OpenEducationApi
+  - Synigo.OneApi.Interfaces
+  - Synigo.OneApi.Providers
+  - Synigo.OneApi.Core.WebApi
+  - Synigo.OpenEducationApi
 
 variables:
     solution: '**/*.sln'
