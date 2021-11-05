@@ -10,6 +10,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Remove="Microsoft.Azure.Functions.Extensions" />
+    <None Remove="images\" />
   </ItemGroup>
   <ItemGroup>
     <None Update="host.json">
@@ -36,5 +37,8 @@
     <ProjectReference Include="..\Synigo.OneApi.Common\Synigo.OneApi.Common.csproj">
       <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="images\" />
   </ItemGroup>
 </Project>

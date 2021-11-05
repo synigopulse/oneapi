@@ -1,27 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <Project Sdk="Microsoft.NET.Sdk">
-
-  <PropertyGroup>
-    <TargetFramework>net5.0</TargetFramework>
-    <Copyright>Synigo B.V.</Copyright>
-    <NeutralLanguage>en</NeutralLanguage>
-    <Owners>Synigo</Owners>
-    <PackageProjectUrl>https://github.com/synigopulse/oneapi</PackageProjectUrl>
-    <Title>Synigo OneAPI Model</Title>
-    <Description>Model Package for Synigo One API</Description>
-    <PackageId>Synigo.OneAPI.Model</PackageId>
-    <PackageVersion>1.0.0.2</PackageVersion>
-    <PackOnBuild>true</PackOnBuild>
-    <IsPackable>true</IsPackable>
-    <ReleaseVersion>1.0.6.1</ReleaseVersion>
-  </PropertyGroup>
-
-  <ItemGroup>
-    <None Remove="Exceptions\" />
-    <None Remove="Azure.Identity" />
-    <None Remove="Common\" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Exceptions\" />
-    <Folder Include="Common\" />
-  </ItemGroup>
+	<PropertyGroup>
+		<TargetFramework>net5.0</TargetFramework>
+		<Copyright>Synigo B.V.</Copyright>
+		<NeutralLanguage>en</NeutralLanguage>
+		<Owners>Synigo</Owners>
+		<PackageProjectUrl>https://github.com/synigopulse/oneapi</PackageProjectUrl>
+		<Title>Synigo OneAPI Model</Title>
+		<Description>Model Package for Synigo One API</Description>
+		<PackageId>Synigo.OneAPI.Model</PackageId>
+		<PackageVersion>1.0.0.2</PackageVersion>
+		<PackOnBuild>true</PackOnBuild>
+		<IsPackable>true</IsPackable>
+		<ReleaseVersion>1.0.6.1</ReleaseVersion>
+		<PackageIcon>icon.png</PackageIcon>
+		<PackageLicenseUrl>https://raw.githubusercontent.com/synigopulse/oneapi/main/LICENSE?token=AS3LW6XFENGIHTXYTTGNC43BQVKXQ</PackageLicenseUrl>
+	</PropertyGroup>
+	<ItemGroup>
+		<None Include="images\icon.png" Pack="true" PackagePath="\" />
+	</ItemGroup>
+	<ItemGroup>
+		<None Remove="Exceptions\" />
+		<None Remove="Azure.Identity" />
+		<None Remove="Common\" />
+	</ItemGroup>
+	<ItemGroup>
+		<Folder Include="Exceptions\" />
+		<Folder Include="Common\" />
+	</ItemGroup>
 </Project>
