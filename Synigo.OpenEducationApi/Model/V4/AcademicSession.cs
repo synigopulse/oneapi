@@ -10,11 +10,13 @@ namespace Synigo.OpenEducationApi.Model.V4
     /// </summary>
     public class AcademicSession
     {
+        public static readonly string Type = "https://openonderwijsapi.nl/v4/model#academicsession";
+
         /// <summary>
         /// Unique id for this academic session
         /// </summary>
-        [JsonPropertyName("academicSessionId")]
         [Required]
+        [JsonPropertyName("academicSessionId")]
         public Guid AcademicSessionId { get; set; }
 
         /// <summary>
@@ -23,8 +25,8 @@ namespace Synigo.OpenEducationApi.Model.V4
         /// <example>
         /// Fall semester 2021
         /// </example>
-        [MaxLength(256)]
         [Required]
+        [MaxLength(256)]
         [JsonPropertyName("name")]
         public string Name { get; set; }
 
@@ -38,8 +40,8 @@ namespace Synigo.OpenEducationApi.Model.V4
         /// <summary>
         /// The day on which this academic session ends, RFC3339 (full-date)
         /// </summary>
-        [JsonPropertyName("endDate")]
         [Required]
+        [JsonPropertyName("endDate")]
         public DateTime EndDate { get; set; }
 
         /// <summary>
@@ -58,7 +60,6 @@ namespace Synigo.OpenEducationApi.Model.V4
         /// Object for additional non-standard attributes
         /// </summary>
         [JsonPropertyName("ext")]
-        public Dictionary<string, object> Ext { get; set; } 
-
+        public Dictionary<string, object> Ext { get; set; }
     }
 }

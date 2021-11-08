@@ -1,13 +1,12 @@
-﻿using System;
-using System.Runtime.Serialization;
+﻿using System.Runtime.Serialization;
 
 namespace Synigo.OpenEducationApi.Model.V4
 {
+    /// <summary>
+    /// The type of this association
+    /// </summary>
     public enum AssociationType
     {
-        /// <summary>
-        /// Association is between Person and Program
-        /// </summary>
         [EnumMember(Value = "programOfferingAssociation")]
         ProgramOfferingAssociation,
 

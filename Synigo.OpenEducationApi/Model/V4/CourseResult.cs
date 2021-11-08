@@ -1,8 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.Text.Json.Serialization;
-using Synigo.OpenEducationApi.Model.V4;
 
-namespace Synigo.OpenEducationApi.Model.sV4
+namespace Synigo.OpenEducationApi.Model.V4
 {
     public class CourseResult : Result
     {

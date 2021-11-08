@@ -6,20 +6,24 @@ using System.Text.Json.Serialization;
 namespace Synigo.OpenEducationApi.Model.V4
 {
     /// <summary>
-    /// A relationship between a person object and an offering
+    ///  A relationship between a person object and an offering
     /// </summary>
     public class Association
     {
+        public static readonly string ModelType = "https://openonderwijsapi.nl/v4/model#association";
         /// <summary>
-        /// Unique id of this Association
+        /// Unique id of this association
         /// </summary>
         [Required]
         [JsonPropertyName("associationId")]
         public Guid AssociationId { get; set; }
 
         /// <summary>
-        /// The <see cref="AssociationType"/> of this Association
+        /// The type of this association
         /// </summary>
+        /// <example>
+        /// componentOfferingAssociation
+        /// </example>
         [Required]
         [JsonPropertyName("type")]
         public AssociationType Type { get; set; }
@@ -27,15 +31,15 @@ namespace Synigo.OpenEducationApi.Model.V4
         /// <summary>
         /// The <see cref="AssociationRole"/> of this Association
         /// </summary>
-        [JsonPropertyName("role")]
         [Required]
+        [JsonPropertyName("role")]
         public AssociationRole Role { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
-        [JsonPropertyName("state")]
         [Required]
+        [JsonPropertyName("state")]
         public AssociationState State { get; set; }
 
         /// <summary>
@@ -62,6 +66,4 @@ namespace Synigo.OpenEducationApi.Model.V4
         [JsonPropertyName("ext")]
         public Dictionary<string, object> Ext { get; set; }
     }
-
-
 }

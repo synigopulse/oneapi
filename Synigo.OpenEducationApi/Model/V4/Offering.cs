@@ -11,13 +11,14 @@ namespace Synigo.OpenEducationApi.Model.V4
     public class Offering
     {
         /// <summary>
-        ///  Unique id of this offering
+        /// Unique id of this offering
         /// </summary>
+        [Required]
         [JsonPropertyName("offeringId")]
-        public string OfferingId { get; set; }
+        public Guid OfferingId { get; set; }
 
         /// <summary>
-        /// The <see cref="OfferingType"/> of this offering
+        ///  The type of this offering
         /// </summary>
         [Required]
         [JsonPropertyName("type")]
@@ -30,21 +31,28 @@ namespace Synigo.OpenEducationApi.Model.V4
         public AcademicSession AcademicSession { get; set; }
 
         /// <summary>
-        /// The name of this Offering
+        /// The name of this offering
         /// </summary>
-        [MaxLength(256)]
+        /// <example>
+        /// Final written test for INFOMQNM for fall semseter 2020
+        /// </example>
         [Required]
+        [MaxLength(256)]
         [JsonPropertyName("name")]
         public string Name { get; set; }
 
         /// <summary>
         /// The abbreviation or internal code used to identify this offering
         /// </summary>
+        /// <example>
+        /// Test-INFOMQNM-20FS
+        /// </example>
+        [MaxLength(256)]
         [JsonPropertyName("abbreviation")]
         public string Abbreviation { get; set; }
 
         /// <summary>
-        /// The description of this Offering
+        /// The description of this offering
         /// </summary>
         /// <example>
         /// Prove in wirting knowledge of research methods, including:
@@ -72,7 +80,7 @@ namespace Synigo.OpenEducationApi.Model.V4
         /// The main language in which the courses within this program are given, RFC3066
         /// </summary>
         /// <example>
-        /// en-US
+        ///  nl-NL
         /// </example>
         [Required]
         [JsonPropertyName("mainLanguage")]
@@ -81,24 +89,40 @@ namespace Synigo.OpenEducationApi.Model.V4
         /// <summary>
         /// The maximum number of students allowed to enroll for this offering
         /// </summary>
+        /// <example>
+        /// 200
+        /// </example>
+        [Range(0, int.MaxValue)]
         [JsonPropertyName("maxNumberStudents")]
         public int MaxNumberStudents { get; set; }
 
         /// <summary>
         /// The number of students that have already enrolled for this offering
         /// </summary>
+        /// <example>
+        /// 150
+        /// </example>
+        [Range(0, int.MaxValue)]
         [JsonPropertyName("enrolledNumberStudents")]
         public int EnrolledNumberStudents { get; set; }
 
         /// <summary>
         /// The number of students that have a pending enrollment request for this offering
         /// </summary>
+        /// <example>
+        /// 150
+        /// </example>
+        [Range(0, int.MaxValue)]
         [JsonPropertyName("pendingNumberStudents")]
         public int PendingNumberStudents { get; set; }
 
         /// <summary>
         /// Whether the offering is a line item or not
         /// </summary>
+        /// <example>
+        /// true
+        /// </example>
+        [Required]
         [JsonPropertyName("isLineItem")]
         public bool IsLineItem { get; set; }
 
@@ -109,7 +133,7 @@ namespace Synigo.OpenEducationApi.Model.V4
         public ResultValueType ResultValueType { get; set; }
 
         /// <summary>
-        /// Object for additional non-standard attributes
+        /// Get or set object for additional non-standard attributes)
         /// </summary>
         [JsonPropertyName("ext")]
         public Dictionary<string, object> Ext { get; set; }
