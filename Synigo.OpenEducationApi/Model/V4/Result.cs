@@ -19,7 +19,7 @@ namespace Synigo.OpenEducationApi.Model.V4
 
         /// <summary>
         /// The comment on this result
-        /// </summary>
+        /// </summary>z
         [JsonPropertyName("comment")]
         public string Comment { get; set; }
 

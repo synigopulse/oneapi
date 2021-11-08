@@ -21,11 +21,15 @@
 	</ItemGroup>
 	<ItemGroup>
 		<None Remove="Model\" />
+		<None Remove="Microsoft.Identity.Web" />
 	</ItemGroup>
 	<ItemGroup>
 		<Folder Include="Model\" />
 	</ItemGroup>
 	<ItemGroup>
 		<ProjectReference Include="..\Synigo.OneApi.Model\Synigo.OneApi.Model.csproj" />
+	</ItemGroup>
+	<ItemGroup>
+	  <PackageReference Include="Microsoft.Identity.Web" Version="1.17.0" />
 	</ItemGroup>
 </Project>

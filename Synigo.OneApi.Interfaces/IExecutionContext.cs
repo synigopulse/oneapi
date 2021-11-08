@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Microsoft.Identity.Web;
 using Synigo.OneApi.Model;
 
 namespace Synigo.OneApi.Interfaces
@@ -34,6 +35,11 @@ namespace Synigo.OneApi.Interfaces
         /// Get an enumerable of validation mechanisms to validate the current request.
         /// </summary>
         public IEnumerable<IRequestValidationProvider> Validators { get; }
+
+        /// <summary>
+        /// Get a reference to the interface for the token acquisition service 
+        /// </summary>
+        public ITokenAcquisition TokenAcquisition { get; }
 
         /// <summary>
         /// Get an implementation of <see cref="BaseEntityProvider{T}"/>
