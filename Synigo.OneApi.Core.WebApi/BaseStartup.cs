@@ -14,6 +14,8 @@ using Microsoft.Identity.Client;
 using Microsoft.Graph;
 using Synigo.OneApi.Interfaces;
 using Synigo.OneApi.Core.Execution;
+using System.Text.Json.Serialization;
+using Microsoft.AspNetCore.Http.Json;
 
 namespace Synigo.OneApi.Core.WebApi
 {
@@ -73,17 +75,22 @@ namespace Synigo.OneApi.Core.WebApi
                 options.Filters.Add(typeof(OneApiContextFilter));
             }).AddJsonOptions(options =>
             {
-#if DEBUG
-                // it's always nice to indent JSON when debugging
-                options.JsonSerializerOptions.WriteIndented = true;
-#endif
-                options.JsonSerializerOptions.IgnoreNullValues = true;
+                ConfigureJsonSerializerOptions(options);
             });
 
             services.AddSwaggerGen(ConfigureSwaggerGen);
 
             ConfigureCustomServices(_oneApiBuilder);
-           
+        }
+
+        protected virtual void ConfigureJsonSerializerOptions(Microsoft.AspNetCore.Mvc.JsonOptions options)
+        {
+            #if DEBUG
+                // it's always nice to indent JSON when debugging
+                options.JsonSerializerOptions.WriteIndented = true;
+            #endif
+            options.JsonSerializerOptions.IgnoreNullValues = true;
+            options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
         }
 
         protected virtual void ConfigureSwaggerGen(SwaggerGenOptions options)
