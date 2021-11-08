@@ -1,4 +1,10 @@
-﻿namespace Synigo.OpenEducationApi.Model.V4
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Synigo.OpenEducationApi.Model.V4
 {
     /// <summary>
     /// The offering of a program

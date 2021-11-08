@@ -3,15 +3,15 @@
 namespace Synigo.OpenEducationApi.Model.V4
 {
     /// <summary>
-    /// The type of an offering
+    /// The type of this offering
     /// </summary>
     public enum OfferingType
     {
+        [EnumMember(Value = "program")]
+        Program,
         [EnumMember(Value = "course")]
         Course,
         [EnumMember(Value = "component")]
-        Component,
-        [EnumMember(Value = "program")]
-        Program
+        Componenet
     }
 }

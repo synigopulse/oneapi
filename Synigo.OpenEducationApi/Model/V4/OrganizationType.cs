@@ -13,7 +13,7 @@ namespace Synigo.OpenEducationApi.Model.V4
         Institution,
         [EnumMember(Value = "department")]
         Department,
-        [EnumMember(Value= "faculty")]
+        [EnumMember(Value = "faculty")]
         Faculty
     }
 }

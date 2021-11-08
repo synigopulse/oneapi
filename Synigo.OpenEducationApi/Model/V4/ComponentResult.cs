@@ -11,8 +11,8 @@ namespace Synigo.OpenEducationApi.Model.V4
         /// - minimum: 0
         //  - maximum: 100
         /// </summary>
-        [Range(0, 100)]
         [Required]
+        [Range(0, 100)]
         [JsonPropertyName("range")]
         public Range Weight { get; set; }
     }

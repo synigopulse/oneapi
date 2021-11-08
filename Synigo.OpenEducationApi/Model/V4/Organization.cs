@@ -7,19 +7,21 @@ namespace Synigo.OpenEducationApi.Model.V4
 {
 
     /// <summary>
-    ///  A description of a group of people working to gether to achieve a goal 
+    /// A description of a group of people working to gether to achieve a goal
     /// </summary>
     public class Organization
     {
         /// <summary>
         /// Unique id of this organization
         /// </summary>
+        [Required]
         [JsonPropertyName("organizationId")]
         public Guid OrganizationId { get; set; }
 
         /// <summary>
         /// The name of the organization
         /// </summary>
+        /// <example>Coöperatie SURF U.A.</example>
         [Required]
         [MaxLength(256)]
         [JsonPropertyName("name")]
@@ -28,13 +30,14 @@ namespace Synigo.OpenEducationApi.Model.V4
         /// <summary>
         /// Short name of the organization
         /// </summary>
+        /// <example>SURF</example>
+        [Required]
         [MaxLength(256)]
         [JsonPropertyName("shortName")]
         public string ShortName { get; set; }
 
         /// <summary>
-        /// Any general description of the organization should clearly mention the type of higher education organization,
-        /// especially in the case of a binary system.
+        /// Any general description of the organization should clearly mention the type of higher education organization, especially in the case of a binary system. 
         /// In Dutch; universiteit (university) or hogeschool (university of applied sciences).
         /// </summary>
         [JsonPropertyName("description")]
@@ -74,11 +77,12 @@ namespace Synigo.OpenEducationApi.Model.V4
         ///  -10305 (nummer Bevoegd Gezag)
         ///  -641 (nummer Administratie Kantoor)
         /// </summary>
+        /// <example>00AA</example>
         [JsonPropertyName("brin")]
         public string Brin { get; set; }
 
         /// <summary>
-        /// Object for additional non-standard attributes
+        /// Get or set object for additional non-standard attributes)
         /// </summary>
         [JsonPropertyName("ext")]
         public Dictionary<string,object> Ext { get; set; }
