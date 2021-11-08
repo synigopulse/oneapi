@@ -19,7 +19,7 @@ namespace Synigo.OneApi.Functions
         public async Task<IActionResult> Run(
             [HttpTrigger(AuthorizationLevel.Anonymous, "get", "post", Route = null)] HttpRequest req)
         {
-            var result = PrepareAndExecuteAsync(req);
+            var result = await PrepareAndExecuteAsync(req);
             return new OkObjectResult(null);
         }
 

@@ -13,13 +13,13 @@ namespace Synigo.OpenEducationApi.Model.V4
         /// <summary>
         /// The state of this result
         /// </summary>
-        [JsonPropertyName("state")]
         [Required]
+        [JsonPropertyName("state")]
         public ResultState State { get; set; }
 
         /// <summary>
         /// The comment on this result
-        /// </summary>
+        /// </summary>z
         [JsonPropertyName("comment")]
         public string Comment { get; set; }
 
@@ -32,8 +32,8 @@ namespace Synigo.OpenEducationApi.Model.V4
         /// <summary>
         /// The date this result has been published, RFC3339 (full-date)
         /// </summary>
-        [JsonPropertyName("resultDate")]
         [Required]
+        [JsonPropertyName("resultDate")]
         public DateTime ResultDate { get; set; }
 
         /// <summary>

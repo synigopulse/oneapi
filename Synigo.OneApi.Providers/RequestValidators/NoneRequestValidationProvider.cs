@@ -2,11 +2,10 @@
 using System.Threading.Tasks;
 using Synigo.OneApi.Interfaces;
 using Synigo.OneApi.Interfaces.Model;
-using Synigo.OneApi.Interfaces.Model;
 
 namespace Synigo.OneApi.Providers.RequestValidators
 {
-    public class NoneRequestValidationProvider:IRequestValidationProvider
+    public class NoneRequestValidationProvider : IRequestValidationProvider
     {
         public AuthorizationLevel ValidateFor => AuthorizationLevel.None;
 

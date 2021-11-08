@@ -2,9 +2,9 @@
 
 namespace Synigo.OpenEducationApi.Model.V4
 {
-    public class CourseOfferingAssociation : Association
+    public class CourseOfferingAssociation<TResult> : Association<TResult> where TResult : CourseResult
     {
         [JsonPropertyName("result")]
-        public CourseResult Result { get; set; }
+        public override TResult Result { get; set; }
     }
 }

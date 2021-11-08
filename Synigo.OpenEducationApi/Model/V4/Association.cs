@@ -8,7 +8,7 @@ namespace Synigo.OpenEducationApi.Model.V4
     /// <summary>
     ///  A relationship between a person object and an offering
     /// </summary>
-    public class Association
+    public class Association<TResult>  where TResult : Result
     {
         public static readonly string ModelType = "https://openonderwijsapi.nl/v4/model#association";
         /// <summary>
@@ -46,7 +46,7 @@ namespace Synigo.OpenEducationApi.Model.V4
         /// The <see cref="Result"/> in this Association
         /// </summary>
         [JsonPropertyName("result")]
-        public Result Result { get; set; }
+        public virtual TResult Result { get; set; }
 
         /// <summary>
         /// The <see cref="Person"/> in this Association
