@@ -2,9 +2,8 @@
 
 namespace Synigo.OpenEducationApi.Model.V4
 {
-    public class ComponentOfferingAssociation : Association
+    public class ComponentOfferingAssociation 
     {
-        [JsonPropertyName("Result")]
-        public ComponentResult Result { get; set; }
+
     }
 }

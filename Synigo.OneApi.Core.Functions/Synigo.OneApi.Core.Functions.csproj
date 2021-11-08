@@ -1,17 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <Project Sdk="Microsoft.NET.Sdk">
-
-  <PropertyGroup>
-    <TargetFramework>net5.0</TargetFramework>
-    <ReleaseVersion>1.0.6.1</ReleaseVersion>
-  </PropertyGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\Synigo.OneAPi.Core\Synigo.OneApi.Core.csproj" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Remove="Extensions\" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Extensions\" />
-  </ItemGroup>
+	<PropertyGroup>
+		<TargetFramework>net5.0</TargetFramework>
+		<ReleaseVersion>1.0.6.1</ReleaseVersion>
+		<PackageIcon>icon.png</PackageIcon>
+		<PackageLicenseUrl>https://raw.githubusercontent.com/synigopulse/oneapi/main/LICENSE?token=AS3LW6XFENGIHTXYTTGNC43BQVKXQ</PackageLicenseUrl>
+	</PropertyGroup>
+	<ItemGroup>
+		<None Include="images\icon.png" Pack="true" PackagePath="\" />
+	</ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\Synigo.OneAPi.Core\Synigo.OneApi.Core.csproj" />
+	</ItemGroup>
+	<ItemGroup>
+		<None Remove="Extensions\" />
+	</ItemGroup>
+	<ItemGroup>
+		<Folder Include="Extensions\" />
+	</ItemGroup>
 </Project>

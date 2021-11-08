@@ -1,43 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <Project Sdk="Microsoft.NET.Sdk">
-
-  <PropertyGroup>
-    <TargetFramework>net5.0</TargetFramework>
-    <Copyright>Synigo B.V.</Copyright>
-    <NeutralLanguage>en</NeutralLanguage>
-    <Owners>Synigo</Owners>
-    <PackageProjectUrl>https://github.com/synigopulse/oneapi</PackageProjectUrl>
-    <Title>Synigo OneAPI Core</Title>
-    <Description>Core Package for Synigo One API</Description>
-    <PackageId>Synigo.OneAPI.Core</PackageId>
-    <PackageVersion>1.0.6.2</PackageVersion>
-    <PackOnBuild>true</PackOnBuild>
-    <IsPackable>true</IsPackable>
-    <ReleaseVersion>1.0.6.1</ReleaseVersion>
-  </PropertyGroup>
-
-
-  <ItemGroup>
-    <Folder Include="Authorization\" />
-    <Folder Include="Logic\" />
-    <Folder Include="Execution\" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Synigo.OneApi.Interfaces\Synigo.OneApi.Interfaces.csproj">
-      <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
-    </ProjectReference>
-    <ProjectReference Include="..\Synigo.OneApi.Common\Synigo.OneApi.Common.csproj">
-      <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
-    </ProjectReference>
-    <ProjectReference Include="..\Synigo.OneApi.Model\Synigo.OneApi.Model.csproj">
-      <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
-    </ProjectReference>
-    <ProjectReference Include="..\Synigo.OneApi.Providers\Synigo.OneApi.Providers.csproj">
-      <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <PackageReference Include="Microsoft.Azure.Functions.Extensions" Version="1.1.0" />
-    <PackageReference Include="Microsoft.NET.Sdk.Functions" Version="3.0.13" />
-    <PackageReference Include="Microsoft.Identity.Web" Version="1.17.0" />
-  </ItemGroup>
+	<PropertyGroup>
+		<TargetFramework>net5.0</TargetFramework>
+		<ReleaseVersion>1.0.6.1</ReleaseVersion>
+		<Authors>Derk van Lochem</Authors>
+		<Copyright>Synigo B.V.</Copyright>
+		<NeutralLanguage>en</NeutralLanguage>
+		<Owners>Synigo</Owners>
+		<PackageProjectUrl>https://github.com/synigopulse/oneapi</PackageProjectUrl>
+		<Title>Synigo OneAPI Core</Title>
+		<Description>Core Package for Synigo One API</Description>
+		<PackageId>Synigo.OneAPI.Core</PackageId>
+		<PackageVersion>1.0.6.19</PackageVersion>
+		<PackOnBuild>true</PackOnBuild>
+		<IsPackable>true</IsPackable>
+		<PackageIcon>icon.png</PackageIcon>
+		<PackageLicenseUrl>https://raw.githubusercontent.com/synigopulse/oneapi/main/LICENSE?token=AS3LW6XFENGIHTXYTTGNC43BQVKXQ</PackageLicenseUrl>
+	</PropertyGroup>
+	<ItemGroup>
+		<None Include="images\icon.png" Pack="true" PackagePath="\" />
+	</ItemGroup>
+	<ItemGroup>
+		<Folder Include="Authorization\" />
+		<Folder Include="Logic\" />
+		<Folder Include="Execution\" />
+	</ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\Synigo.OneApi.Interfaces\Synigo.OneApi.Interfaces.csproj">
+			<GlobalPropertiesToRemove>
+			</GlobalPropertiesToRemove>
+		</ProjectReference>
+		<ProjectReference Include="..\Synigo.OneApi.Common\Synigo.OneApi.Common.csproj">
+			<GlobalPropertiesToRemove>
+			</GlobalPropertiesToRemove>
+		</ProjectReference>
+		<ProjectReference Include="..\Synigo.OneApi.Model\Synigo.OneApi.Model.csproj">
+			<GlobalPropertiesToRemove>
+			</GlobalPropertiesToRemove>
+		</ProjectReference>
+		<ProjectReference Include="..\Synigo.OneApi.Providers\Synigo.OneApi.Providers.csproj">
+			<GlobalPropertiesToRemove>
+			</GlobalPropertiesToRemove>
+		</ProjectReference>
+	</ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="Microsoft.Azure.Functions.Extensions" Version="1.1.0" />
+		<PackageReference Include="Microsoft.Identity.Web" Version="1.17.0" />
+	</ItemGroup>
 </Project>

@@ -3,7 +3,7 @@
 namespace Synigo.OpenEducationApi.Model.V4
 {
     /// <summary>
-    /// The type of this organization
+    /// The type of a organization
     /// </summary>
     public enum OrganizationType
     {

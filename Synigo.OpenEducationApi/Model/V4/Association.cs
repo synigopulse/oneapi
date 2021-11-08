@@ -10,6 +10,7 @@ namespace Synigo.OpenEducationApi.Model.V4
     /// </summary>
     public class Association
     {
+        public static readonly string ModelType = "https://openonderwijsapi.nl/v4/model#association";
         /// <summary>
         /// Unique id of this association
         /// </summary>
@@ -27,16 +28,40 @@ namespace Synigo.OpenEducationApi.Model.V4
         [JsonPropertyName("type")]
         public AssociationType Type { get; set; }
 
+        /// <summary>
+        /// The <see cref="AssociationRole"/> of this Association
+        /// </summary>
         [Required]
         [JsonPropertyName("role")]
         public AssociationRole Role { get; set; }
 
+        /// <summary>
+        /// 
+        /// </summary>
         [Required]
         [JsonPropertyName("state")]
         public AssociationState State { get; set; }
 
         /// <summary>
-        /// Get or set object for additional non-standard attributes)
+        /// The <see cref="Result"/> in this Association
+        /// </summary>
+        [JsonPropertyName("result")]
+        public Result Result { get; set; }
+
+        /// <summary>
+        /// The <see cref="Person"/> in this Association
+        /// </summary>
+        [JsonPropertyName("person")]
+        public Person Person { get; set; }
+
+        /// <summary>
+        /// The <see cref="Offering"/> in this Association
+        /// </summary>
+        [JsonPropertyName("offering")]
+        public Offering Offering { get; set; }
+
+        /// <summary>
+        /// Object for additional non-standard attributes
         /// </summary>
         [JsonPropertyName("ext")]
         public Dictionary<string, object> Ext { get; set; }

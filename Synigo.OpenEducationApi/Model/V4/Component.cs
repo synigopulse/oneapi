@@ -10,6 +10,8 @@ namespace Synigo.OpenEducationApi.Model.V4
     /// </summary>
     public class Component
     {
+        public static readonly string ModelType = "https://openonderwijsapi.nl/v4/model#component";
+        
         /// <summary>
         /// Unique id of this component
         /// </summary>
@@ -19,7 +21,7 @@ namespace Synigo.OpenEducationApi.Model.V4
 
         [Required]
         [JsonPropertyName("type")]
-        public ComponentType ComponentType { get; set; }
+        public ComponentType Type { get; set; }
 
         /// <summary>
         /// The name of this component
@@ -74,5 +76,17 @@ namespace Synigo.OpenEducationApi.Model.V4
         /// </summary>
         [JsonPropertyName("ext")]
         public Dictionary<string, object> Ext { get; set; }
+
+        /// <summary>
+        /// The course of which this component is a part
+        /// </summary>
+        [JsonPropertyName("course")]
+        public Course Course { get; set; }
+
+        /// <summary>
+        /// Organization which provides this component
+        /// </summary>
+        [JsonPropertyName("organization")]
+        public Organization Organization { get; set; }
     }
 }

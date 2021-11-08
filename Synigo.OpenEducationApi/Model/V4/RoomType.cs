@@ -4,9 +4,20 @@ namespace Synigo.OpenEducationApi.Model.V4
 {
     /// <summary>
     /// The type of this room
+    ///  - general purpose: algemeen
+    ///  - lecture room: collegezaal
+    ///  - computer room: computerruimte
+    ///  - laboratory: laboratorium
+    ///  - office: kantoor
+    ///  - workspace: werkruimte
+    ///  - exam location: tentamenruimte
+    ///  - study room: studieruimte
+    ///  - examination room: onderzoekskamer
+    ///  - conference room: vergaderkamer
     /// </summary>
     public enum RoomType
     {
+
         [EnumMember(Value = "general purpose")]
         GeneralPurpose,
         [EnumMember(Value = "lecture room")]

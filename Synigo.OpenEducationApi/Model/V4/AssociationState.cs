@@ -14,6 +14,6 @@ namespace Synigo.OpenEducationApi.Model.V4
         [EnumMember(Value = "denied")]
         Denied,
         [EnumMember(Value = "associated")]
-        Associated
+        Associated,
     }
 }

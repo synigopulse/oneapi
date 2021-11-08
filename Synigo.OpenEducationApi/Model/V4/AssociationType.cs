@@ -9,8 +9,16 @@ namespace Synigo.OpenEducationApi.Model.V4
     {
         [EnumMember(Value = "programOfferingAssociation")]
         ProgramOfferingAssociation,
+
+        /// <summary>
+        /// Association is between Person and Course
+        /// </summary>
         [EnumMember(Value = "courseOfferingAssociation")]
         CourseOfferingAssociation,
+
+        /// <summary>
+        /// Association is between Person and Component
+        /// </summary>
         [EnumMember(Value = "componentOfferingAssociation")]
         ComponentOfferingAssociation
     }

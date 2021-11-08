@@ -5,6 +5,7 @@ using System.Text.Json.Serialization;
 
 namespace Synigo.OpenEducationApi.Model.V4
 {
+
     /// <summary>
     /// A description of a group of people working to gether to achieve a goal
     /// </summary>
@@ -42,12 +43,15 @@ namespace Synigo.OpenEducationApi.Model.V4
         [JsonPropertyName("description")]
         public string Description { get; set; }
 
+        /// <summary>
+        /// The <see cref="OrganizationType"/> of this organization
+        /// </summary>
         [Required]
         [JsonPropertyName("type")]
         public OrganizationType Type { get; set; }
 
         /// <summary>
-        /// Addresses of this organization
+        /// A list of <see cref="Address"/> of this organization
         /// </summary>
         [JsonPropertyName("addresses")]
         public List<Address> Addresses { get; set; }
@@ -67,7 +71,11 @@ namespace Synigo.OpenEducationApi.Model.V4
         public string Logo { get; set; }
 
         /// <summary>
-        ///  BRIN-code of this organization
+        /// BRIN-code of this organization
+        ///  -00BX(BRIN-nummer instelling)
+        ///  -26ED00 (BRIN-nummer vestiging)
+        ///  -10305 (nummer Bevoegd Gezag)
+        ///  -641 (nummer Administratie Kantoor)
         /// </summary>
         /// <example>00AA</example>
         [JsonPropertyName("brin")]
@@ -77,6 +85,16 @@ namespace Synigo.OpenEducationApi.Model.V4
         /// Get or set object for additional non-standard attributes)
         /// </summary>
         [JsonPropertyName("ext")]
-        public Dictionary<string, object> Ext { get; set; }
+        public Dictionary<string,object> Ext { get; set; }
+
+        /// <summary>
+        /// The <see cref="Organization"/> parent of this organization
+        /// </summary>
+        public Organization Parent { get; set; }
+
+        /// <summary>
+        /// A List of <see cref="Organization"/> children of this organization
+        /// </summary>
+        public List<Organization> Children { get; set; }
     }
 }

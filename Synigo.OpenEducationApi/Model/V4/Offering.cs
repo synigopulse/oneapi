@@ -24,6 +24,9 @@ namespace Synigo.OpenEducationApi.Model.V4
         [JsonPropertyName("type")]
         public OfferingType Type { get; set; }
 
+        /// <summary>
+        /// The <see cref="AcademicSession"/> of this Offering
+        /// </summary>
         [JsonPropertyName("academicSession")]
         public AcademicSession AcademicSession { get; set; }
 
@@ -123,6 +126,9 @@ namespace Synigo.OpenEducationApi.Model.V4
         [JsonPropertyName("isLineItem")]
         public bool IsLineItem { get; set; }
 
+        /// <summary>
+        /// The <see cref="ResultValueType"/> of this offering
+        /// </summary>
         [JsonPropertyName("resultValueType")]
         public ResultValueType ResultValueType { get; set; }
 

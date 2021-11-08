@@ -1,0 +1,63 @@
+# ASP.NET Core (.NET Framework)
+# Build and test ASP.NET Core projects targeting the full .NET Framework.
+# Add steps that publish symbols, save build artifacts, and more:
+# https://docs.microsoft.com/azure/devops/pipelines/languages/dotnet-core
+
+name: 1.9.1.$(Rev:r)
+
+parameters:
+- name: 'packages'
+  type: object
+  default: 
+  - Synigo.OneApi.Model
+  - Synigo.OneApi.Common
+  - Synigo.OneApi.Core
+  - Synigo.OneApi.Interfaces
+  - Synigo.OneApi.Providers
+  - Synigo.OneApi.Core.WebApi
+  - Synigo.OpenEducationApi
+
+variables:
+    solution: '**/*.sln'
+    buildPlatform: 'Any CPU'
+    buildConfiguration: 'Release'
+    project: 'Synigo.Integration.Model.csproj'
+    
+trigger:
+    branches:
+        include: 
+            - main
+pool:
+    vmImage: 'windows-latest'
+
+steps:
+
+  - task: NuGetToolInstaller@1
+    displayName: 'Install'
+
+  - task: NuGetCommand@2
+    displayName: 'Restore'
+    inputs:
+      restoreSolution: '$(solution)'
+
+  - ${{ each projectName in parameters.packages }}:
+    # Package
+    - task: DotNetCoreCLI@2
+      displayName: 'Pack ${{ projectName }}'
+      continueOnError: true
+      inputs:
+        command: 'pack'
+        configuration: $(BuildConfiguration)
+        packagesToPack: '**/${{ projectName }}.csproj'
+        packDirectory: '$(System.DefaultWorkingDirectory)'
+        versioningScheme: byBuildNumber # https://docs.microsoft.com/en-us/azure/devops/pipelines/tasks/build/dotnet-core-cli?view=azure-devops#yaml-snippet
+
+    # Publish
+  - task: NuGetCommand@2
+    displayName: 'Publish All'
+    continueOnError: true
+    inputs:
+      command: 'push'
+      packagesToPush: '$(System.DefaultWorkingDirectory)/**/*.nupkg'
+      nuGetFeedType: 'external'
+      publishFeedCredentials: 'Nuget Synigo'

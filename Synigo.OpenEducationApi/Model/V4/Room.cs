@@ -33,6 +33,9 @@ namespace Synigo.OpenEducationApi.Model.V4
         [JsonPropertyName("name")]
         public string Name { get; set; }
 
+        /// <summary>
+        /// The name of this room
+        /// </summary>
         [Required]
         [JsonPropertyName("type")]
         public RoomType Type { get; set; }
@@ -68,12 +71,15 @@ namespace Synigo.OpenEducationApi.Model.V4
         public string Wing { get; set; }
 
         [JsonPropertyName("geolocation")]
-        public Geolocation  Geolocation { get; set; }
+        public Geolocation Geolocation { get; set; }
 
         /// <summary>
         /// Get or set object for additional non-standard attributes)
         /// </summary>
         [JsonPropertyName("ext")]
-        public Dictionary<string, object> Ext { get; set; }
+        public Dictionary<string,object> Ext { get; set; }
+
+        [JsonPropertyName("building")]
+        public Building Building { get; set; }
     }
 }

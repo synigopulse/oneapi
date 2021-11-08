@@ -10,7 +10,7 @@ namespace Synigo.OpenEducationApi.Model.V4
     /// </summary>
     public class Building
     {
-        public static readonly string Type = "https://openonderwijsapi.nl/v4/model#building";
+        public static readonly string ModelType = "https://openonderwijsapi.nl/v4/model#building";
 
         /// <summary>
         /// Unique id of this building
@@ -51,7 +51,11 @@ namespace Synigo.OpenEducationApi.Model.V4
         /// </example>
         [JsonPropertyName("description")]
         public string Description { get; set; }
-        
+
+        /// <summary>
+        /// The physical address of the building
+        /// </summary>
+        [Required]
         [JsonPropertyName("address")]
         public Address Address { get; set; }
 
@@ -60,5 +64,11 @@ namespace Synigo.OpenEducationApi.Model.V4
         /// </summary>
         [JsonPropertyName("ext")]
         public Dictionary<string, object> Ext { get; set; }
+
+        /// <summary>
+        /// Get or set a list of rooms in this building
+        /// </summary>
+        [JsonPropertyName("rooms")]
+        public List<Room> Rooms { get; set; }
     }
 }
