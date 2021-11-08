@@ -14,47 +14,46 @@ namespace Synigo.OpenEducationApi.Model.V4
         /// <summary>
         /// Get or set the unique id of this person
         /// </summary>
-        [JsonPropertyName("personId")]
         [Required]
+        [JsonPropertyName("personId")]
         public Guid PersonId { get; set; }
 
         /// <summary>
         /// Get or set the first name of this person
         /// </summary>
-        [JsonPropertyName("givenName")]
         [Required]
         [MaxLength(256)]
+        [JsonPropertyName("givenName")]
         public string GivenName { get; set; }
 
         /// <summary>
         /// Get or set the prefix of the family name of this person
         /// </summary>
-        [JsonPropertyName("surnamePrefix")]
         [MaxLength(256)]
+        [JsonPropertyName("surnamePrefix")]
         public string SurnamePrefix { get; set; }
-
 
         /// <summary>
         /// Get or set the family name of this person
         /// </summary>
-        [JsonPropertyName("surname")]
         [Required]
         [MaxLength(256)]
+        [JsonPropertyName("surname")]
         public string Surname { get; set; }
 
         /// <summary>
         /// Get or set the name of this person which will be displayed
         /// </summary>
-        [JsonPropertyName("displayName")]
         [Required]
         [MaxLength(256)]
+        [JsonPropertyName("displayName")]
         public string DisplayName { get; set; }
 
         /// <summary>
         /// Get or set the initials of this person
         /// </summary>
-        [JsonPropertyName("initials")]
         [MaxLength(256)]
+        [JsonPropertyName("initials")]
         public string Initials { get; set; }
 
         /// <summary>
@@ -99,12 +98,11 @@ namespace Synigo.OpenEducationApi.Model.V4
         [JsonPropertyName("mail")]
         public string Mail { get; set; }
 
-
         /// <summary>
         /// Get or set the secondary e-mailaddress of this person
-        /// </summary>JsonPropertyName("secondaryMail")]
+        /// </summary>
+        [JsonPropertyName("secondaryMail")]
         public string SecondaryMail { get; set; }
-
 
         /// <summary>
         /// Get or set the telephone number of this person
@@ -112,23 +110,27 @@ namespace Synigo.OpenEducationApi.Model.V4
         [JsonPropertyName("telephoneNumber")]
         public string TelephoneNumber { get; set; }
 
-
         /// <summary>
         /// Get or set the mobile number of this person
-        /// </summary>[JsonPropertyName("mobileNumber")]
+        /// </summary>
+        [JsonPropertyName("mobileNumber")]
         public string MobileNumber { get; set; }
-
 
         /// <summary>
         /// Get or set the url of the informal picture of this person
-        /// </summary>[JsonPropertyName("photoSocial")]
+        /// </summary>
+        [JsonPropertyName("photoSocial")]
         public string PhotoSocial { get; set; }
 
         /// <summary>
         /// Get or set the url of the official picture of this person
-        /// </summary>[JsonPropertyName("photoOfficial")]
+        /// </summary>
+        [JsonPropertyName("photoOfficial")]
         public string PhotoOfficial { get; set; }
 
+        /// <summary>
+        /// <see cref="V4.Gender"/>
+        /// </summary>
         [JsonPropertyName("gender")]
         public Gender Gender { get; set; }
 
@@ -167,6 +169,7 @@ namespace Synigo.OpenEducationApi.Model.V4
 
         /// <summary>
         /// Get or set the type of relation between person and In Case of Emergency contact
+        /// <see cref="V4.ICERelationType"/>
         /// </summary>
         [JsonPropertyName("ICERelation")]
         public ICERelationType IceRelation { get; set; }

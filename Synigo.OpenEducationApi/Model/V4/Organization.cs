@@ -11,6 +11,8 @@ namespace Synigo.OpenEducationApi.Model.V4
     /// </summary>
     public class Organization
     {
+        public static readonly string ModelType = "https://openonderwijsapi.nl/v4/model#organization";
+
         /// <summary>
         /// Unique id of this organization
         /// </summary>
@@ -82,12 +84,6 @@ namespace Synigo.OpenEducationApi.Model.V4
         public string Brin { get; set; }
 
         /// <summary>
-        /// Get or set object for additional non-standard attributes)
-        /// </summary>
-        [JsonPropertyName("ext")]
-        public Dictionary<string,object> Ext { get; set; }
-
-        /// <summary>
         /// The <see cref="Organization"/> parent of this organization
         /// </summary>
         public Organization Parent { get; set; }
@@ -96,5 +92,11 @@ namespace Synigo.OpenEducationApi.Model.V4
         /// A List of <see cref="Organization"/> children of this organization
         /// </summary>
         public List<Organization> Children { get; set; }
+
+        /// <summary>
+        /// Get or set object for additional non-standard attributes)
+        /// </summary>
+        [JsonPropertyName("ext")]
+        public Dictionary<string, object> Ext { get; set; }
     }
 }

@@ -23,8 +23,4 @@
 		<None Remove="Model\" />
 		<None Remove="Model\V4\" />
 	</ItemGroup>
-	<ItemGroup>
-		<Folder Include="Model\" />
-		<Folder Include="Model\V4\" />
-	</ItemGroup>
 </Project>

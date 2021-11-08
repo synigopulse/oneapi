@@ -70,8 +70,17 @@ namespace Synigo.OpenEducationApi.Model.V4
         [JsonPropertyName("wing")]
         public string Wing { get; set; }
 
+        /// <summary>
+        /// <see cref="V4.Geolocation"/>
+        /// </summary>
         [JsonPropertyName("geolocation")]
         public Geolocation Geolocation { get; set; }
+
+        /// <summary>
+        /// <see cref="V4.Building"/>
+        /// </summary>
+        [JsonPropertyName("building")]
+        public Building Building { get; set; }
 
         /// <summary>
         /// Get or set object for additional non-standard attributes)
@@ -79,7 +88,5 @@ namespace Synigo.OpenEducationApi.Model.V4
         [JsonPropertyName("ext")]
         public Dictionary<string,object> Ext { get; set; }
 
-        [JsonPropertyName("building")]
-        public Building Building { get; set; }
     }
 }
