@@ -61,7 +61,7 @@ namespace Synigo.OpenEducationApi.Model.V4
         /// Get or set the date of birth of this person, RFC3339 (full-date)
         /// </summary>
         [JsonPropertyName("dateOfBirth")]
-        public DateTime DateOfBirth { get; set; }
+        public DateTime? DateOfBirth { get; set; }
 
         /// <summary>
         /// Get or set the city of birth of this person
@@ -130,7 +130,7 @@ namespace Synigo.OpenEducationApi.Model.V4
         public string PhotoOfficial { get; set; }
 
         [JsonPropertyName("gender")]
-        public Gender Gender { get; set; }
+        public Gender? Gender { get; set; }
 
         /// <summary>
         /// Get or set a title prefix to be used for this person
@@ -169,7 +169,7 @@ namespace Synigo.OpenEducationApi.Model.V4
         /// Get or set the type of relation between person and In Case of Emergency contact
         /// </summary>
         [JsonPropertyName("ICERelation")]
-        public ICERelationType IceRelation { get; set; }
+        public ICERelationType? IceRelation { get; set; }
 
         /// <summary>
         /// Get or set the language(s) of choice for this person, RFC3066
