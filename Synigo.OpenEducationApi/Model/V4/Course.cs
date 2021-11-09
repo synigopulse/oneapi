@@ -10,6 +10,8 @@ namespace Synigo.OpenEducationApi.Model.V4
     /// </summary>
     public class Course
     {
+        public static readonly string ModelType = "https://openonderwijsapi.nl/v4/model#course";
+
         /// <summary>
         /// Unique id of this course
         /// </summary>
@@ -114,6 +116,24 @@ namespace Synigo.OpenEducationApi.Model.V4
         [MaxLength(2048)]
         [JsonPropertyName("link")]
         public string Link { get; set; }
+
+        /// <summary>
+        ///  The program of which this course is a part of
+        /// </summary>
+        [JsonPropertyName("programs")]
+        public List<Program> Programs { get; set; }
+
+        /// <summary>
+        /// The person(s) responsible for this course
+        /// </summary>
+        [JsonPropertyName("coordinators")]
+        public List<Person> Coordinators { get; set; }
+
+        /// <summary>
+        /// The organization providing the current course
+        /// </summary>
+        [JsonPropertyName("Organization")]
+        public Organization Organization { get; set; }
 
         /// <summary>
         /// Get or set object for additional non-standard attributes)

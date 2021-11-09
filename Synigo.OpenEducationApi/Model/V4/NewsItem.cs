@@ -10,6 +10,7 @@ namespace Synigo.OpenEducationApi.Model.V4
     /// </summary>
     public class NewsItem
     {
+        public static readonly string ModelType = "https://openonderwijsapi.nl/v4/model#newsitem";
         /// <summary>
         ///  Unique id for this news item
         /// </summary>
@@ -78,6 +79,12 @@ namespace Synigo.OpenEducationApi.Model.V4
         /// <example>2020-09-28T00:00:00.000Z</example>
         [JsonPropertyName("lastModified")]
         public DateTime? LastModified { get; set; }
+
+        /// <summary>
+        /// The newsFeeds where this item can be found
+        /// </summary>
+        [JsonPropertyName("newsFeeds")]
+        public List<NewsFeed> NewsFeeds { get; set; }
 
         /// <summary>
         /// Get or set object for additional non-standard attributes)
