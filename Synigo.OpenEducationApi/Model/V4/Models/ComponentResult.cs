@@ -14,6 +14,6 @@ namespace Synigo.OpenEducationApi.Model.V4
         [Required]
         [Range(0, 100)]
         [JsonPropertyName("range")]
-        public Range Weight { get; set; }
+        public decimal Weight { get; set; }
     }
 }
