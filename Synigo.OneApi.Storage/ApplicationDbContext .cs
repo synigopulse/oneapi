@@ -102,6 +102,11 @@ namespace Synigo.OneApi.Storage
             #endregion
 
             #region Ext
+            modelBuilder.Entity<Address>().Property(p => p.Ext)
+                .IsRequired(false)
+                .HasConversion(
+                v => Serialize(v),
+                v => Deserialize(v));
 
             modelBuilder.Entity<AcademicSession>().Property(p => p.Ext)
                 .IsRequired(false)
