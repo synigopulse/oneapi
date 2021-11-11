@@ -16,6 +16,7 @@ parameters:
   - Synigo.OneApi.Providers
   - Synigo.OneApi.Core.WebApi
   - Synigo.OpenEducationApi
+  - Synigo.OpenApi.Storage
 
 variables:
     solution: '**/*.sln'
