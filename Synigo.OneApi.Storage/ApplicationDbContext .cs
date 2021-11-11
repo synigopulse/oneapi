@@ -8,6 +8,9 @@ using Synigo.OpenEducationApi.Model.V4.Models;
 
 namespace Synigo.OneApi.Storage
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class ApplicationDbContext : DbContext
     {
         #region Properties
