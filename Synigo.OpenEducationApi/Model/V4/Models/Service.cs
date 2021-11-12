@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text.Json.Serialization;
 
@@ -9,6 +10,9 @@ namespace Synigo.OpenEducationApi.Model.V4
     /// </summary>
     public class Service
     {
+        [Required]
+        [JsonPropertyName("serviceId")]
+        public Guid ServiceId { get; set; }
         /// <summary>
         /// Contact e-mail address of the service owner
         /// </summary>

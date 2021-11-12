@@ -11,6 +11,13 @@ namespace Synigo.OpenEducationApi.Model.V4
     public class Result
     {
         /// <summary>
+        /// Unique id for this result
+        /// </summary>
+        [Required]
+        [JsonPropertyName("resultId")]
+        public Guid ResultId { get; set; }
+
+        /// <summary>
         /// The state of this result
         /// </summary>
         [Required]

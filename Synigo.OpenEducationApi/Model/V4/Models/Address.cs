@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text.Json.Serialization;
 
@@ -11,6 +12,13 @@ namespace Synigo.OpenEducationApi.Model.V4
     {
         public static readonly string ModelType = "https://openonderwijsapi.nl/v4/model#address";
 
+        /// <summary>
+        /// Unique id for this address
+        /// </summary>
+        [Required]
+        [JsonPropertyName("addressId")]
+        public Guid AddressId { get; set; }
+        
         /// <summary>
         /// Get or set the <see cref="PostalType"/> of the address
         /// </summary>
