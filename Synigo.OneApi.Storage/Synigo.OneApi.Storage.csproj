@@ -12,8 +12,12 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="6.0.0" />
-    <PackageReference Include="Synigo.OpenEducationAPI" Version="1.9.1.27" />
+    <PackageReference Include="Synigo.OpenEducationAPI" Version="1.9.1.30" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Synigo.OneApi.Common\Synigo.OneApi.Common.csproj" />
+    <ProjectReference Include="..\Synigo.OpenEducationApi\Synigo.OpenEducationApi.csproj" />
   </ItemGroup>
 
 </Project>

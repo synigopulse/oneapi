@@ -20,11 +20,11 @@ namespace Synigo.OpenEducationApi.Model.V4
         public Guid AddressId { get; set; }
         
         /// <summary>
-        /// Get or set the <see cref="PostalType"/> of the address
+        /// Get or set the <see cref="Type"/> of the address
         /// </summary>
         [Required]
         [JsonPropertyName("type")]
-        public PostalType PostalType { get; set; }
+        public PostalType Type { get; set; }
 
         /// <summary>
         /// Get or set the street name

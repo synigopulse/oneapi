@@ -53,30 +53,6 @@ namespace Synigo.OneApi.Common.Extensions
 
             return result;
         }
-
-        /// <summary>
-        /// Extension method to deserialize strings and to be able to use just the one implemention so we
-        /// can easily change serializer (if wanted)
-        /// </summary>
-        /// <typeparam name="T">The type of object to return</typeparam>
-        /// <param name="serializedData">The data to deserialize</param>
-        /// <exception cref="JsonException">When deserialization fails</exception>
-        /// <returns>An instance of T</returns>
-        public static T Deserialize<T>(this string serializedData)
-        {
-            return JsonSerializer.Deserialize<T>(serializedData);
-        }
-
-        /// <summary>
-        /// Extension method to serialize data 
-        /// </summary>
-        /// <param name="instance">The instance to serialize</param>
-        /// <exception cref="JsonException">When serialization fails</exception>
-        /// <returns>a string version of the instance</returns>
-        public static string Serialize(this object instance)
-        {
-            return JsonSerializer.Serialize(instance);
-        }
     }
 }
 

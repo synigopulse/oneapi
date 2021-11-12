@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text.Json;
+﻿using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
+using Synigo.OneApi.Common.Extensions;
 using Synigo.OpenEducationApi.Model.V4;
 using Synigo.OpenEducationApi.Model.V4.Models;
 
@@ -62,10 +60,12 @@ namespace Synigo.OneApi.Storage
         {
             #region pK
 
+            modelBuilder.Entity<Address>().HasKey(c => c.AddressId);
+            modelBuilder.Entity<Address>().Property(p => p.AddressId).ValueGeneratedOnAdd();
+
             modelBuilder.Entity<AcademicSession>().HasKey(c => c.AcademicSessionId);
             modelBuilder.Entity<AcademicSession>().Property(p => p.AcademicSessionId).ValueGeneratedOnAdd();
             
-
             modelBuilder.Entity<Association<Result>>().HasKey(c => c.AssociationId);
             modelBuilder.Entity<Association<Result>>().Property(p => p.AssociationId).ValueGeneratedOnAdd();
 
@@ -87,222 +87,314 @@ namespace Synigo.OneApi.Storage
             modelBuilder.Entity<Offering>().HasKey(c => c.OfferingId);
             modelBuilder.Entity<Offering>().Property(p => p.OfferingId).ValueGeneratedOnAdd();
 
-            modelBuilder.Entity<Organization>().Property(c => c.OrganizationId);
+            modelBuilder.Entity<Organization>().HasKey(c => c.OrganizationId);
             modelBuilder.Entity<Organization>().Property(p => p.OrganizationId).ValueGeneratedOnAdd();
 
-            modelBuilder.Entity<Person>().Property(c => c.PersonId);
+            modelBuilder.Entity<Person>().HasKey(c => c.PersonId);
             modelBuilder.Entity<Person>().Property(p => p.PersonId).ValueGeneratedOnAdd();
 
-            modelBuilder.Entity<Program>().Property(c => c.ProgramId);
+            modelBuilder.Entity<Program>().HasKey(c => c.ProgramId);
             modelBuilder.Entity<Program>().Property(p => p.ProgramId).ValueGeneratedOnAdd();
 
-            modelBuilder.Entity<Room>().Property(c => c.RoomId);
+            modelBuilder.Entity<Result>().HasKey(c => c.ResultId);
+            modelBuilder.Entity<Result>().Property(p => p.ResultId).ValueGeneratedOnAdd();
+
+            modelBuilder.Entity<Room>().HasKey(c => c.RoomId);
             modelBuilder.Entity<Room>().Property(p => p.RoomId).ValueGeneratedOnAdd();
+
+            modelBuilder.Entity<Service>().HasKey(c => c.ServiceId);
+            modelBuilder.Entity<Service>().Property(p => p.ServiceId).ValueGeneratedOnAdd();
+
+            modelBuilder.Entity<Geolocation>().HasKey(c => c.GeoLocationId);
+            modelBuilder.Entity<Geolocation>().Property(p => p.GeoLocationId).ValueGeneratedOnAdd();
 
             #endregion
 
             #region Ext
-            modelBuilder.Entity<Address>().Property(p => p.Ext)
-                .IsRequired(false)
-                .HasConversion(
-                v => Serialize(v),
-                v => Deserialize(v));
 
-            modelBuilder.Entity<AcademicSession>().Property(p => p.Ext)
+            modelBuilder.Entity<Address>()
+                .Property(p => p.Ext)
                 .IsRequired(false)
                 .HasConversion(
-                v => Serialize(v),
-                v => Deserialize(v));
+                v => v.Serialize(),
+                v => v.Deserialize<Dictionary<string,object>>());
 
-            modelBuilder.Entity<Association<Result>>().Property(p => p.Ext)
+            modelBuilder.Entity<AcademicSession>()
+                .Property(p => p.Ext)
                 .IsRequired(false)
                 .HasConversion(
-                v => Serialize(v),
-                v => Deserialize(v));
+                v => v.Serialize(),
+                v => v.Deserialize<Dictionary<string, object>>());
 
-            modelBuilder.Entity<Building>().Property(p=>p.Ext)
+            modelBuilder.Entity<Association<Result>>()
+                .Property(p => p.Ext)
                 .IsRequired(false)
                 .HasConversion(
-                v => Serialize(v),
-                v => Deserialize(v));
+                v => v.Serialize(),
+                v => v.Deserialize<Dictionary<string, object>>());
 
-            modelBuilder.Entity<Component>().Property(p => p.Ext)
+            modelBuilder.Entity<Building>()
+                .Property(p=>p.Ext)
                 .IsRequired(false)
                 .HasConversion(
-                v => Serialize(v),
-                v => Deserialize(v));
+                 v => v.Serialize(),
+                v => v.Deserialize<Dictionary<string, object>>());
 
-            modelBuilder.Entity<Course>().Property(p => p.Ext)
+            modelBuilder.Entity<Component>()
+                .Property(p => p.Ext)
                 .IsRequired(false)
                 .HasConversion(
-                v => Serialize(v),
-                v => Deserialize(v));
+                v => v.Serialize(),
+                v => v.Deserialize<Dictionary<string, object>>());
 
-            modelBuilder.Entity<NewsFeed>().Property(p => p.Ext)
+            modelBuilder.Entity<Course>()
+                .Property(p => p.Ext)
                 .IsRequired(false)
                 .HasConversion(
-                v => Serialize(v),
-                v => Deserialize(v));
+                 v => v.Serialize(),
+                v => v.Deserialize<Dictionary<string, object>>());
 
-            modelBuilder.Entity<NewsItem>().Property(p => p.Ext)
+            modelBuilder.Entity<NewsFeed>()
+                .Property(p => p.Ext)
                 .IsRequired(false)
                 .HasConversion(
-                v => Serialize(v),
-                v => Deserialize(v));
+                v => v.Serialize(),
+                v => v.Deserialize<Dictionary<string, object>>());
 
-            modelBuilder.Entity<Offering>().Property(p => p.Ext)
+            modelBuilder.Entity<NewsItem>()
+                .Property(p => p.Ext)
                 .IsRequired(false)
                 .HasConversion(
-                v => Serialize(v),
-                v => Deserialize(v));
+                 v => v.Serialize(),
+                v => v.Deserialize<Dictionary<string, object>>());
 
-            modelBuilder.Entity<Organization>().Property(p => p.Ext)
+            modelBuilder.Entity<Offering>()
+                .Property(p => p.Ext)
                 .IsRequired(false)
                 .HasConversion(
-                v => Serialize(v),
-                v => Deserialize(v));
+                 v => v.Serialize(),
+                v => v.Deserialize<Dictionary<string, object>>());
 
-            modelBuilder.Entity<Person>().Property(p => p.Ext)
+            modelBuilder.Entity<Organization>()
+                .Property(p => p.Ext)
                 .IsRequired(false)
                 .HasConversion(
-                v => Serialize(v),
-                v => Deserialize(v));
+                 v => v.Serialize(),
+                v => v.Deserialize<Dictionary<string, object>>());
 
-            modelBuilder.Entity<Program>().Property(p => p.Ext)
+            modelBuilder.Entity<Person>()
+                .Property(p => p.Ext)
                 .IsRequired(false)
                 .HasConversion(
-                v => Serialize(v),
-                v => Deserialize(v));
+                v => v.Serialize(),
+                v => v.Deserialize<Dictionary<string, object>>());
 
-            modelBuilder.Entity<Room>().Property(p => p.Ext)
+            modelBuilder.Entity<Program>()
+                .Property(p => p.Ext)
                 .IsRequired(false)
                 .HasConversion(
-                v => Serialize(v),
-                v => Deserialize(v));
+                 v => v.Serialize(),
+                 v => v.Deserialize<Dictionary<string, object>>());
+
+            modelBuilder.Entity<Room>()
+                .Property(p => p.Ext)
+                .IsRequired(false)
+                .HasConversion(
+                 v => v.Serialize(),
+                v => v.Deserialize<Dictionary<string, object>>());
+
+            modelBuilder.Entity<Result>()
+                .Property(p => p.Ext)
+                .IsRequired(false)
+                .HasConversion(
+                v => v.Serialize(),
+                v => v.Deserialize<Dictionary<string, object>>());
+
+            modelBuilder.Entity<ProgramOfferingAssociation<ProgramResult>>()
+                .Property(p => p.Ext)
+                .IsRequired(false)
+                .HasConversion(
+                v => v.Serialize(),
+                v => v.Deserialize<Dictionary<string, object>>());
+
+            modelBuilder.Entity<Service>()
+                .Property(p => p.Ext)
+                .IsRequired(false)
+                .HasConversion(
+                v => v.Serialize(),
+                v => v.Deserialize<Dictionary<string, object>>());
+
+            modelBuilder.Entity<CourseOfferingAssociation<CourseResult>>()
+                .Property(p => p.Ext)
+                .IsRequired(false)
+                .HasConversion(
+                v => v.Serialize(),
+                v => v.Deserialize<Dictionary<string, object>>());
+
+            modelBuilder.Entity<ComponentOfferingAssociation<ComponentResult>>()
+                .Property(p => p.Ext)
+                .IsRequired(false)
+                .HasConversion(
+                v => v.Serialize(),
+                v => v.Deserialize<Dictionary<string, object>>());
+
+            #endregion
+
+            #region Lists
+
+            modelBuilder.Entity<Course>()
+                .Property(p => p.LearningOutcomes)
+                .IsRequired(false)
+                .HasConversion(
+                v => v.Serialize(), 
+                v => v.Deserialize<List<string>>());
+
+            modelBuilder.Entity<Course>()
+                .Property(p => p.Resources)
+                .IsRequired(false)
+                .HasConversion(
+                v => v.Serialize(),
+                v => v.Deserialize<List<string>>());
+
+            modelBuilder.Entity<Person>()
+                .Property(p => p.LanguageOfChoice)
+                .HasConversion(
+                v => v.Serialize(),
+                v => v.Deserialize<List<string>>());
 
             #endregion
 
             #region Enums
 
             modelBuilder.Entity<Address>()
-                .Property(p => p.PostalType)
-                .HasConversion<string>();
+                .Property(p => p.Type)
+                .HasConversion(
+                v => v.SerializeEnum(),
+                v => v.DeserializeEnum<PostalType>());
 
             modelBuilder.Entity<Association<Result>>()
                 .Property(p => p.Type)
-                .HasConversion<string>();
+                .HasConversion(
+                v => v.SerializeEnum(),
+                v => v.DeserializeEnum<AssociationType>());
 
             modelBuilder.Entity<Association<Result>>()
                 .Property(p => p.Role)
-                .HasConversion<string>();
+                .HasConversion(
+                v => v.SerializeEnum(),
+                v => v.DeserializeEnum<AssociationRole>());
 
             modelBuilder.Entity<Association<Result>>()
                 .Property(p => p.State)
-                .HasConversion<string>();
+                .HasConversion(
+                v => v.SerializeEnum(),
+                V => V.DeserializeEnum<AssociationState>());
 
             modelBuilder.Entity<Component>()
                 .Property(p => p.Type)
-                .HasConversion<string>();
+                .HasConversion(
+                v => v.SerializeEnum(),
+                v => v.DeserializeEnum<ComponentType>());
 
             modelBuilder.Entity<Course>()
                 .Property(p => p.Level)
-                .HasConversion<string>();
+                .HasConversion(
+                v => v.SerializeEnum(),
+                v => v.DeserializeEnum<Level>());
 
             modelBuilder.Entity<Course>()
                 .Property(p => p.ModesOfDelivery)
-                .HasConversion<string>();
+                .HasConversion(
+                v => v.SerializeEnum(),
+                v => v.DeserializeEnum<ModesOfDelivery>());
 
             modelBuilder.Entity<CourseOffering>()
                 .Property(p => p.ModeOfStudy)
-                .HasConversion<string>();
+                .HasConversion(
+                v => v.SerializeEnum(),
+                v => v.DeserializeEnum<ModeOfStudy>());
 
             modelBuilder.Entity<NewsFeed>()
                 .Property(p => p.Type)
-                .HasConversion<string>();
+                .HasConversion(
+                v => v.SerializeEnum(),
+                v => v.DeserializeEnum<NewsFeedType>());
 
             modelBuilder.Entity<NewsItem>()
                 .Property(p => p.Type)
-                .HasConversion<string>();
+                .HasConversion(
+                v => v.SerializeEnum(),
+                v => v.DeserializeEnum<NewsItemType>());
 
             modelBuilder.Entity<Offering>()
                 .Property(p => p.Type)
-                .HasConversion<string>();
+                .HasConversion(
+                v => v.SerializeEnum(),
+                v => v.DeserializeEnum<OfferingType>());
 
             modelBuilder.Entity<Offering>()
                 .Property(p => p.ResultValueType)
-                .HasConversion<string>();
+                .HasConversion(
+                v => v.SerializeEnum(),
+                v => v.DeserializeEnum<ResultValueType>());
 
             modelBuilder.Entity<Organization>()
                 .Property(p => p.Type)
-                .HasConversion<string>();
+                .HasConversion(
+                v => v.SerializeEnum(),
+                v => v.DeserializeEnum<OrganizationType>());
 
             modelBuilder.Entity<Person>()
                 .Property(p => p.Affiliations)
                 .HasConversion(
-                v => Serialize(v),
-                v => Deserialize<PersonAffiliations>(v));
+                v => v.SerializeEnumeration(),
+                v => v.DeserializeEnumCollection<PersonAffiliations>());
 
             modelBuilder.Entity<Person>()
                 .Property(p => p.Gender)
-                .HasConversion<string>();
+                .HasConversion(
+                v => v.HasValue ? v.Value.SerializeEnum() : null,
+                v => !string.IsNullOrEmpty(v) ? v.DeserializeEnum<Gender>() : null);
 
             modelBuilder.Entity<Program>()
                 .Property(p => p.Type)
-                .HasConversion<string>();
+                .HasConversion(
+                v => v.SerializeEnum(),
+                v => v.DeserializeEnum<ProgramType>());
 
             modelBuilder.Entity<Program>()
                 .Property(p => p.LevelOfQualification)
-                .HasConversion<string>();
+                .HasConversion(
+                v => v.SerializeEnum(),
+                v => v.DeserializeEnum<LevelOfQualification>());
 
             modelBuilder.Entity<Program>()
                 .Property(p => p.Sector)
-                .HasConversion<string>();
+                .HasConversion(
+                v => v.SerializeEnum(),
+                v => v.DeserializeEnum<Sector>());
 
             modelBuilder.Entity<ProgramOffering>()
                 .Property(p => p.ModeOfStudy)
-                .HasConversion<string>();
+                .HasConversion(
+                v => v.SerializeEnum(),
+                v => v.DeserializeEnum<ModeOfStudy>());
 
             modelBuilder.Entity<Result>()
                 .Property(p => p.State)
-                .HasConversion<string>();
+                .HasConversion(
+                v => v.SerializeEnum(),
+                v => v.DeserializeEnum<ResultState>());
 
             modelBuilder.Entity<Room>()
                 .Property(p => p.Type)
-                .HasConversion<string>();
+                .HasConversion(
+                v => v.SerializeEnum(),
+                v => v.DeserializeEnum<RoomType>());
             #endregion
 
             FluentMappings(modelBuilder);
             base.OnModelCreating(modelBuilder);
         }
-
-        private string Serialize(Dictionary<string, object> dict)
-        {
-            if (dict == null) return "";
-            return JsonSerializer.Serialize(dict);
-        }
-
-        private Dictionary<string, object> Deserialize(string str)
-        {
-            return str == null
-                ? new Dictionary<string, object>() // fallback
-                : JsonSerializer.Deserialize<Dictionary<string, object>>(str);
-        }
-
-        private string Serialize<T> (ICollection<T> enumerations)
-            where T : Enum
-        {
-            if (enumerations == null)
-                return "";
-            return JsonSerializer.Serialize(enumerations.Select(e => e.ToString()).ToList());
-        }
-
-        private List<T> Deserialize<T>(string str)
-            where T : Enum
-        {
-            return str == null
-                ? new List<T>()
-                : JsonSerializer.Deserialize<ICollection<string>>(str).Select(e => (T)Enum.Parse(typeof(T), e)).ToList();
-        }
-           
     }
 }
