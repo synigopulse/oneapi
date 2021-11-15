@@ -108,6 +108,9 @@ namespace Synigo.OneApi.Storage
             modelBuilder.Entity<Geolocation>().HasKey(c => c.GeoLocationId);
             modelBuilder.Entity<Geolocation>().Property(p => p.GeoLocationId).ValueGeneratedOnAdd();
 
+            modelBuilder.Entity<CourseOfferingAssociation<CourseResult>>().HasNoKey();
+            modelBuilder.Entity<ComponentOfferingAssociation<ComponentResult>>().HasNoKey();
+            modelBuilder.Entity<ProgramOfferingAssociation<ProgramResult>>().HasNoKey();
             #endregion
 
             #region Ext
@@ -262,6 +265,12 @@ namespace Synigo.OneApi.Storage
                 v => v.Serialize(),
                 v => v.Deserialize<List<string>>());
 
+            modelBuilder.Entity<Program>()
+             .Property(p => p.LearningOutcomes)
+             .IsRequired(false)
+             .HasConversion(
+             v => v.Serialize(),
+             v => v.Deserialize<List<string>>());
             #endregion
 
             #region Enums

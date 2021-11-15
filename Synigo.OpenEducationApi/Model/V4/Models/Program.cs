@@ -54,6 +54,10 @@ namespace Synigo.OpenEducationApi.Model.V4
         [JsonPropertyName("ects")]
         public int Ects { get; set; }
 
+        /// <summary>
+        /// <see cref="QualificationAwarded"/>
+        /// </summary>
+        [MaxLength(64)]
         [JsonPropertyName("qualificationAwarded")]
         public QualificationAwarded QualificationAwarded { get; set; }
 
@@ -63,9 +67,17 @@ namespace Synigo.OpenEducationApi.Model.V4
         [JsonPropertyName("lengthOfProgram")]
         public int? LengthOfProgram { get; set; }
 
+        /// <summary>
+        /// <see cref="LevelOfQualification"/>
+        /// </summary>
+        [MaxLength(64)]
         [JsonPropertyName("levelOfQualification")]
         public LevelOfQualification LevelOfQualification { get; set; }
 
+        /// <summary>
+        /// <see cref="Sector"/>
+        /// </summary>
+        [MaxLength(64)]
         [JsonPropertyName("sector")]
         public Sector Sector { get; set; }
 
@@ -84,6 +96,7 @@ namespace Synigo.OpenEducationApi.Model.V4
         /// CrohoCode in wo/hbo or creboCode in mbo
         /// </summary>
         /// <example>59312</example>
+        [MaxLength(64)]
         [JsonPropertyName("crohoCreboCode")]
         public string CrohoCreboCode { get; set; }
 

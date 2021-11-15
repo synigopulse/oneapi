@@ -7,6 +7,7 @@ namespace Synigo.OpenEducationApi.Model.V4
     public class CourseOffering : Offering
     {
         [Required]
+        [MaxLength(64)]
         [JsonPropertyName("modeOfStudy")]
         public ModeOfStudy ModeOfStudy { get; set; }
 

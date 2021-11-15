@@ -1,4 +1,6 @@
-﻿namespace Synigo.OpenEducationApi.Model.V4
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace Synigo.OpenEducationApi.Model.V4
 {
     /// <summary>
     /// The offering of a program
@@ -8,6 +10,7 @@
         /// <summary>
         /// The <see cref="ModeOfStudy"/> of this ProgramOffering
         /// </summary>
+        [MaxLength(64)]
         public ModeOfStudy ModeOfStudy { get; set; }
 
         /// <summary>

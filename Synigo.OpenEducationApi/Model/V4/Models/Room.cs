@@ -37,6 +37,7 @@ namespace Synigo.OpenEducationApi.Model.V4
         /// The name of this room
         /// </summary>
         [Required]
+        [MaxLength(64)]
         [JsonPropertyName("type")]
         public RoomType Type { get; set; }
 
@@ -61,12 +62,14 @@ namespace Synigo.OpenEducationApi.Model.V4
         /// <summary>
         /// The floor on which this room is located
         /// </summary>
+        [MaxLength(64)]
         [JsonPropertyName("floor")]
         public string Floor { get; set; }
 
         /// <summary>
         /// The wing in which this room is located
         /// </summary>
+        [MaxLength(64)]
         [JsonPropertyName("wing")]
         public string Wing { get; set; }
 

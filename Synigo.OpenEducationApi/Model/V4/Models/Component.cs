@@ -20,6 +20,7 @@ namespace Synigo.OpenEducationApi.Model.V4
         public Guid ComponentId { get; set; }
 
         [Required]
+        [MaxLength(64)]
         [JsonPropertyName("type")]
         public ComponentType Type { get; set; }
 

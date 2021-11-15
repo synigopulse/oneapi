@@ -12,10 +12,10 @@ namespace Synigo.OpenEducationApi.Model.V4
 
         [Required]
         [JsonPropertyName("latitude")]
-        public double Latitude { get; set; }
+        public decimal Latitude { get; set; }
 
         [Required]
         [JsonPropertyName("longitude")]
-        public double Longitude { get; set; }
+        public decimal Longitude { get; set; }
     }
 }

@@ -33,8 +33,8 @@ namespace Synigo.OpenEducationApi.Model.V4
         /// <summary>
         /// The day on which this academic session starts, RFC3339 (full-date)
         /// </summary>
-        [JsonPropertyName("startDate")]
         [Required]
+        [JsonPropertyName("startDate")]
         public DateTime StartDate { get; set; }
 
         /// <summary>
@@ -46,12 +46,14 @@ namespace Synigo.OpenEducationApi.Model.V4
 
         /// <summary>
         /// The parent Academicsession of this session (e.g. fall semester 20xx where the current session is a week 40)
+        /// <see cref="AcademicSession"/>
         /// </summary>
         [JsonPropertyName("parent")]
         public AcademicSession Parent { get; set; }
 
         /// <summary>
         /// The top level year of this session (e.g. 20xx where the current session is a week 40 of a semester)
+        /// <see cref="AcademicSession"/>
         /// </summary>
         [JsonPropertyName("year")]
         public List<AcademicSession> Year { get; set; }

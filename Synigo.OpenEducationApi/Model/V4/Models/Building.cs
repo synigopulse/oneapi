@@ -54,6 +54,7 @@ namespace Synigo.OpenEducationApi.Model.V4
 
         /// <summary>
         /// The physical address of the building
+        /// <see cref="Address"/>
         /// </summary>
         [Required]
         [JsonPropertyName("address")]

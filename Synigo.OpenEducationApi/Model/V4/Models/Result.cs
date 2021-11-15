@@ -21,18 +21,20 @@ namespace Synigo.OpenEducationApi.Model.V4
         /// The state of this result
         /// </summary>
         [Required]
+        [MaxLength(64)]
         [JsonPropertyName("state")]
         public ResultState State { get; set; }
 
         /// <summary>
         /// The comment on this result
-        /// </summary>z
+        /// </summary>
         [JsonPropertyName("comment")]
         public string Comment { get; set; }
 
         /// <summary>
         /// The score of this program/course/component association (based on resultValueType in offering)
         /// </summary>
+        [MaxLength(256)]
         [JsonPropertyName("score")]
         public string Score { get; set; }
 

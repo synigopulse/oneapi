@@ -25,6 +25,7 @@ namespace Synigo.OpenEducationApi.Model.V4
         /// componentOfferingAssociation
         /// </example>
         [Required]
+        [MaxLength(64)]
         [JsonPropertyName("type")]
         public AssociationType Type { get; set; }
 
@@ -32,13 +33,15 @@ namespace Synigo.OpenEducationApi.Model.V4
         /// The <see cref="AssociationRole"/> of this Association
         /// </summary>
         [Required]
+        [MaxLength(64)]
         [JsonPropertyName("role")]
         public AssociationRole Role { get; set; }
 
         /// <summary>
-        /// 
+        /// <see cref="AssociationState"/>
         /// </summary>
         [Required]
+        [MaxLength(64)]
         [JsonPropertyName("state")]
         public AssociationState State { get; set; }
 

@@ -36,8 +36,10 @@ namespace Synigo.OpenEducationApi.Model.V4
 
         /// <summary>
         /// The type of the object this news feed relates to
+        /// <see cref="NewsFeedType"/>
         /// </summary>
         [Required]
+        [MaxLength(64)]
         [JsonPropertyName("type")]
         public NewsFeedType Type { get; set; }
 

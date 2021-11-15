@@ -21,6 +21,7 @@ namespace Synigo.OpenEducationApi.Model.V4
         ///  The type of this offering
         /// </summary>
         [Required]
+        [MaxLength(64)]
         [JsonPropertyName("type")]
         public OfferingType Type { get; set; }
 
@@ -83,6 +84,7 @@ namespace Synigo.OpenEducationApi.Model.V4
         ///  nl-NL
         /// </example>
         [Required]
+        [MaxLength(64)]
         [JsonPropertyName("mainLanguage")]
         public string MainLanguage { get; set; }
 
@@ -129,6 +131,7 @@ namespace Synigo.OpenEducationApi.Model.V4
         /// <summary>
         /// The <see cref="ResultValueType"/> of this offering
         /// </summary>
+        [MaxLength(64)]
         [JsonPropertyName("resultValueType")]
         public ResultValueType ResultValueType { get; set; }
 

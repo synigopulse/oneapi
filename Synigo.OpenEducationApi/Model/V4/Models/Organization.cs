@@ -49,6 +49,7 @@ namespace Synigo.OpenEducationApi.Model.V4
         /// The <see cref="OrganizationType"/> of this organization
         /// </summary>
         [Required]
+        [MaxLength(64)]
         [JsonPropertyName("type")]
         public OrganizationType Type { get; set; }
 
@@ -80,6 +81,7 @@ namespace Synigo.OpenEducationApi.Model.V4
         ///  -641 (nummer Administratie Kantoor)
         /// </summary>
         /// <example>00AA</example>
+        [MaxLength(256)]
         [JsonPropertyName("brin")]
         public string Brin { get; set; }
 

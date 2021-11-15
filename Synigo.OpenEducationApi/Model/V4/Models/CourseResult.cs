@@ -10,6 +10,6 @@ namespace Synigo.OpenEducationApi.Model.V4
         /// </summary>
         [Required]
         [JsonPropertyName("ects")]
-        public float Ects { get; set; }
+        public decimal Ects { get; set; }
     }
 }

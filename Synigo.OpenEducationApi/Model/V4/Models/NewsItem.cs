@@ -26,6 +26,10 @@ namespace Synigo.OpenEducationApi.Model.V4
         [JsonPropertyName("name")]
         public string Name { get; set; }
 
+        /// <summary>
+        /// <see cref="NewsItemType"/>
+        /// </summary>
+        [MaxLength(64)]
         [JsonPropertyName("newsItemType")]
         public NewsItemType Type { get; set; }
 

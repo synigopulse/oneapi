@@ -12,6 +12,6 @@ namespace Synigo.OpenEducationApi.Model.V4
         [Required]
         [Range(0, int.MaxValue)]
         [JsonPropertyName("ects")]
-        public int Ects { get; set; }
+        public decimal Ects { get; set; }
     }
 }

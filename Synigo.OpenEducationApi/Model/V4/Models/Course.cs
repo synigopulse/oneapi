@@ -47,7 +47,6 @@ namespace Synigo.OpenEducationApi.Model.V4
         /// <example>
         /// 7.5
         /// </example>
-        [Range(0,Double.MaxValue)]
         [JsonPropertyName("ects")]
         public decimal Ects { get; set; }
 
@@ -76,10 +75,18 @@ namespace Synigo.OpenEducationApi.Model.V4
         [JsonPropertyName("requirements")]
         public string Requirements { get; set; }
 
+        /// <summary>
+        /// <see cref="Level"/>
+        /// </summary>
         [Required]
+        [MaxLength(64)]
         [JsonPropertyName("level")]
         public Level Level { get; set; }
 
+        /// <summary>
+        /// <see cref="ModesOfDelivery"/>
+        /// </summary>
+        [MaxLength(64)]
         [JsonPropertyName("modeOfDelivery")]
         public ModesOfDelivery ModesOfDelivery { get; set; }
 
@@ -119,6 +126,7 @@ namespace Synigo.OpenEducationApi.Model.V4
 
         /// <summary>
         ///  The program of which this course is a part of
+        ///  <see cref="Program"/>
         /// </summary>
         [JsonPropertyName("programs")]
         public List<Program> Programs { get; set; }
@@ -131,6 +139,7 @@ namespace Synigo.OpenEducationApi.Model.V4
 
         /// <summary>
         /// The organization providing the current course
+        /// <see cref="Organization"/>
         /// </summary>
         [JsonPropertyName("Organization")]
         public Organization Organization { get; set; }

@@ -27,7 +27,7 @@ namespace Synigo.OpenEducationApi.Model.V4
         /// </summary>
         [Range(0,100)]
         [JsonPropertyName("resultWeight")]
-        public int ResultWeight { get; set; }
+        public int? ResultWeight { get; set; }
 
         [JsonPropertyName("room")]
         public Room Room { get; set; }
