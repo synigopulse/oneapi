@@ -81,8 +81,7 @@ namespace Synigo.OneApi.Storage
             modelBuilder.Entity<ComponentOfferingAssociation<ComponentResult>>().HasNoKey();
             modelBuilder.Entity<ProgramOfferingAssociation<ProgramResult>>().HasNoKey();
 
-            Console.WriteLine(Configuration.StorageConfiguration.ConnectionString);
-            Console.WriteLine(Configuration.StorageConfiguration.PrimaryKeyGeneratedByDatabase);
+            Console.WriteLine($"Database will generate primary keys : {Configuration.StorageConfiguration.PrimaryKeyGeneratedByDatabase}");
 
             if (Configuration.StorageConfiguration.PrimaryKeyGeneratedByDatabase)
             {

@@ -22,8 +22,7 @@ namespace Synigo.OneApi.Storage
            where T : ApplicationDbContext
         {
             
-            Configuration.StorageConfiguration.ConnectionString = connectionString;
-            Configuration.StorageConfiguration.StorageType = storageType;
+            Configuration.StorageConfiguration.PrimaryKeyGeneratedByDatabase = dbGeneratesPrimaryKeys;
 
             services.AddDbContext<T>(options => 
             {
@@ -39,7 +38,6 @@ namespace Synigo.OneApi.Storage
 
                 if (optionsAction != null)
                     optionsAction(options);
-                Configuration.StorageConfiguration.DbContextOptions = options;
             });
 
             return services;
