@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 using Synigo.OneApi.Common.Extensions;
 using Synigo.OpenEducationApi.Model.V4;
@@ -80,7 +81,10 @@ namespace Synigo.OneApi.Storage
             modelBuilder.Entity<ComponentOfferingAssociation<ComponentResult>>().HasNoKey();
             modelBuilder.Entity<ProgramOfferingAssociation<ProgramResult>>().HasNoKey();
 
-            if(Configuration.StorageConfiguration.PrimaryKeyGeneratedByDatabase)
+            Console.WriteLine(Configuration.StorageConfiguration.ConnectionString);
+            Console.WriteLine(Configuration.StorageConfiguration.PrimaryKeyGeneratedByDatabase);
+
+            if (Configuration.StorageConfiguration.PrimaryKeyGeneratedByDatabase)
             {
                 modelBuilder.Entity<Component>().Property(p => p.ComponentId).ValueGeneratedOnAdd();
                 modelBuilder.Entity<Building>().Property(p => p.BuildingId).ValueGeneratedOnAdd();
