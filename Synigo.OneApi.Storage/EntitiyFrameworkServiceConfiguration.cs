@@ -13,13 +13,18 @@ namespace Synigo.OneApi.Storage
         /// <typeparam name="T"></typeparam> 
         /// <param name="services"></param>
         /// <param name="connectionString">connection string to database</param>
+        /// <param name="dbGeneratesPrimaryKeys">database will generate guids for primary keys</param>
         /// <param name="storageType">default value is sql</param>
         /// <param name="optionsAction">use action to add more configuration opstions</param>
         /// <returns></returns>
-        public static IServiceCollection AddApplicationDbContext<T> (this IServiceCollection services, string connectionString ,
+        public static IServiceCollection AddApplicationDbContext<T> (this IServiceCollection services, string connectionString , bool dbGeneratesPrimaryKeys = true,
             StorageType storageType = StorageType.Sql, Action<DbContextOptionsBuilder> optionsAction = null)
            where T : ApplicationDbContext
         {
+            
+            Configuration.StorageConfiguration.ConnectionString = connectionString;
+            Configuration.StorageConfiguration.StorageType = storageType;
+
             services.AddDbContext<T>(options => 
             {
                 switch (storageType)
@@ -34,6 +39,7 @@ namespace Synigo.OneApi.Storage
 
                 if (optionsAction != null)
                     optionsAction(options);
+                Configuration.StorageConfiguration.DbContextOptions = options;
             });
 
             return services;
