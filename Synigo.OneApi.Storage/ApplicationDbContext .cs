@@ -83,24 +83,24 @@ namespace Synigo.OneApi.Storage
 
             Console.WriteLine($"Database will generate primary keys : {Configuration.StorageConfiguration.PrimaryKeyGeneratedByDatabase}");
 
-            if (Configuration.StorageConfiguration.PrimaryKeyGeneratedByDatabase)
+            if (!Configuration.StorageConfiguration.PrimaryKeyGeneratedByDatabase)
             {
-                modelBuilder.Entity<Component>().Property(p => p.ComponentId).ValueGeneratedOnAdd();
-                modelBuilder.Entity<Building>().Property(p => p.BuildingId).ValueGeneratedOnAdd();
-                modelBuilder.Entity<Association<Result>>().Property(p => p.AssociationId).ValueGeneratedOnAdd();
-                modelBuilder.Entity<Course>().Property(p => p.CourseId).ValueGeneratedOnAdd();
-                modelBuilder.Entity<Address>().Property(p => p.AddressId).ValueGeneratedOnAdd();
-                modelBuilder.Entity<AcademicSession>().Property(p => p.AcademicSessionId).ValueGeneratedOnAdd();
-                modelBuilder.Entity<NewsFeed>().Property(p => p.NewsFeedId).ValueGeneratedOnAdd();
-                modelBuilder.Entity<NewsItem>().Property(p => p.NewsItemId).ValueGeneratedOnAdd();
-                modelBuilder.Entity<Offering>().Property(p => p.OfferingId).ValueGeneratedOnAdd();
-                modelBuilder.Entity<Organization>().Property(p => p.OrganizationId).ValueGeneratedOnAdd();
-                modelBuilder.Entity<Person>().Property(p => p.PersonId).ValueGeneratedOnAdd();
-                modelBuilder.Entity<Program>().Property(p => p.ProgramId).ValueGeneratedOnAdd();
-                modelBuilder.Entity<Result>().Property(p => p.ResultId).ValueGeneratedOnAdd();
-                modelBuilder.Entity<Room>().Property(p => p.RoomId).ValueGeneratedOnAdd();
-                modelBuilder.Entity<Service>().Property(p => p.ServiceId).ValueGeneratedOnAdd();
-                modelBuilder.Entity<Geolocation>().Property(p => p.GeoLocationId).ValueGeneratedOnAdd();
+                modelBuilder.Entity<Component>().Property(p => p.ComponentId).ValueGeneratedNever();
+                modelBuilder.Entity<Building>().Property(p => p.BuildingId).ValueGeneratedNever();
+                modelBuilder.Entity<Association<Result>>().Property(p => p.AssociationId).ValueGeneratedNever();
+                modelBuilder.Entity<Course>().Property(p => p.CourseId).ValueGeneratedNever();
+                modelBuilder.Entity<Address>().Property(p => p.AddressId).ValueGeneratedNever();
+                modelBuilder.Entity<AcademicSession>().Property(p => p.AcademicSessionId).ValueGeneratedNever();
+                modelBuilder.Entity<NewsFeed>().Property(p => p.NewsFeedId).ValueGeneratedNever();
+                modelBuilder.Entity<NewsItem>().Property(p => p.NewsItemId).ValueGeneratedNever();
+                modelBuilder.Entity<Offering>().Property(p => p.OfferingId).ValueGeneratedNever();
+                modelBuilder.Entity<Organization>().Property(p => p.OrganizationId).ValueGeneratedNever();
+                modelBuilder.Entity<Person>().Property(p => p.PersonId).ValueGeneratedNever();
+                modelBuilder.Entity<Program>().Property(p => p.ProgramId).ValueGeneratedNever();
+                modelBuilder.Entity<Result>().Property(p => p.ResultId).ValueGeneratedNever();
+                modelBuilder.Entity<Room>().Property(p => p.RoomId).ValueGeneratedNever();
+                modelBuilder.Entity<Service>().Property(p => p.ServiceId).ValueGeneratedNever();
+                modelBuilder.Entity<Geolocation>().Property(p => p.GeoLocationId).ValueGeneratedNever();
             }
             #endregion
 
