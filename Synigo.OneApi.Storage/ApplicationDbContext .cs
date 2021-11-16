@@ -38,10 +38,7 @@ namespace Synigo.OneApi.Storage
         #endregion
 
         #region ctr
-        public ApplicationDbContext(DbContextOptions options) :base(options)
-        {
-
-        }
+        public ApplicationDbContext(DbContextOptions options) :base(options) {}
         #endregion
 
         /// <summary>
@@ -59,181 +56,21 @@ namespace Synigo.OneApi.Storage
 
         protected override sealed void OnModelCreating(ModelBuilder modelBuilder)
         {
-            #region pK
 
-            modelBuilder.Entity<Address>().HasKey(c => c.AddressId);
-            modelBuilder.Entity<AcademicSession>().HasKey(c => c.AcademicSessionId);
-            modelBuilder.Entity<Association<Result>>().HasKey(c => c.AssociationId);
-            modelBuilder.Entity<Building>().HasKey(c => c.BuildingId);
-            modelBuilder.Entity<Component>().HasKey(c => c.ComponentId);
-            modelBuilder.Entity<Course>().HasKey(c => c.CourseId);
-            modelBuilder.Entity<NewsFeed>().HasKey(c => c.NewsFeedId);
-            modelBuilder.Entity<Offering>().HasKey(c => c.OfferingId);
-            modelBuilder.Entity<NewsItem>().HasKey(c => c.NewsItemId);
-            modelBuilder.Entity<Organization>().HasKey(c => c.OrganizationId);
-            modelBuilder.Entity<Person>().HasKey(c => c.PersonId);
-            modelBuilder.Entity<Program>().HasKey(c => c.ProgramId);
-            modelBuilder.Entity<Result>().HasKey(c => c.ResultId);
-            modelBuilder.Entity<Room>().HasKey(c => c.RoomId);
-            modelBuilder.Entity<Service>().HasKey(c => c.ServiceId);
-            modelBuilder.Entity<Geolocation>().HasKey(c => c.GeoLocationId);
-            modelBuilder.Entity<CourseOfferingAssociation<CourseResult>>().HasNoKey();
-            modelBuilder.Entity<ComponentOfferingAssociation<ComponentResult>>().HasNoKey();
-            modelBuilder.Entity<ProgramOfferingAssociation<ProgramResult>>().HasNoKey();
+            MapPrimaryKeys(modelBuilder);
 
             Console.WriteLine($"Database will generate primary keys : {Configuration.StorageConfiguration.PrimaryKeyGeneratedByDatabase}");
 
-            if (!Configuration.StorageConfiguration.PrimaryKeyGeneratedByDatabase)
+            if(Configuration.StorageConfiguration.PrimaryKeyGeneratedByDatabase)
             {
-                Console.WriteLine($"skipping generating pk's");
-                modelBuilder.Entity<Component>().Property(p => p.ComponentId).ValueGeneratedNever();
-                modelBuilder.Entity<Building>().Property(p => p.BuildingId).ValueGeneratedNever();
-                modelBuilder.Entity<Association<Result>>().Property(p => p.AssociationId).ValueGeneratedNever();
-                modelBuilder.Entity<Course>().Property(p => p.CourseId).ValueGeneratedNever();
-                modelBuilder.Entity<Address>().Property(p => p.AddressId).ValueGeneratedNever();
-                modelBuilder.Entity<AcademicSession>().Property(p => p.AcademicSessionId).ValueGeneratedNever();
-                modelBuilder.Entity<NewsFeed>().Property(p => p.NewsFeedId).ValueGeneratedNever();
-                modelBuilder.Entity<NewsItem>().Property(p => p.NewsItemId).ValueGeneratedNever();
-                modelBuilder.Entity<Offering>().Property(p => p.OfferingId).ValueGeneratedNever();
-                modelBuilder.Entity<Organization>().Property(p => p.OrganizationId).ValueGeneratedNever();
-                modelBuilder.Entity<Person>().Property(p => p.PersonId).ValueGeneratedNever();
-                modelBuilder.Entity<Program>().Property(p => p.ProgramId).ValueGeneratedNever();
-                modelBuilder.Entity<Result>().Property(p => p.ResultId).ValueGeneratedNever();
-                modelBuilder.Entity<Room>().Property(p => p.RoomId).ValueGeneratedNever();
-                modelBuilder.Entity<Service>().Property(p => p.ServiceId).ValueGeneratedNever();
-                modelBuilder.Entity<Geolocation>().Property(p => p.GeoLocationId).ValueGeneratedNever();
+                AddValueGeneratedOnAddToProperties(modelBuilder);
             }
-            #endregion
+            else
+            {
+                SkipValueGeneratedOnAdd(modelBuilder);
+            }
 
-            #region Ext
-
-            modelBuilder.Entity<Address>()
-                .Property(p => p.Ext)
-                .IsRequired(false)
-                .HasConversion(
-                v => v.Serialize(),
-                v => v.Deserialize<Dictionary<string,object>>());
-
-            modelBuilder.Entity<AcademicSession>()
-                .Property(p => p.Ext)
-                .IsRequired(false)
-                .HasConversion(
-                v => v.Serialize(),
-                v => v.Deserialize<Dictionary<string, object>>());
-
-            modelBuilder.Entity<Association<Result>>()
-                .Property(p => p.Ext)
-                .IsRequired(false)
-                .HasConversion(
-                v => v.Serialize(),
-                v => v.Deserialize<Dictionary<string, object>>());
-
-            modelBuilder.Entity<Building>()
-                .Property(p=>p.Ext)
-                .IsRequired(false)
-                .HasConversion(
-                 v => v.Serialize(),
-                v => v.Deserialize<Dictionary<string, object>>());
-
-            modelBuilder.Entity<Component>()
-                .Property(p => p.Ext)
-                .IsRequired(false)
-                .HasConversion(
-                v => v.Serialize(),
-                v => v.Deserialize<Dictionary<string, object>>());
-
-            modelBuilder.Entity<Course>()
-                .Property(p => p.Ext)
-                .IsRequired(false)
-                .HasConversion(
-                 v => v.Serialize(),
-                v => v.Deserialize<Dictionary<string, object>>());
-
-            modelBuilder.Entity<NewsFeed>()
-                .Property(p => p.Ext)
-                .IsRequired(false)
-                .HasConversion(
-                v => v.Serialize(),
-                v => v.Deserialize<Dictionary<string, object>>());
-
-            modelBuilder.Entity<NewsItem>()
-                .Property(p => p.Ext)
-                .IsRequired(false)
-                .HasConversion(
-                 v => v.Serialize(),
-                v => v.Deserialize<Dictionary<string, object>>());
-
-            modelBuilder.Entity<Offering>()
-                .Property(p => p.Ext)
-                .IsRequired(false)
-                .HasConversion(
-                 v => v.Serialize(),
-                v => v.Deserialize<Dictionary<string, object>>());
-
-            modelBuilder.Entity<Organization>()
-                .Property(p => p.Ext)
-                .IsRequired(false)
-                .HasConversion(
-                 v => v.Serialize(),
-                v => v.Deserialize<Dictionary<string, object>>());
-
-            modelBuilder.Entity<Person>()
-                .Property(p => p.Ext)
-                .IsRequired(false)
-                .HasConversion(
-                v => v.Serialize(),
-                v => v.Deserialize<Dictionary<string, object>>());
-
-            modelBuilder.Entity<Program>()
-                .Property(p => p.Ext)
-                .IsRequired(false)
-                .HasConversion(
-                 v => v.Serialize(),
-                 v => v.Deserialize<Dictionary<string, object>>());
-
-            modelBuilder.Entity<Room>()
-                .Property(p => p.Ext)
-                .IsRequired(false)
-                .HasConversion(
-                 v => v.Serialize(),
-                v => v.Deserialize<Dictionary<string, object>>());
-
-            modelBuilder.Entity<Result>()
-                .Property(p => p.Ext)
-                .IsRequired(false)
-                .HasConversion(
-                v => v.Serialize(),
-                v => v.Deserialize<Dictionary<string, object>>());
-
-            modelBuilder.Entity<ProgramOfferingAssociation<ProgramResult>>()
-                .Property(p => p.Ext)
-                .IsRequired(false)
-                .HasConversion(
-                v => v.Serialize(),
-                v => v.Deserialize<Dictionary<string, object>>());
-
-            modelBuilder.Entity<Service>()
-                .Property(p => p.Ext)
-                .IsRequired(false)
-                .HasConversion(
-                v => v.Serialize(),
-                v => v.Deserialize<Dictionary<string, object>>());
-
-            modelBuilder.Entity<CourseOfferingAssociation<CourseResult>>()
-                .Property(p => p.Ext)
-                .IsRequired(false)
-                .HasConversion(
-                v => v.Serialize(),
-                v => v.Deserialize<Dictionary<string, object>>());
-
-            modelBuilder.Entity<ComponentOfferingAssociation<ComponentResult>>()
-                .Property(p => p.Ext)
-                .IsRequired(false)
-                .HasConversion(
-                v => v.Serialize(),
-                v => v.Deserialize<Dictionary<string, object>>());
-
-            #endregion
+            MapDictionaries(modelBuilder);
 
             #region Lists
 
@@ -265,8 +102,93 @@ namespace Synigo.OneApi.Storage
              v => v.Deserialize<List<string>>());
             #endregion
 
-            #region Enums
+            MapEnums(modelBuilder);
+            
+            FluentMappings(modelBuilder);
+            base.OnModelCreating(modelBuilder);
+        }
 
+        /// <summary>
+        /// Method where we map primary keys
+        /// </summary>
+        /// <param name="modelBuilder"></param>
+        private void MapPrimaryKeys(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Address>().HasKey(c => c.AddressId);
+            modelBuilder.Entity<AcademicSession>().HasKey(c => c.AcademicSessionId);
+            modelBuilder.Entity<Association<Result>>().HasKey(c => c.AssociationId);
+            modelBuilder.Entity<Building>().HasKey(c => c.BuildingId);
+            modelBuilder.Entity<Component>().HasKey(c => c.ComponentId);
+            modelBuilder.Entity<Course>().HasKey(c => c.CourseId);
+            modelBuilder.Entity<NewsFeed>().HasKey(c => c.NewsFeedId);
+            modelBuilder.Entity<Offering>().HasKey(c => c.OfferingId);
+            modelBuilder.Entity<NewsItem>().HasKey(c => c.NewsItemId);
+            modelBuilder.Entity<Organization>().HasKey(c => c.OrganizationId);
+            modelBuilder.Entity<Person>().HasKey(c => c.PersonId);
+            modelBuilder.Entity<Program>().HasKey(c => c.ProgramId);
+            modelBuilder.Entity<Result>().HasKey(c => c.ResultId);
+            modelBuilder.Entity<Room>().HasKey(c => c.RoomId);
+            modelBuilder.Entity<Service>().HasKey(c => c.ServiceId);
+            modelBuilder.Entity<Geolocation>().HasKey(c => c.GeoLocationId);
+            modelBuilder.Entity<CourseOfferingAssociation<CourseResult>>().HasNoKey();
+            modelBuilder.Entity<ComponentOfferingAssociation<ComponentResult>>().HasNoKey();
+            modelBuilder.Entity<ProgramOfferingAssociation<ProgramResult>>().HasNoKey();
+        }
+
+        /// <summary>
+        /// This method is place where we add ValueGeneratedOnAdd to all pk properties or other ones if decided that way
+        /// </summary>
+        /// <param name="modelBuilder"></param>
+        private void AddValueGeneratedOnAddToProperties(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Component>().Property(p => p.ComponentId).ValueGeneratedOnAdd();
+            modelBuilder.Entity<Building>().Property(p => p.BuildingId).ValueGeneratedOnAdd();
+            modelBuilder.Entity<Association<Result>>().Property(p => p.AssociationId).ValueGeneratedOnAdd();
+            modelBuilder.Entity<Course>().Property(p => p.CourseId).ValueGeneratedOnAdd();
+            modelBuilder.Entity<Address>().Property(p => p.AddressId).ValueGeneratedOnAdd();
+            modelBuilder.Entity<AcademicSession>().Property(p => p.AcademicSessionId).ValueGeneratedOnAdd();
+            modelBuilder.Entity<NewsFeed>().Property(p => p.NewsFeedId).ValueGeneratedOnAdd();
+            modelBuilder.Entity<NewsItem>().Property(p => p.NewsItemId).ValueGeneratedOnAdd();
+            modelBuilder.Entity<Offering>().Property(p => p.OfferingId).ValueGeneratedOnAdd();
+            modelBuilder.Entity<Organization>().Property(p => p.OrganizationId).ValueGeneratedOnAdd();
+            modelBuilder.Entity<Person>().Property(p => p.PersonId).ValueGeneratedOnAdd();
+            modelBuilder.Entity<Program>().Property(p => p.ProgramId).ValueGeneratedOnAdd();
+            modelBuilder.Entity<Result>().Property(p => p.ResultId).ValueGeneratedOnAdd();
+            modelBuilder.Entity<Room>().Property(p => p.RoomId).ValueGeneratedOnAdd();
+            modelBuilder.Entity<Service>().Property(p => p.ServiceId).ValueGeneratedOnAdd();
+            modelBuilder.Entity<Geolocation>().Property(p => p.GeoLocationId).ValueGeneratedOnAdd();
+        }
+
+        /// <summary>
+        /// This method is place where we skip generating values by db
+        /// </summary>
+        /// <param name="modelBuilder"></param>
+        private void SkipValueGeneratedOnAdd(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Component>().Property(p => p.ComponentId).ValueGeneratedNever();
+            modelBuilder.Entity<Building>().Property(p => p.BuildingId).ValueGeneratedNever();
+            modelBuilder.Entity<Association<Result>>().Property(p => p.AssociationId).ValueGeneratedNever();
+            modelBuilder.Entity<Course>().Property(p => p.CourseId).ValueGeneratedNever();
+            modelBuilder.Entity<Address>().Property(p => p.AddressId).ValueGeneratedNever();
+            modelBuilder.Entity<AcademicSession>().Property(p => p.AcademicSessionId).ValueGeneratedNever();
+            modelBuilder.Entity<NewsFeed>().Property(p => p.NewsFeedId).ValueGeneratedNever();
+            modelBuilder.Entity<NewsItem>().Property(p => p.NewsItemId).ValueGeneratedNever();
+            modelBuilder.Entity<Offering>().Property(p => p.OfferingId).ValueGeneratedNever();
+            modelBuilder.Entity<Organization>().Property(p => p.OrganizationId).ValueGeneratedNever();
+            modelBuilder.Entity<Person>().Property(p => p.PersonId).ValueGeneratedNever();
+            modelBuilder.Entity<Program>().Property(p => p.ProgramId).ValueGeneratedNever();
+            modelBuilder.Entity<Result>().Property(p => p.ResultId).ValueGeneratedNever();
+            modelBuilder.Entity<Room>().Property(p => p.RoomId).ValueGeneratedNever();
+            modelBuilder.Entity<Service>().Property(p => p.ServiceId).ValueGeneratedNever();
+            modelBuilder.Entity<Geolocation>().Property(p => p.GeoLocationId).ValueGeneratedNever();
+        }
+
+        /// <summary>
+        /// Method where mappings of enums are 
+        /// </summary>
+        /// <param name="modelBuilder"></param>
+        private void MapEnums(ModelBuilder modelBuilder)
+        {
             modelBuilder.Entity<Address>()
                 .Property(p => p.Type)
                 .HasConversion(
@@ -392,10 +314,139 @@ namespace Synigo.OneApi.Storage
                 .HasConversion(
                 v => v.SerializeEnum(),
                 v => v.DeserializeEnum<RoomType>());
-            #endregion
+        }
 
-            FluentMappings(modelBuilder);
-            base.OnModelCreating(modelBuilder);
+        /// <summary>
+        /// Method where dictionaries are mapped to columns
+        /// </summary>
+        /// <param name="modelBuilder"></param>
+        private void MapDictionaries(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Address>()
+               .Property(p => p.Ext)
+               .IsRequired(false)
+               .HasConversion(
+               v => v.Serialize(),
+               v => v.Deserialize<Dictionary<string, object>>());
+
+            modelBuilder.Entity<AcademicSession>()
+                .Property(p => p.Ext)
+                .IsRequired(false)
+                .HasConversion(
+                v => v.Serialize(),
+                v => v.Deserialize<Dictionary<string, object>>());
+
+            modelBuilder.Entity<Association<Result>>()
+                .Property(p => p.Ext)
+                .IsRequired(false)
+                .HasConversion(
+                v => v.Serialize(),
+                v => v.Deserialize<Dictionary<string, object>>());
+
+            modelBuilder.Entity<Building>()
+                .Property(p => p.Ext)
+                .IsRequired(false)
+                .HasConversion(
+                 v => v.Serialize(),
+                v => v.Deserialize<Dictionary<string, object>>());
+
+            modelBuilder.Entity<Component>()
+                .Property(p => p.Ext)
+                .IsRequired(false)
+                .HasConversion(
+                v => v.Serialize(),
+                v => v.Deserialize<Dictionary<string, object>>());
+
+            modelBuilder.Entity<Course>()
+                .Property(p => p.Ext)
+                .IsRequired(false)
+                .HasConversion(
+                 v => v.Serialize(),
+                v => v.Deserialize<Dictionary<string, object>>());
+
+            modelBuilder.Entity<NewsFeed>()
+                .Property(p => p.Ext)
+                .IsRequired(false)
+                .HasConversion(
+                v => v.Serialize(),
+                v => v.Deserialize<Dictionary<string, object>>());
+
+            modelBuilder.Entity<NewsItem>()
+                .Property(p => p.Ext)
+                .IsRequired(false)
+                .HasConversion(
+                 v => v.Serialize(),
+                v => v.Deserialize<Dictionary<string, object>>());
+
+            modelBuilder.Entity<Offering>()
+                .Property(p => p.Ext)
+                .IsRequired(false)
+                .HasConversion(
+                 v => v.Serialize(),
+                v => v.Deserialize<Dictionary<string, object>>());
+
+            modelBuilder.Entity<Organization>()
+                .Property(p => p.Ext)
+                .IsRequired(false)
+                .HasConversion(
+                 v => v.Serialize(),
+                v => v.Deserialize<Dictionary<string, object>>());
+
+            modelBuilder.Entity<Person>()
+                .Property(p => p.Ext)
+                .IsRequired(false)
+                .HasConversion(
+                v => v.Serialize(),
+                v => v.Deserialize<Dictionary<string, object>>());
+
+            modelBuilder.Entity<Program>()
+                .Property(p => p.Ext)
+                .IsRequired(false)
+                .HasConversion(
+                 v => v.Serialize(),
+                 v => v.Deserialize<Dictionary<string, object>>());
+
+            modelBuilder.Entity<Room>()
+                .Property(p => p.Ext)
+                .IsRequired(false)
+                .HasConversion(
+                 v => v.Serialize(),
+                v => v.Deserialize<Dictionary<string, object>>());
+
+            modelBuilder.Entity<Result>()
+                .Property(p => p.Ext)
+                .IsRequired(false)
+                .HasConversion(
+                v => v.Serialize(),
+                v => v.Deserialize<Dictionary<string, object>>());
+
+            modelBuilder.Entity<ProgramOfferingAssociation<ProgramResult>>()
+                .Property(p => p.Ext)
+                .IsRequired(false)
+                .HasConversion(
+                v => v.Serialize(),
+                v => v.Deserialize<Dictionary<string, object>>());
+
+            modelBuilder.Entity<Service>()
+                .Property(p => p.Ext)
+                .IsRequired(false)
+                .HasConversion(
+                v => v.Serialize(),
+                v => v.Deserialize<Dictionary<string, object>>());
+
+            modelBuilder.Entity<CourseOfferingAssociation<CourseResult>>()
+                .Property(p => p.Ext)
+                .IsRequired(false)
+                .HasConversion(
+                v => v.Serialize(),
+                v => v.Deserialize<Dictionary<string, object>>());
+
+            modelBuilder.Entity<ComponentOfferingAssociation<ComponentResult>>()
+                .Property(p => p.Ext)
+                .IsRequired(false)
+                .HasConversion(
+                v => v.Serialize(),
+                v => v.Deserialize<Dictionary<string, object>>());
         }
     }
 }
