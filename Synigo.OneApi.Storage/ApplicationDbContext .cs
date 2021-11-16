@@ -85,6 +85,7 @@ namespace Synigo.OneApi.Storage
 
             if (!Configuration.StorageConfiguration.PrimaryKeyGeneratedByDatabase)
             {
+                Console.WriteLine($"skipping generating pk's");
                 modelBuilder.Entity<Component>().Property(p => p.ComponentId).ValueGeneratedNever();
                 modelBuilder.Entity<Building>().Property(p => p.BuildingId).ValueGeneratedNever();
                 modelBuilder.Entity<Association<Result>>().Property(p => p.AssociationId).ValueGeneratedNever();
