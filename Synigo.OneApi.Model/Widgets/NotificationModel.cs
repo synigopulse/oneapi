@@ -1,4 +1,5 @@
-﻿using System.Text.Json.Serialization;
+﻿using System.Collections.Generic;
+using System.Text.Json.Serialization;
 
 namespace Synigo.OneApi.Model.Widgets
 {
@@ -23,5 +24,11 @@ namespace Synigo.OneApi.Model.Widgets
         /// </summary>
         [JsonPropertyName("count")]
         public int Count { get; set; }
+
+        /// <summary>
+        /// Get or set an extension object containing additional data for this listitem
+        /// </summary>
+        [JsonPropertyName("ext")]
+        public Dictionary<string, object> Ext { get; set; }
     }
 }
