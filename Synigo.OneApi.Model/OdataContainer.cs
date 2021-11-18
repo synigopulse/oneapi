@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Text.Json.Serialization;
-using System.Threading.Tasks;
+﻿using System.Text.Json.Serialization;
 
 namespace Synigo.OneApi.Model
 {
@@ -21,7 +16,7 @@ namespace Synigo.OneApi.Model
         /// to set the link to use, to obtain the next page.
         /// </summary>
         [JsonPropertyName("@odata.nextLink")]
-        public string NextLink { get; set; }
+        public string NextLink { get; set; } 
 
         /// <summary>
         /// Get or set the count. Besides paging <see cref="OdataContainer{T}.NextLink"/> you can also
