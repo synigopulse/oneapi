@@ -153,6 +153,12 @@ namespace Synigo.OpenEducationApi.Model.V4
         public Organization Organization { get; set; }
 
         /// <summary>
+        /// Courses for this program 
+        /// </summary>
+        [JsonPropertyName("courses")]
+        public List<Course> Courses { get; set; }
+        
+        /// <summary>
         /// Get or set object for additional non-standard attributes)
         /// </summary>
         [JsonPropertyName("ext")]
