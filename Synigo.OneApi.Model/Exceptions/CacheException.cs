@@ -1,4 +1,5 @@
 ﻿using System;
+
 namespace Synigo.OneApi.Model.Exceptions
 {
     /// <summary>
