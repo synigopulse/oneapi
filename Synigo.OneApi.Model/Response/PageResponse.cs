@@ -1,4 +1,5 @@
-﻿using System.Text.Json.Serialization;
+﻿using System.Collections.Generic;
+using System.Text.Json.Serialization;
 
 namespace Synigo.OneApi.Model.Response
 {
@@ -13,19 +14,19 @@ namespace Synigo.OneApi.Model.Response
         /// <summary>
         /// Current page number
         /// </summary>
-        [JsonPropertyName("currentIndex")]
-        public int CurrentIndex { get; set; }
+        [JsonPropertyName("pageNumber")]
+        public int PageNumber { get; set; }
 
         /// <summary>
         /// Number of records returned
         /// </summary>
-        [JsonPropertyName("currentSize")]
-        public int CurrentSize { get; set; }
+        [JsonPropertyName("pageSize")]
+        public int PageSize { get; set; }
 
         /// <summary>
         /// Response
         /// </summary>
         [JsonPropertyName("response")]
-        public T Response { get; set; }
+        public List<T> Items { get; set; }
     }
 }

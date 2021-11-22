@@ -8,20 +8,20 @@ namespace Synigo.OneApi.Model.Requests
         /// <summary>
         /// Page number
         /// </summary>
-        [JsonPropertyName("index")]
-        public int Index { get; set; }
+        [JsonPropertyName("pageNumber")]
+        public int PageNumber { get; set; }
  
         /// <summary>
         /// Number of records per page
         /// </summary>
-        [JsonPropertyName("size")]
-        public int Size { get; set; }
+        [JsonPropertyName("pageSize")]
+        public int PageSize { get; set; }
 
         /// <summary>
         /// Order params
         /// </summary>
-        [JsonPropertyName("orderBy")]
-        public List<string> OrderBy { get; set; }
+        [JsonPropertyName("sort")]
+        public List<string> Sort { get; set; }
 
         [JsonPropertyName("request")]
         public T Request { get; set; }
