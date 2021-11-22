@@ -6,6 +6,8 @@ namespace Synigo.OpenEducationApi.Model.V4
 {
     public class CourseOffering : Offering
     {
+        public static readonly string ModelType = "https://openonderwijsapi.nl/v4/model#courseoffering";
+
         [Required]
         [MaxLength(64)]
         [JsonPropertyName("modeOfStudy")]
@@ -24,5 +26,17 @@ namespace Synigo.OpenEducationApi.Model.V4
         [Required]
         [JsonPropertyName("endDate")]
         public DateTime EndDate { get; set; }
+
+        /// <summary>
+        /// <see cref="Course"/>
+        /// </summary>
+        [JsonPropertyName("course")]
+        public Course Course { get; set; }
+
+        /// <summary>
+        /// <see cref="Organization"/>
+        /// </summary>
+        [JsonPropertyName("organization")]
+        public Organization Organization { get; set; }
     }
 }

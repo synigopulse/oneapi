@@ -10,6 +10,8 @@ namespace Synigo.OpenEducationApi.Model.V4
     /// </summary>
     public class Service
     {
+        public static readonly string ModelType = "https://openonderwijsapi.nl/v4/model#service";
+
         [Required]
         [JsonPropertyName("serviceId")]
         public Guid ServiceId { get; set; }

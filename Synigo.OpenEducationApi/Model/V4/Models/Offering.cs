@@ -10,6 +10,7 @@ namespace Synigo.OpenEducationApi.Model.V4
     /// </summary>
     public class Offering
     {
+        public static readonly string ModelType = "https://openonderwijsapi.nl/v4/model#offering";
         /// <summary>
         /// Unique id of this offering
         /// </summary>

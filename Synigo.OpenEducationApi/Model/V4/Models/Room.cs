@@ -10,6 +10,8 @@ namespace Synigo.OpenEducationApi.Model.V4
     /// </summary>
     public class Room
     {
+        public static readonly string ModelType = "https://openonderwijsapi.nl/v4/model#room";
+
         /// <summary>
         /// Unique id for this room
         /// </summary>

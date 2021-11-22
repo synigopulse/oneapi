@@ -10,6 +10,7 @@ namespace Synigo.OpenEducationApi.Model.V4
     /// </summary>
     public class Program
     {
+        public static readonly string ModelType = "https://openonderwijsapi.nl/v4/model#program";
         /// <summary>
         /// Unique id for this program
         /// </summary>

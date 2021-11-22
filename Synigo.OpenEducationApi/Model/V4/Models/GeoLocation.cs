@@ -6,6 +6,8 @@ namespace Synigo.OpenEducationApi.Model.V4
 {
     public class Geolocation
     {
+        public static readonly string ModelType = "https://openonderwijsapi.nl/v4/model#geolocation";
+
         [Required]
         [JsonPropertyName("geoLocationId")]
         public Guid GeoLocationId { get; set; }

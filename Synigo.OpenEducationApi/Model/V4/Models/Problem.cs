@@ -8,6 +8,7 @@ namespace Synigo.OpenEducationApi.Model.V4
     /// </summary>
     public class Problem
     {
+        public static readonly string ModelType = "https://openonderwijsapi.nl/v4/model#problem";
         /// <summary>
         /// The HTTP status code
         /// </summary>
