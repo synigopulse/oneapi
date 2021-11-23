@@ -74,7 +74,7 @@ namespace Synigo.OneApi.Common.Extensions
         {
             if (str == "") return default(T);
 
-            return (T)Enum.Parse(typeof(T), str);
+            return (T)Enum.Parse(typeof(T), str, true);
         }
     }
 }
