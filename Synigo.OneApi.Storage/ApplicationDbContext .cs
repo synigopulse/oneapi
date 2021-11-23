@@ -191,129 +191,87 @@ namespace Synigo.OneApi.Storage
         {
             modelBuilder.Entity<Address>()
                 .Property(p => p.Type)
-                .HasConversion(
-                v => v.SerializeEnum(),
-                v => v.DeserializeEnum<PostalType>());
+                .HasConversion<string>();
 
             modelBuilder.Entity<Association<Result>>()
                 .Property(p => p.Type)
-                .HasConversion(
-                v => v.SerializeEnum(),
-                v => v.DeserializeEnum<AssociationType>());
+                .HasConversion<string>();
 
             modelBuilder.Entity<Association<Result>>()
                 .Property(p => p.Role)
-                .HasConversion(
-                v => v.SerializeEnum(),
-                v => v.DeserializeEnum<AssociationRole>());
+               .HasConversion<string>();
 
             modelBuilder.Entity<Association<Result>>()
                 .Property(p => p.State)
-                .HasConversion(
-                v => v.SerializeEnum(),
-                V => V.DeserializeEnum<AssociationState>());
+                .HasConversion<string>();
 
             modelBuilder.Entity<Component>()
                 .Property(p => p.Type)
-                .HasConversion(
-                v => v.SerializeEnum(),
-                v => v.DeserializeEnum<ComponentType>());
+               .HasConversion<string>();
 
             modelBuilder.Entity<Course>()
                 .Property(p => p.Level)
-                .HasConversion(
-                v => v.SerializeEnum(),
-                v => v.DeserializeEnum<Level>());
+              .HasConversion<string>();
 
             modelBuilder.Entity<Course>()
                 .Property(p => p.ModesOfDelivery)
-                .HasConversion(
-                v => v.SerializeEnum(),
-                v => v.DeserializeEnum<ModesOfDelivery>());
+               .HasConversion<string>();
 
             modelBuilder.Entity<CourseOffering>()
                 .Property(p => p.ModeOfStudy)
-                .HasConversion(
-                v => v.SerializeEnum(),
-                v => v.DeserializeEnum<ModeOfStudy>());
+              .HasConversion<string>();
 
             modelBuilder.Entity<NewsFeed>()
                 .Property(p => p.Type)
-                .HasConversion(
-                v => v.SerializeEnum(),
-                v => v.DeserializeEnum<NewsFeedType>());
+              .HasConversion<string>();
 
             modelBuilder.Entity<NewsItem>()
                 .Property(p => p.Type)
-                .HasConversion(
-                v => v.SerializeEnum(),
-                v => v.DeserializeEnum<NewsItemType>());
+             .HasConversion<string>();
 
             modelBuilder.Entity<Offering>()
                 .Property(p => p.Type)
-                .HasConversion(
-                v => v.SerializeEnum(),
-                v => v.DeserializeEnum<OfferingType>());
+              .HasConversion<string>();
 
             modelBuilder.Entity<Offering>()
                 .Property(p => p.ResultValueType)
-                .HasConversion(
-                v => v.SerializeEnum(),
-                v => v.DeserializeEnum<ResultValueType>());
+               .HasConversion<string>();
 
             modelBuilder.Entity<Organization>()
                 .Property(p => p.Type)
-                .HasConversion(
-                v => v.SerializeEnum(),
-                v => v.DeserializeEnum<OrganizationType>());
+              .HasConversion<string>();
 
             modelBuilder.Entity<Person>()
                 .Property(p => p.Affiliations)
-                .HasConversion(
-                v => v.SerializeEnumeration(),
-                v => v.DeserializeEnumCollection<PersonAffiliations>());
+             .HasConversion<string>();
 
             modelBuilder.Entity<Person>()
                 .Property(p => p.Gender)
-                .HasConversion(
-                v => v.HasValue ? v.Value.SerializeEnum() : null,
-                v => !string.IsNullOrEmpty(v) ? v.DeserializeEnum<Gender>() : null);
+               .HasConversion<string>();
 
             modelBuilder.Entity<Program>()
                 .Property(p => p.Type)
-                .HasConversion(
-                v => v.SerializeEnum(),
-                v => v.DeserializeEnum<ProgramType>());
+              .HasConversion<string>();
 
             modelBuilder.Entity<Program>()
                 .Property(p => p.LevelOfQualification)
-                .HasConversion(
-                v => v.SerializeEnum(),
-                v => v.DeserializeEnum<LevelOfQualification>());
+              .HasConversion<string>();
 
             modelBuilder.Entity<Program>()
                 .Property(p => p.Sector)
-                .HasConversion(
-                v => v.SerializeEnum(),
-                v => v.DeserializeEnum<Sector>());
+              .HasConversion<string>();
 
             modelBuilder.Entity<ProgramOffering>()
                 .Property(p => p.ModeOfStudy)
-                .HasConversion(
-                v => v.SerializeEnum(),
-                v => v.DeserializeEnum<ModeOfStudy>());
+                .HasConversion<string>();
 
             modelBuilder.Entity<Result>()
                 .Property(p => p.State)
-                .HasConversion(
-                v => v.SerializeEnum(),
-                v => v.DeserializeEnum<ResultState>());
+              .HasConversion<string>();
 
             modelBuilder.Entity<Room>()
                 .Property(p => p.Type)
-                .HasConversion(
-                v => v.SerializeEnum(),
-                v => v.DeserializeEnum<RoomType>());
+                .HasConversion<string>();
         }
 
         /// <summary>
