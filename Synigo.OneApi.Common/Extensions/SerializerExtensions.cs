@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text.Json;
 
 namespace Synigo.OneApi.Common.Extensions
@@ -66,15 +67,23 @@ namespace Synigo.OneApi.Common.Extensions
         public static string SerializeEnum<T>(this T val)
             where T  : Enum
         {
-           return JsonSerializer.Serialize(val.ToString());
+            var enumType = typeof(T);
+            var name = Enum.GetName(enumType, val);
+            var enumMemberAttribute = ((EnumMemberAttribute[])enumType.GetField(name).GetCustomAttributes(typeof(EnumMemberAttribute), true)).Single();
+            return enumMemberAttribute.Value;
         }
 
         public static T DeserializeEnum<T>(this string str)
             where T : Enum
         {
-            if (str == "") return default(T);
-
-            return (T)Enum.Parse(typeof(T), str, true);
+            var enumType = typeof(T);
+            foreach (var name in Enum.GetNames(enumType))
+            {
+                var enumMemberAttribute = ((EnumMemberAttribute[])enumType.GetField(name).GetCustomAttributes(typeof(EnumMemberAttribute), true)).Single();
+                if (enumMemberAttribute.Value == str) return (T)Enum.Parse(enumType, name);
+            }
+            //throw exception or whatever handling you want or
+            return default(T);
         }
     }
 }
