@@ -47,7 +47,7 @@ namespace Synigo.OneApi.Common.Extensions
         {
             if (enumerations == null)
                 return "";
-            return JsonSerializer.Serialize(enumerations.Select(e => e.ToString()).ToList());
+            return JsonSerializer.Serialize(enumerations.Select(e => e.EnumToEnumMemberValue()).ToList());
         }
 
         /// <summary>
@@ -61,29 +61,7 @@ namespace Synigo.OneApi.Common.Extensions
         {
             return str == null
                 ? new List<T>()
-                : JsonSerializer.Deserialize<ICollection<string>>(str).Select(e => e.DeserializeEnum<T>()).ToList();
-        }
-
-        public static string SerializeEnum<T>(this T val)
-            where T  : Enum
-        {
-            var enumType = typeof(T);
-            var name = Enum.GetName(enumType, val);
-            var enumMemberAttribute = ((EnumMemberAttribute[])enumType.GetField(name).GetCustomAttributes(typeof(EnumMemberAttribute), true)).Single();
-            return enumMemberAttribute.Value;
-        }
-
-        public static T DeserializeEnum<T>(this string str)
-            where T : Enum
-        {
-            var enumType = typeof(T);
-            foreach (var name in Enum.GetNames(enumType))
-            {
-                var enumMemberAttribute = ((EnumMemberAttribute[])enumType.GetField(name).GetCustomAttributes(typeof(EnumMemberAttribute), true)).Single();
-                if (enumMemberAttribute.Value == str) return (T)Enum.Parse(enumType, name);
-            }
-            //throw exception or whatever handling you want or
-            return default(T);
+                : JsonSerializer.Deserialize<ICollection<string>>(str).Select(e => e.EnumMemberValueToEnum<T>()).ToList();
         }
     }
 }
