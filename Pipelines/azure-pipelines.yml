@@ -15,7 +15,7 @@ parameters:
   - Synigo.OneApi.Interfaces
   - Synigo.OneApi.Providers
   - Synigo.OneApi.Core.WebApi
-  - Synigo.OpeApi.Core.Functions
+  - Synigo.OneApi.Core.Functions
   - Synigo.OpenEducationApi
   - Synigo.OneApi.Storage
 
