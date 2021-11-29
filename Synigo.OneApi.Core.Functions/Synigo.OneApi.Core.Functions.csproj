@@ -15,4 +15,7 @@
 	<ItemGroup>
 		<None Remove="Extensions\" />
 	</ItemGroup>
+	<ItemGroup>
+	  <PackageReference Include="Microsoft.Azure.Functions.Worker" Version="1.6.0" />
+	</ItemGroup>
 </Project>
