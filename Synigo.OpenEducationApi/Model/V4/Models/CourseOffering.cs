@@ -33,6 +33,9 @@ namespace Synigo.OpenEducationApi.Model.V4
         [JsonPropertyName("course")]
         public Course Course { get; set; }
 
+        [JsonPropertyName("programOffering")]
+        public ProgramOffering ProgramOffering { get; set; }
+
         /// <summary>
         /// <see cref="Organization"/>
         /// </summary>
