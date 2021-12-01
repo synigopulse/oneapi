@@ -6,21 +6,7 @@ namespace Synigo.OpenEducationApi.Model.V4
 {
     public class ComponentOffering : Offering
     {
-        public static readonly string ModelType = "https://openonderwijsapi.nl/v4/model#componentoffering";
-
-        /// <summary>
-        /// The moment on which this offering starts, RFC3339 (date-time)
-        /// </summary>
-        [Required]
-        [JsonPropertyName("startDateTime")]
-        public DateTime StartDateTime { get; set; }
-
-        /// <summary>
-        /// The moment on which this offering ends, RFC3339 (date-time)
-        /// </summary>
-        [Required]
-        [JsonPropertyName("endDateTime")]
-        public DateTime EndDateTime { get; set; }
+        public static readonly new string ModelType = "https://openonderwijsapi.nl/v4/model#componentoffering";
 
         /// <summary>
         /// The result weight of this offering

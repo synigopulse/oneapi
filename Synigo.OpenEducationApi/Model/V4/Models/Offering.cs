@@ -137,6 +137,20 @@ namespace Synigo.OpenEducationApi.Model.V4
         public ResultValueType ResultValueType { get; set; }
 
         /// <summary>
+        /// The moment on which this offering starts, RFC3339 (full-date)
+        /// </summary>
+        [Required]
+        [JsonPropertyName("startDate")]
+        public DateTime StartDate { get; set; }
+
+        /// <summary>
+        /// The moment on which this offering ends, RFC3339 (full-date)
+        /// </summary>
+        [Required]
+        [JsonPropertyName("endDate")]
+        public DateTime EndDate { get; set; }
+
+        /// <summary>
         /// Get or set object for additional non-standard attributes)
         /// </summary>
         [JsonPropertyName("ext")]
