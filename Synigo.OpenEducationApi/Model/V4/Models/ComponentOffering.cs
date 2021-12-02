@@ -16,6 +16,20 @@ namespace Synigo.OpenEducationApi.Model.V4
         public int? ResultWeight { get; set; }
 
         /// <summary>
+        /// The moment on which this offering starts, RFC3339 (full-date)
+        /// </summary>
+        [Required]
+        [JsonPropertyName("startDateTime")]
+        public DateTime StartDate { get; set; }
+
+        /// <summary>
+        /// The moment on which this offering ends, RFC3339 (full-date)
+        /// </summary>
+        [Required]
+        [JsonPropertyName("endDateTime")]
+        public DateTime EndDate { get; set; }
+
+        /// <summary>
         /// <see cref="Room"/>
         /// </summary>
         [JsonPropertyName("room")]
@@ -32,11 +46,5 @@ namespace Synigo.OpenEducationApi.Model.V4
         /// </summary>
         [JsonPropertyName("courseOffering")]
         public CourseOffering CourseOffering { get; set; }
-
-        /// <summary>
-        /// <see cref="Organization"/>
-        /// </summary>
-        [JsonPropertyName("organization")]
-        public Organization Organization { get; set; }
     }
 }

@@ -61,7 +61,37 @@ namespace Synigo.OneApi.Storage
 
             Console.WriteLine($"Database will generate primary keys : {Configuration.StorageConfiguration.PrimaryKeyGeneratedByDatabase}");
 
-            if(Configuration.StorageConfiguration.PrimaryKeyGeneratedByDatabase)
+
+            modelBuilder.Entity<CourseOffering>()
+              .Property(c => c.ModeOfStudy)
+              .HasColumnName("ModeOfStudy");
+            modelBuilder.Entity<ProgramOffering>()
+                .Property(c => c.ModeOfStudy)
+                .HasColumnName("ModeOfStudy");
+
+            modelBuilder.Entity<ComponentOffering>()
+                .Property(c => c.StartDate)
+                .HasColumnName("StartDate");
+            modelBuilder.Entity<ComponentOffering>()
+                .Property(c => c.EndDate)
+                .HasColumnName("EndDate");
+
+            modelBuilder.Entity<CourseOffering>()
+                .Property(c => c.StartDate)
+                .HasColumnName("StartDate");
+            modelBuilder.Entity<CourseOffering>()
+                .Property(c => c.EndDate)
+                .HasColumnName("EndDate");
+
+            modelBuilder.Entity<ProgramOffering>()
+                .Property(c => c.StartDate)
+                .HasColumnName("StartDate");
+            modelBuilder.Entity<ProgramOffering>()
+                .Property(c => c.EndDate)
+                .HasColumnName("EndDate");
+
+
+            if (Configuration.StorageConfiguration.PrimaryKeyGeneratedByDatabase)
             {
                 AddValueGeneratedOnAddToProperties(modelBuilder);
             }
