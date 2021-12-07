@@ -14,11 +14,11 @@ namespace Synigo.OneApi.Core.Functions.Middleware
     /// </summary>
     public class ExceptionHandlelingMiddleware : IFunctionsWorkerMiddleware
     {
-        private readonly ILogger logger;
+        private readonly ILogger<ExceptionHandlelingMiddleware> logger;
         private readonly IGenerateHttpResponseData generateHttpResponse;
 
         public ExceptionHandlelingMiddleware(
-            ILogger logger,
+            ILogger<ExceptionHandlelingMiddleware> logger,
             IGenerateHttpResponseData generateHttpResponse)
         {
             this.logger = logger;
