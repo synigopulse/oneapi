@@ -11,6 +11,7 @@
 	</ItemGroup>
 	<ItemGroup>
 		<ProjectReference Include="..\Synigo.OneAPi.Core\Synigo.OneApi.Core.csproj" />
+		<ProjectReference Include="..\Synigo.OneApi.Model\Synigo.OneApi.Model.csproj" />
 	</ItemGroup>
 	<ItemGroup>
 		<None Remove="Extensions\" />
