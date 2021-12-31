@@ -132,10 +132,6 @@ namespace Synigo.OneApi.Storage
              v => v.Deserialize<List<string>>());
             #endregion
 
-            modelBuilder.Entity<Person>()
-                .HasMany<Course>()
-                .WithMany(c => c.Coordinators);
-
             MapEnums(modelBuilder);
             
             FluentMappings(modelBuilder);
