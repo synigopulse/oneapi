@@ -132,6 +132,10 @@ namespace Synigo.OneApi.Storage
              v => v.Deserialize<List<string>>());
             #endregion
 
+            modelBuilder.Entity<Person>()
+                .HasMany<Course>()
+                .WithMany(c => c.Coordinators);
+
             MapEnums(modelBuilder);
             
             FluentMappings(modelBuilder);
@@ -326,6 +330,12 @@ namespace Synigo.OneApi.Storage
                 .HasConversion(
                 v => v.EnumToEnumMemberValue(),
                 v => v.EnumMemberValueToEnum<Sector>());
+
+            modelBuilder.Entity<Program>()
+                .Property(p => p. QualificationAwarded)
+                .HasConversion(
+                v => v.EnumToEnumMemberValue(),
+                v => v.EnumMemberValueToEnum<QualificationAwarded>());
 
             modelBuilder.Entity<ProgramOffering>()
                 .Property(p => p.ModeOfStudy)

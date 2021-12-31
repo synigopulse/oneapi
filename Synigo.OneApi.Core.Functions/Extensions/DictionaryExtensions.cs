@@ -66,7 +66,7 @@ namespace Synigo.OneApi.Core.Functions.Extensions
             var request = new PageRequest<T>() { Request = new T() };
             request.PageNumber = dict.ContainsKey("pageNumber") ? Convert.ToInt32(dict["pageNumber"].First()) : 1;
             request.PageSize = dict.ContainsKey("pageSize") ? Convert.ToInt32(dict["pageSize"].First()) : 10;
-            request.Sort = dict.ContainsKey("sort") ? dict["sort"].ToList() : new List<string>();
+            request.Sort = dict.ContainsKey("sort") ? dict["sort"].ToList().SelectMany(x => x.Split(",")).ToList() : new List<string>();
 
             return request;
         }
