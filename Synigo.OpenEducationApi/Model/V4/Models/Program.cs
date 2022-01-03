@@ -145,19 +145,19 @@ namespace Synigo.OpenEducationApi.Model.V4
         /// Programs which are a part of this program (e.g specializations)
         /// </summary>
         [JsonPropertyName("children")]
-        public List<Program> Chidren { get; set; }
+        public virtual List<Program> Chidren { get; set; }
 
         /// <summary>
         /// The organization providing the current course
         /// </summary>
         [JsonPropertyName("organization")]
-        public Organization Organization { get; set; }
+        public virtual Organization Organization { get; set; }
 
         /// <summary>
         /// Courses for this program 
         /// </summary>
         [JsonPropertyName("courses")]
-        public List<Course> Courses { get; set; }
+        public virtual List<Course> Courses { get; set; }
         
         /// <summary>
         /// Get or set object for additional non-standard attributes)

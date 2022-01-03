@@ -169,7 +169,7 @@ namespace Synigo.OpenEducationApi.Model.V4
         /// <see cref="Address"/>
         /// </summary>
         [JsonPropertyName("address")]
-        public Address Address { get; set; }
+        public virtual Address Address { get; set; }
 
         /// <summary>
         /// Get or set full name of In Case of Emergency contact
@@ -204,5 +204,8 @@ namespace Synigo.OpenEducationApi.Model.V4
         /// </summary>
         [JsonPropertyName("ext")]
         public Dictionary<string,object> Ext { get; set; }
+
+        [JsonIgnore]
+        public List<Course> Courses { get; set; }
     }
 }

@@ -85,7 +85,7 @@ namespace Synigo.OpenEducationApi.Model.V4
         /// <see cref="V4.Building"/>
         /// </summary>
         [JsonPropertyName("building")]
-        public Building Building { get; set; }
+        public virtual Building Building { get; set; }
 
         /// <summary>
         /// Get or set object for additional non-standard attributes)

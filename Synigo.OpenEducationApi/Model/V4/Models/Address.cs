@@ -81,6 +81,9 @@ namespace Synigo.OpenEducationApi.Model.V4
         /// </summary>
         [JsonPropertyName("ext")]
         public Dictionary<string, object> Ext { get; set; }
+
+        [JsonIgnore]
+        public List<Organization> Organizations { get; set; }
     }
 }
 

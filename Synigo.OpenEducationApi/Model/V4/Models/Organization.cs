@@ -57,7 +57,7 @@ namespace Synigo.OpenEducationApi.Model.V4
         /// A list of <see cref="Address"/> of this organization
         /// </summary>
         [JsonPropertyName("addresses")]
-        public List<Address> Addresses { get; set; }
+        public virtual List<Address> Addresses { get; set; }
 
         /// <summary>
         /// URL of the organization's website
@@ -88,12 +88,12 @@ namespace Synigo.OpenEducationApi.Model.V4
         /// <summary>
         /// The <see cref="Organization"/> parent of this organization
         /// </summary>
-        public Organization Parent { get; set; }
+        public virtual Organization Parent { get; set; }
 
         /// <summary>
         /// A List of <see cref="Organization"/> children of this organization
         /// </summary>
-        public List<Organization> Children { get; set; }
+        public virtual List<Organization> Children { get; set; }
 
         /// <summary>
         /// Get or set object for additional non-standard attributes)

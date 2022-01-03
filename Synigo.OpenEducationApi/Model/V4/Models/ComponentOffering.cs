@@ -20,31 +20,31 @@ namespace Synigo.OpenEducationApi.Model.V4
         /// </summary>
         [Required]
         [JsonPropertyName("startDateTime")]
-        public DateTime StartDate { get; set; }
+        public override DateTime StartDate { get; set; }
 
         /// <summary>
         /// The moment on which this offering ends, RFC3339 (full-date)
         /// </summary>
         [Required]
         [JsonPropertyName("endDateTime")]
-        public DateTime EndDate { get; set; }
+        public override DateTime EndDate { get; set; }
 
         /// <summary>
         /// <see cref="Room"/>
         /// </summary>
         [JsonPropertyName("room")]
-        public Room Room { get; set; }
+        public virtual Room Room { get; set; }
 
         /// <summary>
         /// <see cref="Component"/>
         /// </summary>
         [JsonPropertyName("component")]
-        public Component Component { get; set; }
+        public virtual Component Component { get; set; }
 
         /// <summary>
         /// <see cref="CourseOffering"/>
         /// </summary>
         [JsonPropertyName("courseOffering")]
-        public CourseOffering CourseOffering { get; set; }
+        public virtual CourseOffering CourseOffering { get; set; }
     }
 }

@@ -129,20 +129,20 @@ namespace Synigo.OpenEducationApi.Model.V4
         ///  <see cref="Program"/>
         /// </summary>
         [JsonPropertyName("programs")]
-        public List<Program> Programs { get; set; }
+        public virtual List<Program> Programs { get; set; }
 
         /// <summary>
         /// The person(s) responsible for this course
         /// </summary>
         [JsonPropertyName("coordinators")]
-        public List<Person> Coordinators { get; set; }
+        public virtual List<Person> Coordinators { get; set; }
 
         /// <summary>
         /// The organization providing the current course
         /// <see cref="Organization"/>
         /// </summary>
         [JsonPropertyName("Organization")]
-        public Organization Organization { get; set; }
+        public virtual Organization Organization { get; set; }
 
         /// <summary>
         /// Get or set object for additional non-standard attributes)

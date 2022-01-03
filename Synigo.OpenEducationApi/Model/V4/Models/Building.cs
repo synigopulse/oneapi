@@ -58,7 +58,7 @@ namespace Synigo.OpenEducationApi.Model.V4
         /// </summary>
         [Required]
         [JsonPropertyName("address")]
-        public Address Address { get; set; }
+        public virtual Address Address { get; set; }
 
         /// <summary>
         /// Get or set object for additional non-standard attributes)
@@ -70,6 +70,6 @@ namespace Synigo.OpenEducationApi.Model.V4
         /// Get or set a list of rooms in this building
         /// </summary>
         [JsonPropertyName("rooms")]
-        public List<Room> Rooms { get; set; }
+        public virtual List<Room> Rooms { get; set; }
     }
 }

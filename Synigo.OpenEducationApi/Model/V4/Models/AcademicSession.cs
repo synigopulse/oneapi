@@ -49,14 +49,14 @@ namespace Synigo.OpenEducationApi.Model.V4
         /// <see cref="AcademicSession"/>
         /// </summary>
         [JsonPropertyName("parent")]
-        public AcademicSession Parent { get; set; }
+        public virtual AcademicSession Parent { get; set; }
 
         /// <summary>
         /// The top level year of this session (e.g. 20xx where the current session is a week 40 of a semester)
         /// <see cref="AcademicSession"/>
         /// </summary>
         [JsonPropertyName("year")]
-        public List<AcademicSession> Year { get; set; }
+        public virtual List<AcademicSession> Year { get; set; }
 
         /// <summary>
         /// Object for additional non-standard attributes

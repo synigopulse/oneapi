@@ -88,7 +88,7 @@ namespace Synigo.OpenEducationApi.Model.V4
         /// The newsFeeds where this item can be found
         /// </summary>
         [JsonPropertyName("newsFeeds")]
-        public List<NewsFeed> NewsFeeds { get; set; }
+        public virtual List<NewsFeed> NewsFeeds { get; set; }
 
         /// <summary>
         /// Get or set object for additional non-standard attributes)

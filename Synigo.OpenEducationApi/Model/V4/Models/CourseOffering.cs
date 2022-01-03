@@ -14,26 +14,12 @@ namespace Synigo.OpenEducationApi.Model.V4
         public ModeOfStudy ModeOfStudy { get; set; }
 
         /// <summary>
-        /// The moment on which this offering starts, RFC3339 (full-date)
-        /// </summary>
-        [Required]
-        [JsonPropertyName("startDate")]
-        public DateTime StartDate { get; set; }
-
-        /// <summary>
-        /// The moment on which this offering ends, RFC3339 (full-date)
-        /// </summary>
-        [Required]
-        [JsonPropertyName("endDate")]
-        public DateTime EndDate { get; set; }
-
-        /// <summary>
         /// <see cref="Course"/>
         /// </summary>
         [JsonPropertyName("course")]
-        public Course Course { get; set; }
+        public virtual Course Course { get; set; }
 
         [JsonPropertyName("programOffering")]
-        public ProgramOffering ProgramOffering { get; set; }
+        public virtual ProgramOffering ProgramOffering { get; set; }
     }
 }

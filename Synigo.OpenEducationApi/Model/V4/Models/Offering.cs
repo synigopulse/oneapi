@@ -30,7 +30,7 @@ namespace Synigo.OpenEducationApi.Model.V4
         /// The <see cref="AcademicSession"/> of this Offering
         /// </summary>
         [JsonPropertyName("academicSession")]
-        public AcademicSession AcademicSession { get; set; }
+        public virtual AcademicSession AcademicSession { get; set; }
 
         /// <summary>
         /// The name of this offering
@@ -136,15 +136,25 @@ namespace Synigo.OpenEducationApi.Model.V4
         [JsonPropertyName("resultValueType")]
         public ResultValueType ResultValueType { get; set; }
 
-       
-
         /// <summary>
         /// The organization who offers this offering
         /// </summary>
         [JsonPropertyName("organization")]
-        public Organization Organization { get; set; }
+        public virtual Organization Organization { get; set; }
 
-       
+        /// <summary>
+        /// The moment on which this offering starts, RFC3339 (full-date)
+        /// </summary>
+        [Required]
+        [JsonPropertyName("startDate")]
+        public virtual DateTime StartDate { get; set; }
+
+        /// <summary>
+        /// The moment on which this offering ends, RFC3339 (full-date)
+        /// </summary>
+        [Required]
+        [JsonPropertyName("endDate")]
+        public virtual DateTime EndDate { get; set; }
 
         /// <summary>
         /// Get or set object for additional non-standard attributes)

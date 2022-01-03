@@ -82,7 +82,7 @@ namespace Synigo.OpenEducationApi.Model.V4
         /// The course of which this component is a part
         /// </summary>
         [JsonPropertyName("course")]
-        public Course Course { get; set; }
+        public virtual Course Course { get; set; }
 
         /// <summary>
         /// Organization which provides this component

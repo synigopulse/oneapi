@@ -55,13 +55,13 @@ namespace Synigo.OpenEducationApi.Model.V4
         /// The <see cref="Person"/> in this Association
         /// </summary>
         [JsonPropertyName("person")]
-        public Person Person { get; set; }
+        public virtual Person Person { get; set; }
 
         /// <summary>
         /// The <see cref="Offering"/> in this Association
         /// </summary>
         [JsonPropertyName("offering")]
-        public Offering Offering { get; set; }
+        public virtual Offering Offering { get; set; }
 
         /// <summary>
         /// Object for additional non-standard attributes
