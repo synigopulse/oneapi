@@ -1,4 +1,4 @@
-﻿using System;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text.Json.Serialization;
 
@@ -23,5 +23,8 @@ namespace Synigo.OpenEducationApi.Model.V4
         /// </summary>
         [JsonPropertyName("program")]
         public virtual Program Program { get; set; }
+
+        [JsonIgnore]
+        public virtual List<CourseOffering> CourseOfferings { get; set; }
     }
 }
