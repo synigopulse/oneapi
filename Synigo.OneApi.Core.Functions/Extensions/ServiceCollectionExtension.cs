@@ -20,5 +20,12 @@ namespace Synigo.OneApi.Core.Functions.Extensions
 
             return services;
         }
+
+        public static IServiceCollection UseOneApiAuthenthicationProvider(this IServiceCollection services)
+        {
+            services.AddSingleton<IAuthenthicationProvider, AzureAdAuthenthicationProvider>();
+
+            return services;
+        }
     }
 }

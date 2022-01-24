@@ -16,5 +16,11 @@ namespace Synigo.OneApi.Core.Functions.Extensions
             applicationBuilder.UseMiddleware<ExceptionHandlelingMiddleware>();
             return applicationBuilder;
         }
+
+        public static IFunctionsWorkerApplicationBuilder UseOneApiAuthorization(this IFunctionsWorkerApplicationBuilder applicationBuilder)
+        {
+            applicationBuilder.UseMiddleware<AuthenticationMiddleware>();
+            return applicationBuilder;
+        }
     }
 }

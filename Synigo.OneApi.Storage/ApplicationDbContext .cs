@@ -160,9 +160,7 @@ namespace Synigo.OneApi.Storage
             modelBuilder.Entity<Room>().HasKey(c => c.RoomId);
             modelBuilder.Entity<Service>().HasKey(c => c.ServiceId);
             modelBuilder.Entity<Geolocation>().HasKey(c => c.GeoLocationId);
-            modelBuilder.Entity<CourseOfferingAssociation<CourseResult>>().HasNoKey();
-            modelBuilder.Entity<ComponentOfferingAssociation<ComponentResult>>().HasNoKey();
-            modelBuilder.Entity<ProgramOfferingAssociation<ProgramResult>>().HasNoKey();
+            modelBuilder.Entity<Result>().HasKey(c => c.ResultId);
         }
 
         /// <summary>

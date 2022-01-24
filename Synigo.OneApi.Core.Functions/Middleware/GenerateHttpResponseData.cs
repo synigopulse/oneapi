@@ -27,5 +27,6 @@ namespace Synigo.OneApi.Core.Functions.Middleware
             await response.WriteStringAsync(ex.Message);
             return response;
         }
+
     }
 }
