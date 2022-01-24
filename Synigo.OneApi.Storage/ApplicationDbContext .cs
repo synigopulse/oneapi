@@ -160,8 +160,9 @@ namespace Synigo.OneApi.Storage
             modelBuilder.Entity<Room>().HasKey(c => c.RoomId);
             modelBuilder.Entity<Service>().HasKey(c => c.ServiceId);
             modelBuilder.Entity<Geolocation>().HasKey(c => c.GeoLocationId);
-            modelBuilder.Entity<CourseOfferingAssociation<CourseResult>>().HasNoKey();
-            modelBuilder.Entity<ProgramOfferingAssociation<ProgramResult>>().HasNoKey();
+            modelBuilder.Entity<CourseOfferingAssociation<CourseResult>>().HasKey(c => c.AssociationId);
+            modelBuilder.Entity<ProgramOfferingAssociation<ProgramResult>>().HasKey(c => c.AssociationId);
+            modelBuilder.Entity<ComponentOfferingAssociation<ComponentResult>>().HasKey(c => c.AssociationId);
         }
 
         /// <summary>
@@ -186,6 +187,9 @@ namespace Synigo.OneApi.Storage
             modelBuilder.Entity<Room>().Property(p => p.RoomId).ValueGeneratedOnAdd();
             modelBuilder.Entity<Service>().Property(p => p.ServiceId).ValueGeneratedOnAdd();
             modelBuilder.Entity<Geolocation>().Property(p => p.GeoLocationId).ValueGeneratedOnAdd();
+            modelBuilder.Entity<CourseOfferingAssociation<CourseResult>>().Property(c => c.AssociationId).ValueGeneratedOnAdd();
+            modelBuilder.Entity<ProgramOfferingAssociation<ProgramResult>>().Property(c => c.AssociationId).ValueGeneratedOnAdd();
+            modelBuilder.Entity<ComponentOfferingAssociation<ComponentResult>>().Property(c => c.AssociationId).ValueGeneratedOnAdd();
         }
 
         /// <summary>
@@ -210,6 +214,9 @@ namespace Synigo.OneApi.Storage
             modelBuilder.Entity<Room>().Property(p => p.RoomId).ValueGeneratedNever();
             modelBuilder.Entity<Service>().Property(p => p.ServiceId).ValueGeneratedNever();
             modelBuilder.Entity<Geolocation>().Property(p => p.GeoLocationId).ValueGeneratedNever();
+            modelBuilder.Entity<CourseOfferingAssociation<CourseResult>>().Property(c => c.AssociationId).ValueGeneratedNever();
+            modelBuilder.Entity<ProgramOfferingAssociation<ProgramResult>>().Property(c => c.AssociationId).ValueGeneratedNever();
+            modelBuilder.Entity<ComponentOfferingAssociation<ComponentResult>>().Property(c => c.AssociationId).ValueGeneratedNever();
         }
 
         /// <summary>
