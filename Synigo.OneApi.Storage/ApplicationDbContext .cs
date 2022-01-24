@@ -160,7 +160,8 @@ namespace Synigo.OneApi.Storage
             modelBuilder.Entity<Room>().HasKey(c => c.RoomId);
             modelBuilder.Entity<Service>().HasKey(c => c.ServiceId);
             modelBuilder.Entity<Geolocation>().HasKey(c => c.GeoLocationId);
-            modelBuilder.Entity<Result>().HasKey(c => c.ResultId);
+            modelBuilder.Entity<CourseOfferingAssociation<CourseResult>>().HasKey(c => c.AssociationId);
+            modelBuilder.Entity<ProgramOfferingAssociation<ProgramResult>>().HasKey(p => p.AssociationId);
         }
 
         /// <summary>
@@ -185,6 +186,8 @@ namespace Synigo.OneApi.Storage
             modelBuilder.Entity<Room>().Property(p => p.RoomId).ValueGeneratedOnAdd();
             modelBuilder.Entity<Service>().Property(p => p.ServiceId).ValueGeneratedOnAdd();
             modelBuilder.Entity<Geolocation>().Property(p => p.GeoLocationId).ValueGeneratedOnAdd();
+            modelBuilder.Entity<CourseOfferingAssociation<CourseResult>>().Property(c => c.AssociationId).ValueGeneratedOnAdd();
+            modelBuilder.Entity<ProgramOfferingAssociation<ProgramResult>>().Property(p => p.AssociationId).ValueGeneratedOnAdd();
         }
 
         /// <summary>
@@ -209,6 +212,8 @@ namespace Synigo.OneApi.Storage
             modelBuilder.Entity<Room>().Property(p => p.RoomId).ValueGeneratedNever();
             modelBuilder.Entity<Service>().Property(p => p.ServiceId).ValueGeneratedNever();
             modelBuilder.Entity<Geolocation>().Property(p => p.GeoLocationId).ValueGeneratedNever();
+            modelBuilder.Entity<CourseOfferingAssociation<CourseResult>>().Property(c => c.AssociationId).ValueGeneratedNever();
+            modelBuilder.Entity<ProgramOfferingAssociation<ProgramResult>>().Property(p => p.AssociationId).ValueGeneratedNever();
         }
 
         /// <summary>

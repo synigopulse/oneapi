@@ -16,7 +16,7 @@ namespace Synigo.OpenEducationApi.Model.V4
         /// </summary>
         [Required]
         [JsonPropertyName("associationId")]
-        public Guid AssociationId { get; set; }
+        public virtual Guid AssociationId { get; set; }
 
         /// <summary>
         /// The type of this association
