@@ -16,11 +16,9 @@ namespace Synigo.OneApi.Storage
         public DbSet<Building> Buildings { get; set; }
         public DbSet<Component> Components { get; set; }
         public DbSet<ComponentOffering> ComponentOfferings { get; set; }
-        public DbSet<ComponentOfferingAssociation<ComponentResult>> ComponentOfferingAssociations { get; set; }
         public DbSet<ComponentResult> ComponentResults { get; set; }
         public DbSet<Course> Courses { get; set; }
         public DbSet<CourseOffering> CourseOfferings { get; set; }
-        public DbSet<CourseOfferingAssociation<CourseResult>> CourseOfferingAssociations { get; set; }
         public DbSet<CourseResult> CourseResults { get; set; }
         public DbSet<Geolocation> Geolocations { get; set; }
         public DbSet<NewsFeed> NewsFeeds { get; set; }
@@ -30,7 +28,6 @@ namespace Synigo.OneApi.Storage
         public DbSet<Person> People { get; set; }
         public DbSet<Program> Programs { get; set; }
         public DbSet<ProgramOffering> ProgramOfferings { get; set; }
-        public DbSet<ProgramOfferingAssociation<ProgramResult>> ProgramOfferingAssociations { get; set; }
         public DbSet<ProgramResult> ProgramResults { get; set; }
         public DbSet<Result> Results { get; set; }
         public DbSet<Room> Rooms { get; set; }
@@ -160,9 +157,6 @@ namespace Synigo.OneApi.Storage
             modelBuilder.Entity<Room>().HasKey(c => c.RoomId);
             modelBuilder.Entity<Service>().HasKey(c => c.ServiceId);
             modelBuilder.Entity<Geolocation>().HasKey(c => c.GeoLocationId);
-            modelBuilder.Entity<CourseOfferingAssociation<CourseResult>>().HasKey(c => c.AssociationId);
-            modelBuilder.Entity<ProgramOfferingAssociation<ProgramResult>>().HasKey(c => c.AssociationId);
-            modelBuilder.Entity<ComponentOfferingAssociation<ComponentResult>>().HasKey(c => c.AssociationId);
         }
 
         /// <summary>
@@ -187,9 +181,6 @@ namespace Synigo.OneApi.Storage
             modelBuilder.Entity<Room>().Property(p => p.RoomId).ValueGeneratedOnAdd();
             modelBuilder.Entity<Service>().Property(p => p.ServiceId).ValueGeneratedOnAdd();
             modelBuilder.Entity<Geolocation>().Property(p => p.GeoLocationId).ValueGeneratedOnAdd();
-            modelBuilder.Entity<CourseOfferingAssociation<CourseResult>>().Property(c => c.AssociationId).ValueGeneratedOnAdd();
-            modelBuilder.Entity<ProgramOfferingAssociation<ProgramResult>>().Property(c => c.AssociationId).ValueGeneratedOnAdd();
-            modelBuilder.Entity<ComponentOfferingAssociation<ComponentResult>>().Property(c => c.AssociationId).ValueGeneratedOnAdd();
         }
 
         /// <summary>
@@ -214,9 +205,6 @@ namespace Synigo.OneApi.Storage
             modelBuilder.Entity<Room>().Property(p => p.RoomId).ValueGeneratedNever();
             modelBuilder.Entity<Service>().Property(p => p.ServiceId).ValueGeneratedNever();
             modelBuilder.Entity<Geolocation>().Property(p => p.GeoLocationId).ValueGeneratedNever();
-            modelBuilder.Entity<CourseOfferingAssociation<CourseResult>>().Property(c => c.AssociationId).ValueGeneratedNever();
-            modelBuilder.Entity<ProgramOfferingAssociation<ProgramResult>>().Property(c => c.AssociationId).ValueGeneratedNever();
-            modelBuilder.Entity<ComponentOfferingAssociation<ComponentResult>>().Property(c => c.AssociationId).ValueGeneratedNever();
         }
 
         /// <summary>
@@ -462,28 +450,7 @@ namespace Synigo.OneApi.Storage
                 v => v.Serialize(),
                 v => v.Deserialize<Dictionary<string, object>>());
 
-            modelBuilder.Entity<ProgramOfferingAssociation<ProgramResult>>()
-                .Property(p => p.Ext)
-                .IsRequired(false)
-                .HasConversion(
-                v => v.Serialize(),
-                v => v.Deserialize<Dictionary<string, object>>());
-
             modelBuilder.Entity<Service>()
-                .Property(p => p.Ext)
-                .IsRequired(false)
-                .HasConversion(
-                v => v.Serialize(),
-                v => v.Deserialize<Dictionary<string, object>>());
-
-            modelBuilder.Entity<CourseOfferingAssociation<CourseResult>>()
-                .Property(p => p.Ext)
-                .IsRequired(false)
-                .HasConversion(
-                v => v.Serialize(),
-                v => v.Deserialize<Dictionary<string, object>>());
-
-            modelBuilder.Entity<ComponentOfferingAssociation<ComponentResult>>()
                 .Property(p => p.Ext)
                 .IsRequired(false)
                 .HasConversion(
