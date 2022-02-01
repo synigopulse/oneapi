@@ -10,13 +10,14 @@ namespace Synigo.OneApi.Common.Extensions
         public static T GetEnumValue<T>(this string val)
             where T : Enum
         {
-            return (T)Enum.Parse(typeof(T), val);
+            return (T)Enum.Parse(typeof(T), val, true);
         }
 
         public static Nullable<T> GetEnumValueNullable<T>(this string val)
             where T : struct, Enum
+
         {
-            if (!Enum.TryParse<T>(val, out var returnVal))
+            if (!Enum.TryParse<T>(val, true, out var returnVal))
                 return null;
 
             return returnVal;
