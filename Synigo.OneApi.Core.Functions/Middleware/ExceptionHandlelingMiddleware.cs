@@ -29,11 +29,12 @@ namespace Synigo.OneApi.Core.Functions.Middleware
         {
             try
             {
+                logger.LogInformation($"Executed {context.FunctionDefinition.Name}");
                 await next(context);
             }
             catch (Exception ex)
             {
-                logger.LogError(ex, ex.Message, new object[] { ex.StackTrace, ex.InnerException, ex.InnerException?.StackTrace });
+                logger.LogError(ex, ex.Message, new object[] { ex.StackTrace, ex.InnerException, ex.InnerException?.StackTrace, context.GetHttpRequestData() });
                 await InvokeResult(ex, context);
                 return;
             }
