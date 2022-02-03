@@ -145,7 +145,7 @@ namespace Synigo.OpenEducationApi.Model.V4
         /// Programs which are a part of this program (e.g specializations)
         /// </summary>
         [JsonPropertyName("children")]
-        public virtual List<Program> Chidren { get; set; }
+        public virtual List<Program> Children { get; set; }
 
         /// <summary>
         /// The organization providing the current course
