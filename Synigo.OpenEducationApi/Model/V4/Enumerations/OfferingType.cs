@@ -12,6 +12,6 @@ namespace Synigo.OpenEducationApi.Model.V4
         [EnumMember(Value = "course")]
         Course,
         [EnumMember(Value = "component")]
-        Componenet
+        Component
     }
 }
