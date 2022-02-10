@@ -27,6 +27,6 @@ namespace Synigo.OpenEducationApi.Model.V4
         ///  A human-readable explanation specific to this occurrence of the problem
         /// </summary>
         [JsonPropertyName("detail")]
-        public string Datail { get; set; }
+        public string Detail { get; set; }
     }
 }
