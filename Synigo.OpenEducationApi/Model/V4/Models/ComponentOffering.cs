@@ -16,20 +16,6 @@ namespace Synigo.OpenEducationApi.Model.V4
         public int? ResultWeight { get; set; }
 
         /// <summary>
-        /// The moment on which this offering starts, RFC3339 (full-date)
-        /// </summary>
-        [Required]
-        [JsonPropertyName("startDateTime")]
-        public override DateTime StartDate { get; set; }
-
-        /// <summary>
-        /// The moment on which this offering ends, RFC3339 (full-date)
-        /// </summary>
-        [Required]
-        [JsonPropertyName("endDateTime")]
-        public override DateTime EndDate { get; set; }
-
-        /// <summary>
         /// <see cref="Room"/>
         /// </summary>
         [JsonPropertyName("room")]
