@@ -41,7 +41,7 @@ namespace Synigo.OneApi.Core.Functions.Middleware
             return await Validate(clientId, tenantId, token);
         }
 
-        private async Task<ClaimsPrincipal> Validate(string clientId, string aplicationId, string token)
+        public async Task<ClaimsPrincipal> Validate(string clientId, string aplicationId, string token)
         {
             if (!_tokenValidator.CanReadToken(token))
             {
@@ -54,9 +54,10 @@ namespace Synigo.OneApi.Core.Functions.Middleware
 
             var openIdConfig = await _configurationManager.GetConfigurationAsync();
 
-            _tokenValidationParameters.ValidAudience = clientId;
+            _tokenValidationParameters.ValidAudience = $"{clientId}";
             _tokenValidationParameters.ValidIssuer = openIdConfig.Issuer;
             _tokenValidationParameters.IssuerSigningKeys = openIdConfig.SigningKeys;
+            _tokenValidationParameters.ValidateAudience = false;
 
             return _tokenValidator.ValidateToken(token, _tokenValidationParameters, out _);
         }
