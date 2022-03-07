@@ -1,4 +1,9 @@
 ﻿using System.Net;
+using System.Collections.Generic;
+using System.Reflection;
+using System;
+using System.Linq;
+using Synigo.OneApi.Core.Functions.Attributes;
 using System.Threading.Tasks;
 using Microsoft.Azure.Functions.Worker;
 using Microsoft.Azure.Functions.Worker.Middleware;
@@ -23,9 +28,11 @@ namespace Synigo.OneApi.Core.Functions.Middleware
         {
             try
             {
-                // Validate token
-                var principal = await _authenthicationProvider.AuthenticateAsync(context);
-
+                if(!GetCustomAttributesOnClassAndMethod<AnonymousAttribute>(context).Any())
+                {
+                    // Validate token
+                    var principal = await _authenthicationProvider.AuthenticateAsync(context);
+                }
                 await next(context);
             }
             catch (SecurityTokenException)
@@ -37,6 +44,25 @@ namespace Synigo.OneApi.Core.Functions.Middleware
                 return;
             }
 
+        }
+
+        private List<T> GetCustomAttributesOnClassAndMethod<T>(FunctionContext context)
+            where T: Attribute
+        {
+            // This contains the fully qualified name of the method
+            // E.g. IsolatedFunctionAuth.TestFunctions.ScopesAndAppRoles
+            var entryPoint = context.FunctionDefinition.EntryPoint;
+
+            var assemblyPath = context.FunctionDefinition.PathToAssembly;
+            var assembly = Assembly.LoadFrom(assemblyPath);
+            var typeName = entryPoint.Substring(0, entryPoint.LastIndexOf('.'));
+            var type = assembly.GetType(typeName);
+            var methodName = entryPoint.Substring(entryPoint.LastIndexOf('.') + 1);
+            var method = type.GetMethod(methodName);
+
+            var methodAttributes = method.GetCustomAttributes<T>();
+            var classAttributes = method.DeclaringType.GetCustomAttributes<T>();
+            return methodAttributes.Concat(classAttributes).ToList();
         }
     }
 }
