@@ -31,7 +31,7 @@ namespace Synigo.OneApi.Core.Functions.Middleware
         public async Task<ClaimsPrincipal> AuthenticateAsync(FunctionContext context)
         {
             if (!TryGetTokenFromHeaders(context, out var token))
-                return null;
+                throw new SecurityTokenException("Can't read token");
 
             if (!_tokenValidator.CanReadToken(token))
                 throw new SecurityTokenException("Can't read token");
