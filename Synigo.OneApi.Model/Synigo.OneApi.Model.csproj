@@ -26,6 +26,7 @@
 	</ItemGroup>
 	<ItemGroup>
 		<Folder Include="Exceptions\" />
+		<Folder Include="Common\" />
 	</ItemGroup>
 	<ItemGroup>
 	  <PackageReference Include="Microsoft.Graph" Version="4.6.0" />
