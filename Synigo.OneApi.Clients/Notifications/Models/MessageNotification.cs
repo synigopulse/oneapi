@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Newtonsoft.Json;
+using System.Collections.Generic;
 using System.Text.Json.Serialization;
 
 namespace Synigo.OneApi.Clients.Notifications.Models
@@ -7,16 +8,16 @@ namespace Synigo.OneApi.Clients.Notifications.Models
     {
         static readonly string NotificationResource = "ExternalNotifications";
 
-        [JsonPropertyName("tenantId")]
+        [JsonProperty("tenantId")]
         private string TenantId { get; set; }
 
-        [JsonPropertyName("resource")]
+        [JsonProperty("resource")]
         private string Resource { get; set; }
 
-        [JsonPropertyName("resourceType")]
+        [JsonProperty("resourceType")]
         private string ResourceType { get; set; }
 
-        [JsonPropertyName("data")]
+        [JsonProperty("data")]
         private NotificationSource Data { get; set; }
 
         public MessageNotification(string tenantId, NotificationSource notificationSource)

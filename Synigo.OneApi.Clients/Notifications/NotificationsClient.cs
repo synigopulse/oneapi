@@ -7,6 +7,7 @@ using System.Text.Json;
 using System.Threading.Tasks;
 using System.Linq;
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
+using Newtonsoft.Json;
 
 namespace Synigo.OneApi.Clients.Notifications
 {
@@ -30,11 +31,11 @@ namespace Synigo.OneApi.Clients.Notifications
             {
                 HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Post, $"{_synigoUrl}/messagenotifications/{tenantId}/messageNotification");
                 request.Headers.Add("x-clientid", clientId);
-                request.Headers.Add("x-clientSecret", clientSecret);
+                request.Headers.Add("x-clientsecret", clientSecret);
                 request.Headers.Add("x-tenantId", tenantId);
                 var token = await GetToken(tenantId, clientId, clientSecret);
                 request.Headers.Add("x-token", token);
-                request.Content = new StringContent(JsonSerializer.Serialize(messageNotification));
+                request.Content = new StringContent(JsonConvert.SerializeObject(messageNotification));
                 await client.SendAsync(request);
             }
         }

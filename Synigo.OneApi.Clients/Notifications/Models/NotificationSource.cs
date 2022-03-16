@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,39 +13,39 @@ namespace Synigo.OneApi.Clients.Notifications.Models
         /// <summary>
         /// Get or set multilanguage title of the notification
         /// </summary>
-        [JsonPropertyName("multiTitle")]
+        [JsonProperty("multiTitle")]
         public Dictionary<string,string> MultiTitle { get; set; }
 
 
         /// <summary>
         /// Get or set multilanguage description of the notification
         /// </summary>
-        [JsonPropertyName("multiDescription")]
+        [JsonProperty("multiDescription")]
         public Dictionary<string, string> MultiDescription { get; set; }
 
         /// <summary>
         /// Get or set the image of notification
         /// </summary>
-        [JsonPropertyName("imageUrl")]
+        [JsonProperty("imageUrl")]
         public string ImageUrl { get; set; }
 
         /// <summary>
         /// Get or set the url of the notification
         /// </summary>
-        [JsonPropertyName("url")]
+        [JsonProperty("url")]
         public string Url { get; set; }
 
         /// <summary>
         /// Get or set the type of this source
         /// </summary>
-        [JsonPropertyName("type")]
+        [JsonProperty("type")]
         public string NotificationTypeIdentifier { get; set; }
 
         /// <summary>
         /// Get or set the action 
         /// Modified or Created
         /// </summary>
-        [JsonPropertyName("action")]
+        [JsonProperty("action")]
         public NotificationAction Action { get; set; }
 
         public NotificationSource()
