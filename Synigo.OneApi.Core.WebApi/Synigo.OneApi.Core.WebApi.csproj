@@ -21,6 +21,7 @@
 		<None Include="images\icon.png" Pack="true" PackagePath="\" />
 	</ItemGroup>
 	<ItemGroup>
+		<ProjectReference Include="..\Synigo.OneApi.Clients\Synigo.OneApi.Clients.csproj" />
 		<ProjectReference Include="..\Synigo.OneAPi.Core\Synigo.OneApi.Core.csproj" />
 	</ItemGroup>
 	<ItemGroup>
