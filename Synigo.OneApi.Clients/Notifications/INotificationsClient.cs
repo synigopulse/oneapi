@@ -7,5 +7,7 @@ namespace Synigo.OneApi.Clients.Notifications
     public interface INotificationsClient
     {
         Task<HttpResponseMessage> SendNotification(NotificationSource notification);
+
+        Task<HttpResponseMessage> SendPushNotification(PushNotification pushNotification);
     }
 }

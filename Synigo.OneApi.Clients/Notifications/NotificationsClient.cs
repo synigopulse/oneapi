@@ -32,5 +32,18 @@ namespace Synigo.OneApi.Clients.Notifications
             request.Content = new StringContent(JsonConvert.SerializeObject(messageNotification));
             return await client.SendAsync(request);
         }
+
+        /// <summary>
+        /// Sends push notification to mobile application
+        /// </summary>
+        /// <param name="pushNotification" cref="PushNotification">Push notification model</param>
+        /// <returns></returns>
+        public async Task<HttpResponseMessage> SendPushNotification(PushNotification pushNotification)
+        {
+            var client = new SynigoApiClient(Configuration);
+            HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Post, $"{_synigoApiUrl}/pushnotifications/{_tenantId}/message");
+            request.Content = new StringContent(JsonConvert.SerializeObject(pushNotification));
+            return await client.SendAsync(request);
+        }
     }
 }
