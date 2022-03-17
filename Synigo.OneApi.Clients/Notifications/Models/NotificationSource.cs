@@ -48,6 +48,19 @@ namespace Synigo.OneApi.Clients.Notifications.Models
         [JsonProperty("action")]
         public NotificationAction Action { get; set; }
 
+        /// <summary>
+        /// Get or set groups that will receive notifications
+        /// If empty or set to All all users in organization will receive notification
+        /// </summary>
+        [JsonProperty("groups")]
+        public List<string> Groups { get; set; }
+
+        /// <summary>
+        /// Get or set individuals that will receive notification
+        /// </summary>
+        [JsonProperty("individuals")]
+        public List<string> Individuals { get; set; }
+
         public NotificationSource()
         {
 

@@ -40,6 +40,7 @@ namespace Synigo.OneApi.Clients.Notifications
         /// <returns></returns>
         public async Task<HttpResponseMessage> SendPushNotification(PushNotification pushNotification)
         {
+            pushNotification.TenantId = _tenantId;
             var client = new SynigoApiClient(Configuration);
             HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Post, $"{_synigoApiUrl}/pushnotifications/{_tenantId}/message");
             request.Content = new StringContent(JsonConvert.SerializeObject(pushNotification));
