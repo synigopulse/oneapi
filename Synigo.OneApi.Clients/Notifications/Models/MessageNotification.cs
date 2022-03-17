@@ -1,11 +1,11 @@
 ﻿using Newtonsoft.Json;
-using System.Collections.Generic;
+using Synigo.OneApi.Model.Notifications;
 
 namespace Synigo.OneApi.Clients.Notifications.Models
 {
-    public class MessageNotification
+    internal class MessageNotification
     {
-        static readonly string NotificationResource = "ExternalNotifications";
+        public static readonly string NotificationResource = "ExternalNotifications";
 
         /// <summary>
         /// Get or set tenant id
@@ -25,28 +25,11 @@ namespace Synigo.OneApi.Clients.Notifications.Models
         [JsonProperty("data")]
         private NotificationSource Data { get; set; }
 
-        public MessageNotification(string tenantId, NotificationSource notificationSource)
+        public MessageNotification(string tenantId, PortalNotificationModel notificationModel)
         {
             TenantId = tenantId;
             ResourceType = NotificationResource;
-            Data = notificationSource;
-            Data.ParentType = NotificationResource;
-        }
-
-        public MessageNotification(string tenantId, Dictionary<string, string> multiTitle, Dictionary<string, string> multiDescription, string typeIdentifier, string imageUrl = null, string url = null, NotificationAction action = NotificationAction.Created)
-        {
-            TenantId = tenantId;
-            ResourceType = NotificationResource;
-            Data = new NotificationSource(multiTitle, multiDescription, typeIdentifier, imageUrl, url, action);
-            Data.ParentType = NotificationResource;
-        }
-
-        public MessageNotification(string tenantId,string title, string description, string typeIdentifier, string imageUrl = null, string url = null, NotificationAction action = NotificationAction.Created)
-        {
-            TenantId = tenantId;
-            ResourceType = NotificationResource;
-            Data = new NotificationSource(title, description, typeIdentifier, imageUrl, url, action);
-            Data.ParentType = NotificationResource;
+            Data = new NotificationSource(notificationModel);
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
 using Synigo.OneApi.Clients.Notifications.Models;
+using Synigo.OneApi.Model.Notifications;
 using System.Net.Http;
 using System.Threading.Tasks;
 
@@ -24,7 +25,7 @@ namespace Synigo.OneApi.Clients.Notifications
         /// </summary>
         /// <param name="notification" cref="NotificationSource">received NotificationSource model</param>
         /// <returns cref="HttpResponseMessage">Returns HttpResponseMessage</returns>
-        public async Task<HttpResponseMessage> SendNotification(NotificationSource notification)
+        public async Task<HttpResponseMessage> SendNotification(PortalNotificationModel notification)
         {
             var client = new SynigoApiClient(Configuration);
             var messageNotification = new MessageNotification(_tenantId, notification);
@@ -37,10 +38,10 @@ namespace Synigo.OneApi.Clients.Notifications
         /// Sends push notification to mobile application
         /// </summary>
         /// <param name="pushNotification" cref="PushNotification">Push notification model</param>
-        /// <returns></returns>
-        public async Task<HttpResponseMessage> SendPushNotification(PushNotification pushNotification)
+        /// <returns cref="HttpResponseMessage">Returns HttpResponseMessage</returns>
+        public async Task<HttpResponseMessage> SendPushNotification(PushNotificationModel pushNotificationModel)
         {
-            pushNotification.TenantId = _tenantId;
+            var pushNotification = new PushNotification(_tenantId, pushNotificationModel);
             var client = new SynigoApiClient(Configuration);
             HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Post, $"{_synigoApiUrl}/pushnotifications/{_tenantId}/message");
             request.Content = new StringContent(JsonConvert.SerializeObject(pushNotification));
