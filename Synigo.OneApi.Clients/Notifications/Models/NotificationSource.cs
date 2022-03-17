@@ -42,6 +42,12 @@ namespace Synigo.OneApi.Clients.Notifications.Models
         public string NotificationTypeIdentifier { get; set; }
 
         /// <summary>
+        /// Get or set the type of this source
+        /// </summary>
+        [JsonProperty("parentType")]
+        public string ParentType { get; set; }
+
+        /// <summary>
         /// Get or set the action 
         /// Modified or Created
         /// </summary>

@@ -14,12 +14,6 @@ namespace Synigo.OneApi.Clients.Notifications.Models
         private string TenantId { get; set; }
 
         /// <summary>
-        /// Get or set resource value
-        /// </summary>
-        [JsonProperty("resource")]
-        private string Resource { get; set; }
-
-        /// <summary>
         /// Get or set resource type value
         /// </summary>
         [JsonProperty("resourceType")]
@@ -34,25 +28,25 @@ namespace Synigo.OneApi.Clients.Notifications.Models
         public MessageNotification(string tenantId, NotificationSource notificationSource)
         {
             TenantId = tenantId;
-            Resource = NotificationResource;
             ResourceType = NotificationResource;
             Data = notificationSource;
+            Data.ParentType = NotificationResource;
         }
 
         public MessageNotification(string tenantId, Dictionary<string, string> multiTitle, Dictionary<string, string> multiDescription, string typeIdentifier, string imageUrl = null, string url = null, NotificationAction action = NotificationAction.Created)
         {
             TenantId = tenantId;
-            Resource = NotificationResource;
             ResourceType = NotificationResource;
             Data = new NotificationSource(multiTitle, multiDescription, typeIdentifier, imageUrl, url, action);
+            Data.ParentType = NotificationResource;
         }
 
         public MessageNotification(string tenantId,string title, string description, string typeIdentifier, string imageUrl = null, string url = null, NotificationAction action = NotificationAction.Created)
         {
             TenantId = tenantId;
-            Resource = NotificationResource;
             ResourceType = NotificationResource;
             Data = new NotificationSource(title, description, typeIdentifier, imageUrl, url, action);
+            Data.ParentType = NotificationResource;
         }
     }
 }

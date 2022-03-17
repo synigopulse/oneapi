@@ -13,12 +13,6 @@ namespace Synigo.OneApi.Model.Notifications
         public string NotificationTypeId { get; set; }
 
         /// <summary>
-        /// Get or set notification type
-        /// </summary>
-        [JsonPropertyName("notificationType")]
-        public string NotificationType { get; set; }
-
-        /// <summary>
         /// Get or set title
         /// </summary>
         [JsonPropertyName("title")]
