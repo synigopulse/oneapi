@@ -12,6 +12,7 @@ namespace Synigo.OneApi.Clients
         protected readonly string _clientSecret;
         protected readonly string _tenantId;
         protected readonly string _synigoApiUrl;
+        private static HttpClient _httpClient = new HttpClient();
 
         public SynigoApiClient(IConfiguration configuration)
         {
@@ -24,11 +25,8 @@ namespace Synigo.OneApi.Clients
 
         public async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request)
         {
-            using (var httpClient = new HttpClient())
-            {
-                request = await AuthorizeRequest(request);
-                return await httpClient.SendAsync(request);
-            }
+            request = await AuthorizeRequest(request);
+            return await _httpClient.SendAsync(request);
         }
 
         private async Task<HttpRequestMessage> AuthorizeRequest(HttpRequestMessage request)
