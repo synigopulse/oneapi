@@ -23,28 +23,17 @@ namespace Synigo.OneApi.Clients
             _synigoApiUrl = Configuration.GetSection("AzureAd").GetValue<string>("SynigoApiUrl");
         }
 
-        public async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request)
+        public async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, string token)
         {
-            request = await AuthorizeRequest(request);
+            request = AuthorizeRequest(request, token);
             return await _httpClient.SendAsync(request);
         }
 
-        private async Task<HttpRequestMessage> AuthorizeRequest(HttpRequestMessage request)
+        private HttpRequestMessage AuthorizeRequest(HttpRequestMessage request, string token)
         {
-            request.Headers.Add("x-clientid", _clientId);
-            request.Headers.Add("x-clientsecret", _clientSecret);
-            request.Headers.Add("x-tenantId", _tenantId);
-            var token = await AcquireTokenAsync();
-            request.Headers.Add("x-token", token);
+            request.Headers.Add("Authorization", $"Bearer {token}");
             return request;
         }
 
-        private async Task<string> AcquireTokenAsync()
-        {
-            var clientCredential = new ClientCredential(_clientId, _clientSecret);
-            var context = new AuthenticationContext($"https://login.microsoftonline.com/{_tenantId}");
-            var authenticationResult = await context.AcquireTokenAsync("https://graph.microsoft.com", clientCredential);
-            return authenticationResult?.AccessToken;
-        }
     }
 }

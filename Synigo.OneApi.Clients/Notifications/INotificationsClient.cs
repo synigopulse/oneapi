@@ -6,8 +6,8 @@ namespace Synigo.OneApi.Clients.Notifications
 {
     public interface INotificationsClient
     {
-        Task<HttpResponseMessage> SendNotification(PortalNotificationModel notification);
+        Task<HttpResponseMessage> SendNotification(PortalNotificationModel notification, string token);
 
-        Task<HttpResponseMessage> SendPushNotification(PushNotificationModel pushNotification);
+        Task<HttpResponseMessage> SendPushNotification(PushNotificationModel pushNotification, string token);
     }
 }
