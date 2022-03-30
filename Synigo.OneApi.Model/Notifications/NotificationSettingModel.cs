@@ -7,16 +7,16 @@ namespace Synigo.OneApi.Model.Notifications
         public static readonly string SynigoType = "https://synigo.model#notificationSettings";
 
         /// <summary>
+        /// Get or set notification type
+        /// </summary>
+        [JsonPropertyName("notificationTypeId")]
+        public string NotificationTypeId { get; set; }
+
+        /// <summary>
         /// Get or set title
         /// </summary>
         [JsonPropertyName("title")]
         public string Title { get; set; }
-
-        /// <summary>
-        /// Get or set notification type
-        /// </summary>
-        [JsonPropertyName("notificationType")]
-        public string NotificationType { get; set; }
 
         /// <summary>
         /// Get or set notification active status
