@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
@@ -19,11 +19,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="images\icon.png" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="images\" />
+    <None Include="images\icon.png">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
   </ItemGroup>
 
 </Project>
