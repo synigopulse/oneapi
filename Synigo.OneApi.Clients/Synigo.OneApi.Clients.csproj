@@ -2,6 +2,11 @@
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
+    <Description>Clients Package for Synigo One API</Description>
+    <Copyright>Synigo B.V.</Copyright>
+    <PackageProjectUrl>https://github.com/synigopulse/oneapi</PackageProjectUrl>
+    <PackageIcon>icon.png</PackageIcon>
+    <NeutralLanguage>English</NeutralLanguage>
   </PropertyGroup>
 
   <ItemGroup>
@@ -11,6 +16,13 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Synigo.OneApi.Model\Synigo.OneApi.Model.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="images\icon.png">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
   </ItemGroup>
 
 </Project>
