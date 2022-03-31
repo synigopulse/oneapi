@@ -16,7 +16,6 @@ using Synigo.OneApi.Interfaces;
 using Synigo.OneApi.Core.Execution;
 using System.Text.Json.Serialization;
 using Microsoft.AspNetCore.Http.Json;
-using Synigo.OneApi.Clients.Notifications;
 
 namespace Synigo.OneApi.Core.WebApi
 {
@@ -80,8 +79,6 @@ namespace Synigo.OneApi.Core.WebApi
             });
 
             services.AddSwaggerGen(ConfigureSwaggerGen);
-
-            services.AddScoped<INotificationsClient, NotificationsClient>();
 
             ConfigureCustomServices(_oneApiBuilder);
         }
