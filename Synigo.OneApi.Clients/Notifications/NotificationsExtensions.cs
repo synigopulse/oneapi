@@ -5,7 +5,7 @@ namespace Synigo.OneApi.Clients.Notifications
 {
     public static class NotificationsExtensions
     {
-        public static OneApiBuilder UseTokens(this OneApiBuilder builder)
+        public static OneApiBuilder UseNotificationsClient(this OneApiBuilder builder)
         {
             builder.Services.AddScoped<INotificationsClient, NotificationsClient>();
             return builder;
