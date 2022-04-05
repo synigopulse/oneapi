@@ -29,7 +29,9 @@ namespace Synigo.OneApi.Storage
                 switch (storageType)
                 {
                     case StorageType.Sql:
-                        options.UseSqlServer(connectionString);
+                        options.UseSqlServer(connectionString, sqlServerBuilder => {
+                            sqlServerBuilder.EnableRetryOnFailure();
+                        } );
                         break;
                     case StorageType.SqlLite:
                         options.UseSqlite(connectionString);
