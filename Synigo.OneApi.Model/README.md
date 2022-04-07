@@ -6,6 +6,36 @@ Notifications can be used to indicate that a user has something noteworthy in a 
 
 It is also possible to nudge a user, for example *"You've passed your very difficult exam — Well done!!"* or *"It's your birthday — get out there and celebrate!"*
 
+```CSharp
+  /// <summary>
+    /// Class represents a notification which is shown in the portal.
+    /// e.g. You have 3 new messages or it's time to enter your expense report.
+    /// The formatting of the messages can be done in your CMS.
+    /// </summary>
+    public class NotificationModel
+    {
+        /// <summary>
+        /// Get or set the url, to navigate to, when a user clicks this notication
+        /// (optional)
+        /// </summary>
+        [JsonPropertyName("url")]
+        public string Url { get; set; }
+
+        /// <summary>
+        /// Get or set the count of this notification. If you use 0 and you choose the "Hide when empty flag"
+        /// the notification will not be shown
+        /// </summary>
+        [JsonPropertyName("count")]
+        public int Count { get; set; }
+
+        /// <summary>
+        /// Get or set an extension object containing additional data for this item
+        /// </summary>
+        [JsonPropertyName("ext")]
+        public Dictionary<string, object> Ext { get; set; }
+    }
+```
+Or JSON
 ``` json
 {
    "count": 3, //the count of items for your notification
@@ -20,3 +50,13 @@ It is also possible to nudge a user, for example *"You've passed your very diffi
 |Key|Type|Description|
 |--|--|--|
 | **card** |object| Adaptive Card json. If this is passed, clicking the notification will result into opening this Adaptive Card. For more information about Adaptive Cards and the way we handle them, please visit our support center at https://start.synigopulse.info. Also look at https://www.adaptivecards.io for more information about Adaptive Cards.
+
+## People
+You add a people endpoint to your API to show a group of people to a user of your portal. You can think about:
+- All of a student's teachers
+- All of a student's fellow students
+- All of a customer's client team
+- All new employee's starting this week
+
+
+
