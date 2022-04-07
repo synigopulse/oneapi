@@ -38,9 +38,9 @@ It is also possible to nudge a user, for example *"You've passed your very diffi
 Or JSON
 ``` json
 {
-   "count": 3, //the count of items for your notification
-   "url": 'https://www.microsoft.com', //A link to the source of your notification
-   "ext": {} //An extension object to pass additional data
+  "count": 3, //the count of items for your notification
+  "url": 'https://www.microsoft.com', //A link to the source of your notification
+  "ext": {} //An extension object to pass additional data
 }
 ```
 ### Notes
@@ -58,5 +58,55 @@ You add a people endpoint to your API to show a group of people to a user of you
 - All of a customer's client team
 - All new employee's starting this week
 
+See the model below. 
+```CSharp
+	public class Person
+	{        
+        /// <summary>
+        /// Get or set the primary e-mailaddress of this person
+        /// </summary>
+        [JsonPropertyName("mail")]
+        public string Mail { get; set; }
 
+        /// <summary>
+        /// Get or set the url of the official picture of this person
+        /// </summary>
+        [JsonPropertyName("photoOfficial")]
+        public string PhotoOfficial { get; set; }
 
+        /// <summary>
+        /// Get or set object for additional non-standard attributes)
+        /// </summary>
+        [JsonPropertyName("ext")]
+        public Dictionary<string,object> Ext { get; set; }
+    }
+```
+Or Json
+```json
+[
+  {
+    "mail": "frank@contoso.com""photoOfficial": "https://graph.microsoft.com/v1.0/users/frank@contoso.com/photo/$value?resource=https://graph.microsoft.com",
+    "ext": {
+      "title": "CTO",
+      "subTitle": "Also makes the cocktails",
+      "groupBy": "Management"
+    }
+  },
+  {
+    "mail": "jimbo@contoso.com",
+    "photoOfficial": "https://graph.microsoft.com/v1.0/users/jimbo@contoso.com/photo/$value?resource=https://graph.microsoft.com",
+    "ext": {
+      "groupBy": "Management"
+    }
+  }
+]
+```
+
+### Notes
+- If you have bearer authentication in place for your photoOfficial resource, you can add the ?resource=[resourcename] querystring parameter to the photoOfficial url. The portal tries to resolve and use the bearer token associated with this resource. 
+### Possible values for ext(ension)
+|Key|Type|Description|
+|--|--|--|
+| **title** |string| Optional value. If you want to override the default title of this person, you can add this extension value
+| **subTitle** | string| Optional value. You can add an extra (or sub) title to this person
+| **groupBy** |string| Optional value. If you want to apply grouping of people, set this value as the title and groupby value. 
