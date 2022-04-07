@@ -60,8 +60,8 @@ You add a people endpoint to your API to show a group of people to a user of you
 
 See the model below. 
 ```CSharp
-    public class Person
-    {        
+	public class Person
+	{        
         /// <summary>
         /// Get or set the primary e-mailaddress of this person
         /// </summary>
@@ -110,3 +110,6 @@ Or Json
 | **title** |string| Optional value. If you want to override the default title of this person, you can add this extension value
 | **subTitle** | string| Optional value. You can add an extra (or sub) title to this person
 | **groupBy** |string| Optional value. If you want to apply grouping of people, set this value as the title and groupby value. 
+
+Here's a small example...
+![Example](https://wesynigopulselive.blob.core.windows.net/public/images/people.png)
