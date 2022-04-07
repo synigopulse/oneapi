@@ -141,5 +141,5 @@ See these links for more information:
 ```
 
 ## More information
-- [this Everything about our models](Synigo.OneApi.Model/README.md)
+- [Everything about our models](Synigo.OneApi.Model/README.md)
 
