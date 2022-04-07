@@ -16,4 +16,7 @@ It is also possible to nudge a user, for example *"You've passed your very diffi
 ### Notes
 - In your CMS, you can set the title, subtitle and image of your notification. The count can be injected anywhere in the title and or subtitle by using a **{0}** placeholder.
 - If you want to nudge someone, you can either set the count to **0** or **1** where 0 hides the notification (nudge) and 1 shows the notification.
-- 
+### Possible values for ext(ension)
+|Key|Type|Description|
+|--|--|--|
+| **card** |object| Adaptive Card json. If this is passed, clicking the notification will result into opening this Adaptive Card. For more information about Adaptive Cards and the way we handle them, please visit our support center at https://start.synigopulse.info. Also look at https://www.adaptivecards.io for more information about Adaptive Cards.
