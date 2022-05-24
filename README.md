@@ -40,25 +40,26 @@ using Microsoft.Extensions.DependencyInjection;
 using Swashbuckle.AspNetCore.SwaggerGen;
 using Synigo.OneApi.Core.WebApi;
 
-public class Startup : BaseStartup // inherit this one
+public class Startup : BaseStartup // Inherit from this one.
 {
     public Startup(IConfiguration configuration) : base(configuration)
     {
     
     }
-    // If you want to add Swagger documentation to your API
-    // You can override ConfigureSwaggerGen and and configure it here...
+    
+    // If you want to add Swagger documentation to your API you can 
+    // override ConfigureSwaggerGen and configure it here.
     protected override void ConfigureSwaggerGen(SwaggerGenOptions options)
     {
         base.ConfigureSwaggerGen(options);
         options.EnableAnnotations();
     }
     
-    // If you have any other Dependencies to register, you can override 
-    // This method and add them here
+    // If you have any other dependencies to register, you can override 
+    // this method.
     protected override void ConfigureCustomServices(OneApiBuilder builder)
     {
-       
+       // Add additional dependencies..
     }
 }
 ```
@@ -73,15 +74,15 @@ using Synigo.OneApi.Interfaces;
 
 [ApiController]
 [Route("[controller]")]
-public class MyController : OneApiController // inherit this one 
+public class MyController : OneApiController // Inherit this one.
 {
-  // IExecutionContext gets injected here and is accesible using base.Context
+  // IExecutionContext gets injected here and is accessible using base.Context.
   public MyController(IExecutionContext context) : base(context)
   {
 
-	}
+  }
 	
-	  // This annotation will create a nice description for your Open Api Documentation
+  // This annotation will create a nice description for your Open Api Documentation.
   [SwaggerOperation(
     Summary = "NICE SUMMARY OF YOUR ENDPOINT",
     Description = "MAYBE A DESCRIPTION?",
@@ -89,10 +90,10 @@ public class MyController : OneApiController // inherit this one
     Tags = new[] { "offer", "recruitee", "mylist" }
   )]
   [HttpGet("MYROUTE")]
-  public async Task<IActionResult> GeMyStuffAsync() // implement this one
+  public async Task<IActionResult> GeMyStuffAsync() // Implement this one.
   {
     // Check if the user is authorized to use this endpoint
-    // based on checking the JWT token for valid scopes
+    // based on checking the JWT token for valid scopes.
     var authResult = await (Context.Current.IsAuthorizedAsync("Api.Read.All", "Api.myspecialAction"));
 
     // Nope... not valid :-(
@@ -100,9 +101,9 @@ public class MyController : OneApiController // inherit this one
     {
       return new UnauthorizedResult();
     }
-    // Return a value from an injected provider
-    // Context gives you all kinds of relevant references to 
-    // information regarding your current request
+    
+    // Return a value from an injected provider. Context gives you all kinds
+    // of relevant references to information regarding your current request.
     return new OkObjectResult(_injectedProvider.GetSomeValue(Context.Current.Principal));  
   }
 }
