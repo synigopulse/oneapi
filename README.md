@@ -35,32 +35,47 @@ Follow these instructions if you want to implement a ASP.NET Core solution:
 ### Step 2 Inherit from  Synigo.OneApi.Core.WebApi.BaseStartup 
 
 ```c#
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Swashbuckle.AspNetCore.SwaggerGen;
 using Synigo.OneApi.Core.WebApi;
 
-public class Startup : BaseStartup // Inherit from this one.
+public class Startup : BaseStartup // Inherit from base start up
 {
-    public Startup(IConfiguration configuration) : base(configuration)
-    {
-    
-    }
-    
-    // If you want to add Swagger documentation to your API you can 
-    // override ConfigureSwaggerGen and configure it here.
-    protected override void ConfigureSwaggerGen(SwaggerGenOptions options)
-    {
-        base.ConfigureSwaggerGen(options);
-        options.EnableAnnotations();
-    }
-    
-    // If you have any other dependencies to register, you can override 
-    // this method.
-    protected override void ConfigureCustomServices(OneApiBuilder builder)
-    {
-       // Add additional dependencies..
-    }
+	// Configuration is injected using Dependency Injection 
+	// and should be passed to the base.
+	public Startup(IConfiguration configuration) : base(configuration)
+	{
+
+	}
+
+	// Here you can configure application specific settings which are configured
+	// during runtime. The default OneApi settings are passed in here by reference.
+	protected override void ConfigureAppSettings(ref OneApiSettings settings)
+	{
+
+	}
+
+	// Here you can configure custom services using the OneApiBuilder. The custom
+	// services are injected into the IServiceCollection of the BaseStartup during runtime.
+	protected override void ConfigureCustomServices(OneApiBuilder builder)
+	{
+
+	}
+
+	// Here you can configure additional Swagger generation options.
+	protected override void ConfigureSwaggerGen(SwaggerGenOptions options)
+	{
+	    base.ConfigureSwaggerGen(options);
+	    options.EnableAnnotations();
+	}
+
+	// Here you can configure additional Json serialization options.
+	protected override void ConfigureJsonSerializerOptions(JsonOptions options)
+	{
+	    base.ConfigureJsonSerializerOptions(options);
+	}
 }
 ```
 
