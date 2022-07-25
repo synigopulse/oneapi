@@ -20,12 +20,12 @@ Follow these instructions if you want to implement a ASP.NET Core solution:
 
 | Package                       | Description                                                  |
 | ----------------------------- | ------------------------------------------------------------ |
-| **Synigo.OneAPI.Model**       | If you want to use our models which are designed to be read by our product Synigo Pulse com, get this one! |
-| **Synigo.OneAPI.Core**        | Contains some of the core functionality used by the other packages |
-| **Synigo.OneAPI.Interfaces**  | Package Contains the interfaces we've implemented, we've created a seperate package for this one, if you want to create your own implementations |
-| **Synigo.OneAPI.Providers**   | This package contains some implementations to some generic providers such as Redis for caching |
 | **Synigo.OneAPI.Common**      | Shared methods and common stuff (we all have this right?)    |
+| **Synigo.OneAPI.Core**        | Contains some of the core functionality used by the other packages |
 | **Synigo.OneAPI.Core.WebApi** | If you have an ASPNET Core implementation (Web API) Pull in this package, it contains most of the code described below |
+| **Synigo.OneAPI.Interfaces**  | Package Contains the interfaces we've implemented, we've created a seperate package for this one, if you want to create your own implementations |
+| **Synigo.OneAPI.Model**       | If you want to use our models which are designed to be read by our product Synigo Pulse com, get this one! |
+| **Synigo.OneAPI.Providers**   | This package contains some implementations to some generic providers such as Redis for caching |
 | **Synigo.OpenEducationAPI**   | This package contains a C# implementation of the V4 implementation of the Open Education API (https://open-education-api.github.io/specification/) |
 
 *(Goto https://www.nuget.org/packages?q=synigo to see all of our Nuget packages )*
