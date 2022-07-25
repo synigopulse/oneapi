@@ -71,7 +71,7 @@ public class Startup : BaseStartup // Inherit from base start up
 	    options.EnableAnnotations();
 	}
 
-	// Here you can configure additional Json serialization options.
+	// Here you can configure additional Json options.
 	protected override void ConfigureJsonSerializerOptions(JsonOptions options)
 	{
 	    base.ConfigureJsonSerializerOptions(options);
