@@ -21,9 +21,7 @@ namespace Synigo.OneApi.Core.WebApi.Settings
         public bool EnableSwaggerUI { get; set; } = false;
         /// <summary>
         /// The Swagger UI options to use when <see cref="EnableSwaggerUI"/> is set to true.
-        /// <para>
-        /// Default value: null
-        /// </para>
+        /// Default value: <see langword="null"/>
         /// </summary>
         public Action<SwaggerUIOptions>? SwaggerUIOptions { get; set; } = null;
     }

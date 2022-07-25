@@ -1,4 +1,5 @@
 ﻿using Synigo.OneApi.Interfaces;
+using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 
 namespace Synigo.OneApi.Core.WebApi.Settings
 {
@@ -27,5 +28,10 @@ namespace Synigo.OneApi.Core.WebApi.Settings
         /// Default value: "health"
         /// </summary>
         public string HealthCheckPattern { get; set; } = "health";
+        /// <summary>
+        /// Additional health check settings. These are only used if <see cref="EnableHealthCheckMapping"/> is set to true.
+        /// Default value: <see langword="null"/>
+        /// </summary>
+        public HealthCheckOptions? HealthCheckOptions { get; set; } = null;
     }
 }

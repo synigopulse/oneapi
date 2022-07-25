@@ -211,7 +211,14 @@ namespace Synigo.OneApi.Core.WebApi
                     }
                     if (settings.EndpointSettings.EnableHealthCheckMapping)
                     {
-                        endpoints.MapHealthChecks(settings.EndpointSettings.HealthCheckPattern);
+                        if (settings.EndpointSettings.HealthCheckOptions == null)
+                        {
+                            endpoints.MapHealthChecks(settings.EndpointSettings.HealthCheckPattern);
+                        } else
+                        {
+                            endpoints.MapHealthChecks(settings.EndpointSettings.HealthCheckPattern,
+                                settings.EndpointSettings.HealthCheckOptions);
+                        }
                     }
                 });
             }

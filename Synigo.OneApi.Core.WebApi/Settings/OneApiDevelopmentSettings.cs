@@ -14,7 +14,7 @@ namespace Synigo.OneApi.Core.WebApi.Settings
         /// </summary>
         public bool EnableExceptionPage { get; set; } = true;
         /// <summary>
-        /// Additional developerr exception page settings.
+        /// Additional developer exception page settings. These are only used if <see cref="EnableExceptionPage"/> is set to true.
         /// Default value: <see langword="null"/>
         /// </summary>
         public DeveloperExceptionPageOptions? ExceptionPageOptions { get; set; } = null;
