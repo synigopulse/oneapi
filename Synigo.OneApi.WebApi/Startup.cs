@@ -1,5 +1,9 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Synigo.OneApi.Core.WebApi;
+using Synigo.OneApi.Interfaces;
+using Synigo.OneApi.Providers.Extensions;
+using Synigo.OneApi.Providers.Products;
+using System.Net.Http;
 
 namespace Synigo.OneApi.WebApi
 {

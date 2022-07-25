@@ -15,12 +15,13 @@ using Swashbuckle.AspNetCore.SwaggerGen;
 using Synigo.OneApi.Core.WebApi.Shared;
 using Synigo.OneApi.Interfaces;
 using Synigo.OneApi.Core.Execution;
+using Synigo.OneApi.Core.WebApi.Extensions;
 
 namespace Synigo.OneApi.Core.WebApi
 {
     public abstract class BaseStartup
     {
-        private OneApiBuilder _oneApiBuilder;
+        private OneApiBuilder? _oneApiBuilder;
 
         public BaseStartup(IConfiguration configuration)
         {
@@ -81,6 +82,8 @@ namespace Synigo.OneApi.Core.WebApi
             services.AddHealthChecks(); // Can be called multiple times but will get the same instance
 
             ConfigureCustomServices(_oneApiBuilder);
+
+            services.AddProductProvidersHealthChecks();
         }
 
         protected virtual void ConfigureJsonSerializerOptions(Microsoft.AspNetCore.Mvc.JsonOptions options)
@@ -89,7 +92,7 @@ namespace Synigo.OneApi.Core.WebApi
                 // it's always nice to indent JSON when debugging
                 options.JsonSerializerOptions.WriteIndented = true;
             #endif
-            options.JsonSerializerOptions.IgnoreNullValues = true;
+            options.JsonSerializerOptions.DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull;
             options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
         }
 

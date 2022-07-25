@@ -10,27 +10,27 @@ namespace Synigo.OneApi.Core.WebApi
         /// <summary>
         /// Contains the settings used in the development environment.
         /// </summary>
-        internal OpenApiDevelopmentSettings DevelopmentSettings { get; private set; } = new OpenApiDevelopmentSettings();
+        internal OneApiDevelopmentSettings DevelopmentSettings { get; private set; } = new OneApiDevelopmentSettings();
         /// <summary>
         /// Contains the settings used in the production environment.
         /// </summary>
-        internal OpenApiProductionSettings ProductionSettings { get; private set; } = new OpenApiProductionSettings();
+        internal OneApiProductionSettings ProductionSettings { get; private set; } = new OneApiProductionSettings();
         /// <summary>
         /// Contains the general settings such as CORS, HTTPS redirection and routing.
         /// </summary>
-        internal OpenApiGeneralSettings GeneralSettings { get; private set; } = new OpenApiGeneralSettings();
+        internal OneApiGeneralSettings GeneralSettings { get; private set; } = new OneApiGeneralSettings();
         /// <summary>
         /// Contains the security settings such as Authentication and Authorization.
         /// </summary>
-        internal OpenApiSecuritySettings SecuritySettings { get; private set; } = new OpenApiSecuritySettings();
+        internal OneApiSecuritySettings SecuritySettings { get; private set; } = new OneApiSecuritySettings();
         /// <summary>
         /// Contains the swagger settings such as enabling swagger or its UI.
         /// </summary>
-        internal OpenApiSwaggerSettings SwaggerSettings { get; private set; } = new OpenApiSwaggerSettings();
+        internal OneApiSwaggerSettings SwaggerSettings { get; private set; } = new OneApiSwaggerSettings();
         /// <summary>
         /// Contains the endpoint settings such as controlling mapping and healthcheck mapping.
         /// </summary>
-        internal OpenApiEndpointSettings EndpointSettings { get; private set; } = new OpenApiEndpointSettings();
+        internal OneApiEndpointSettings EndpointSettings { get; private set; } = new OneApiEndpointSettings();
 
         internal OneApiSettings()
         {
