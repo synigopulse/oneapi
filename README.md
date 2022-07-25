@@ -28,7 +28,7 @@ Follow these instructions if you want to implement a ASP.NET Core solution:
 | **Synigo.OneAPI.Providers**   | This package contains some implementations to some generic providers such as Redis for caching |
 | **Synigo.OpenEducationAPI**   | This package contains a C# implementation of the V4 implementation of the Open Education API (https://open-education-api.github.io/specification/) |
 
-*(Goto https://www.nuget.org/packages?q=synigo to see all of our Nuget packages )*
+*(Go to: https://www.nuget.org/packages?q=synigo to see all of our Nuget packages.)*
 
 
 
