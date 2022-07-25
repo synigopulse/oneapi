@@ -1,11 +1,11 @@
 # Synigo Pulse One API
 
-Synigo Pulse One API is a C#(5) solution, containing projects which you can use to easily create API's using the latest Microsoft (Azure) standards as it comes to principles and hosting.
+Synigo Pulse One API is a .NET 6 C# solution, containing projects which you can use to easily create API's using the latest Microsoft (Azure) standards as it comes to principles and hosting.
 
 The goal of this solution to let you as a developer create API's quickly, without worrying about any of the boiler plate code out there. We try to achieve this by:
 
 - Generating Nuget packages out of this code, which you can use in your projects.
-- Creating abstractions based on both **ASP.NET Core (5)** and **Azure Functions**
+- Creating abstractions based on both **ASP.NET Core 6** and **Azure Functions**
   - With a minimum of code, you can easily setup a solution and profit from everything in there.
   - We try to prepare everything for you and allow you to extend or modify behavior if needed.   
 
