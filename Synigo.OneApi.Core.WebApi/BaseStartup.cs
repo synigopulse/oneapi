@@ -16,6 +16,8 @@ using Synigo.OneApi.Core.WebApi.Shared;
 using Synigo.OneApi.Interfaces;
 using Synigo.OneApi.Core.Execution;
 using Synigo.OneApi.Core.WebApi.Extensions;
+using Synigo.OneApi.Core.WebApi.Helpers;
+using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 
 namespace Synigo.OneApi.Core.WebApi
 {
@@ -211,13 +213,31 @@ namespace Synigo.OneApi.Core.WebApi
                     }
                     if (settings.EndpointSettings.EnableHealthCheckMapping)
                     {
-                        if (settings.EndpointSettings.HealthCheckOptions == null)
+                        var healthCheckOptions = new HealthCheckOptions()
                         {
-                            endpoints.MapHealthChecks(settings.EndpointSettings.HealthCheckPattern);
-                        } else
+                            ResponseWriter = HealthCheckHelper.WriteResponse
+                        };
+                        if (settings.EndpointSettings.HealthCheckOptions != null)
                         {
-                            endpoints.MapHealthChecks(settings.EndpointSettings.HealthCheckPattern,
-                                settings.EndpointSettings.HealthCheckOptions);
+                            settings.EndpointSettings.HealthCheckOptions.Invoke(healthCheckOptions);
+                        }
+
+                        var healthCheckEndpoint = endpoints.MapHealthChecks(settings.EndpointSettings.HealthCheckPattern,
+                            healthCheckOptions);
+                        if (settings.EndpointSettings.HealthCheckRequireHosts != null)
+                        {
+                            healthCheckEndpoint.RequireHost(settings.EndpointSettings.HealthCheckRequireHosts);
+                        }
+                        if (settings.EndpointSettings.HealthCheckRequireAuthorization)
+                        {
+                            if (settings.EndpointSettings.HealthCheckAuthorizationPolicyNames == null)
+                            {
+                                healthCheckEndpoint.RequireAuthorization();
+                            } else
+                            {
+                                healthCheckEndpoint.RequireAuthorization(settings.EndpointSettings.HealthCheckAuthorizationPolicyNames);
+                            }
+                            
                         }
                     }
                 });

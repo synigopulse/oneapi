@@ -1,5 +1,6 @@
 ﻿using Synigo.OneApi.Interfaces;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
+using System;
 
 namespace Synigo.OneApi.Core.WebApi.Settings
 {
@@ -32,6 +33,19 @@ namespace Synigo.OneApi.Core.WebApi.Settings
         /// Additional health check settings. These are only used if <see cref="EnableHealthCheckMapping"/> is set to true.
         /// Default value: <see langword="null"/>
         /// </summary>
-        public HealthCheckOptions? HealthCheckOptions { get; set; } = null;
+        public Action<HealthCheckOptions>? HealthCheckOptions { get; set; } = null;
+        /// <summary>
+        /// One or more permitted hosts for the health check endpoint.
+        /// Default value: <see cref="string.Empty"/>
+        /// </summary>
+        public string[]? HealthCheckRequireHosts { get; set; } = null;
+        /// <summary>
+        /// Whether to require authorization to access the health check endpoint.
+        /// </summary>
+        public bool HealthCheckRequireAuthorization { get; set; } = false;
+        /// <summary>
+        /// One or more permitted policy names to use when <see cref="HealthCheckRequireAuthorization"/> is set to true.
+        /// </summary>
+        public string[]? HealthCheckAuthorizationPolicyNames { get; set; } = null;
     }
 }

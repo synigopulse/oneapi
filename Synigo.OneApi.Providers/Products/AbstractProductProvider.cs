@@ -32,12 +32,9 @@ namespace Synigo.OneApi.Providers.Products
 
         /// <summary>
         /// The tags of this health check.
-        /// Default value contains: <c>all</c>
+        /// Default value: <see cref="Array.Empty{string}"/>
         /// </summary>
-        public virtual IEnumerable<string> Tags { get; } = new string[]
-        {
-            "all"
-        };
+        public virtual IEnumerable<string> Tags { get; } = Array.Empty<string>();
 
         /// <summary>
         /// The default failure status of this health check.
