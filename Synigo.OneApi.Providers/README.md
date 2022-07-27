@@ -86,7 +86,7 @@ public class Startup : BaseStartup
     {
         builder.Services.AddAfasProvider<IMyAfasProvider, MyAfasProvider>(options =>
         {
-            options.AuthToken = "PLAIN_TEXT_AFAS_TOKEN"; // The token is encoded according to what Afas expects.
+            options.AuthToken = "PLAIN_TEXT_AFAS_TOKEN"; // The middleware encodes the token automatically to what Afas expects.
             options.HttpClientName = "MyAfasClient"; // This adds the HTTP client to the IHttpClientFactory which is used in MyAfasProvider.
             options.BaseAddress = "AFAS_END_POINT_BASE_URL"; // The endpoint url for this specific provider e.g: https://{userid}.rest.afas.online
         });
