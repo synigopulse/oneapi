@@ -111,7 +111,7 @@ public class Startup : BaseStartup
 [ApiController]
 public class MyAfasController : OneApiController
 {
-    private readonly IMyAfasProvider? _myAfasProvider;
+    private readonly IMyAfasProvider _myAfasProvider;
 
     public MyAfasController(IExecutionContext context, IMyAfasProvider myAfasProvider) 
         : base(context)
