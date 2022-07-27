@@ -153,22 +153,22 @@ The default implementation for the product provider health check looks as follow
 namespace Synigo.OneApi.Providers.Products
 {
     /// <summary>
-	/// An abstract implementation of a base product provider.
-	/// </summary>
-	public abstract class AbstractProductProvider : IProductProvider
-	{
+    /// An abstract implementation of a base product provider.
+    /// </summary>
+    public abstract class AbstractProductProvider : IProductProvider
+    {
 	
-		...
+        ...
 	
-		// Should be overridden in child classes.
-		public virtual Task<HealthCheckResult> CheckHealthAsync(HealthCheckContext context, CancellationToken cancellationToken = default)
-		{
-			return Task.FromResult(HealthCheckResult.Healthy($"No health check provided for type {GetType()}."));
-		}
+        // Should be overridden in child classes.
+        public virtual Task<HealthCheckResult> CheckHealthAsync(HealthCheckContext context, CancellationToken cancellationToken = default)
+        {
+            return Task.FromResult(HealthCheckResult.Healthy($"No health check provided for type {GetType()}."));
+        }
 	
-		...
+        ...
 		
-	}
+    }
 }
 ```
 
@@ -195,44 +195,44 @@ you can override the default behaviour:
 ```CSharp
 public class MyAfasProvider : AbstractProductProvider, IMyAfasProvider
 {
-	public MyAfasProvider(IHttpClientFactory clientFactory) : base(clientFactory, "MyAfasClient")
-	{
-	}
+    public MyAfasProvider(IHttpClientFactory clientFactory) : base(clientFactory, "MyAfasClient")
+    {
+    }
 
-	/// <summary>
-	/// The health check implementaton for this product provider.
-	/// </summary>
-	public override Task<HealthCheckResult> CheckHealthAsync(HealthCheckContext context, CancellationToken cancellationToken = default)
-	{
-		var isHealthy = true;
+    /// <summary>
+    /// The health check implementaton for this product provider.
+    /// </summary>
+    public override Task<HealthCheckResult> CheckHealthAsync(HealthCheckContext context, CancellationToken cancellationToken = default)
+    {
+        var isHealthy = true;
 	
-		// ...
+        // ...
 	
-		if (isHealthy)
-		{
-			return Task.FromResult(HealthCheckResult.Healthy("A healthy result."));
-		}
+        if (isHealthy)
+        {
+            return Task.FromResult(HealthCheckResult.Healthy("A healthy result."));
+        }
 	
-		return Task.FromResult(new HealthCheckResult(context.Registration.FailureStatus, "An unhealthy result."));
-	}
+        return Task.FromResult(new HealthCheckResult(context.Registration.FailureStatus, "An unhealthy result."));
+    }
 	
-	/// <summary>
-	/// The unique name of this health check.
-	/// </summary>
-	public override string HealthCheckName => "My Afas Health Check";
+    /// <summary>
+    /// The unique name of this health check.
+    /// </summary>
+    public override string HealthCheckName => "My Afas Health Check";
 	
-	/// <summary>
-	/// A collection of tags which can be used for filtering.
-	/// </summary>
-	public override IEnumerable<string> Tags => new string[]
-	{
-		"afas", "demo"
-	};
+    /// <summary>
+    /// A collection of tags which can be used for filtering.
+    /// </summary>
+    public override IEnumerable<string> Tags => new string[]
+    {
+        "afas", "demo"
+    };
 	
-	/// <summary>
-	/// The default failure status when an Unhealthy result is given.
-	/// </summary>
-	public override HealthStatus DefaultFailureStatus => HealthStatus.Unhealthy;
+    /// <summary>
+    /// The default failure status when an Unhealthy result is given.
+    /// </summary>
+    public override HealthStatus DefaultFailureStatus => HealthStatus.Unhealthy;
 }
 ```
 
