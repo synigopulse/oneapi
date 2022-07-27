@@ -25,12 +25,17 @@ namespace Synigo.OneApi.Core.WebApi.Helpers
                 foreach (var healthReportEntry in healthReport.Entries)
                 {
                     jsonWriter.WriteStartObject(healthReportEntry.Key);
-                    jsonWriter.WriteString("status",
-                        healthReportEntry.Value.Status.ToString());
-                    jsonWriter.WriteString("description",
-                        healthReportEntry.Value.Description);
-                    jsonWriter.WriteStartObject("data");
+                    jsonWriter.WriteString("status", healthReportEntry.Value.Status.ToString());
+                    jsonWriter.WriteString("description", healthReportEntry.Value.Description);
 
+                    jsonWriter.WriteStartArray("tags");
+                    foreach (var item in healthReportEntry.Value.Tags)
+                    {
+                        jsonWriter.WriteStringValue(item);
+                    }
+                    jsonWriter.WriteEndArray();
+
+                    jsonWriter.WriteStartObject("data");
                     foreach (var item in healthReportEntry.Value.Data)
                     {
                         jsonWriter.WritePropertyName(item.Key);
@@ -38,8 +43,8 @@ namespace Synigo.OneApi.Core.WebApi.Helpers
                         JsonSerializer.Serialize(jsonWriter, item.Value,
                             item.Value?.GetType() ?? typeof(object));
                     }
-
                     jsonWriter.WriteEndObject();
+
                     jsonWriter.WriteEndObject();
                 }
 
