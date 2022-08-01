@@ -36,7 +36,7 @@ public interface IMyAfasProvider : IAfasProvider
 {
     // Add the api methods you want to implement here..
     // e.g: GetVacanciesAsync(int skip = 0, int take = 20)
-    // or whatever else you want to retrieve from the Afas API
+    // or anything else you want to retrieve from the Afas API
 }
 ```
 
