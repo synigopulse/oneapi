@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text.Json.Serialization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -7,21 +8,22 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.AspNetCore.Mvc.Authorization;
-using Swashbuckle.AspNetCore.SwaggerGen;
 using Microsoft.OpenApi.Models;
-using Synigo.OneApi.Core.WebApi.Shared;
 using Microsoft.Identity.Client;
 using Microsoft.Graph;
+using Swashbuckle.AspNetCore.SwaggerGen;
+using Synigo.OneApi.Core.WebApi.Shared;
 using Synigo.OneApi.Interfaces;
 using Synigo.OneApi.Core.Execution;
-using System.Text.Json.Serialization;
-using Microsoft.AspNetCore.Http.Json;
+using Synigo.OneApi.Core.WebApi.Extensions;
+using Synigo.OneApi.Core.WebApi.Helpers;
+using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 
 namespace Synigo.OneApi.Core.WebApi
 {
     public abstract class BaseStartup
     {
-        private OneApiBuilder _oneApiBuilder;
+        private OneApiBuilder? _oneApiBuilder;
 
         public BaseStartup(IConfiguration configuration)
         {
@@ -44,15 +46,14 @@ namespace Synigo.OneApi.Core.WebApi
                         .WithAuthority(AzureCloudInstance.AzurePublic, tenantId)
                         .WithClientSecret(clientSecret)
                         .Build();
-
                 return new GraphAuthenticationProvider(app);
             });
 
             // Add Bearer token auth to enable access for api's
-            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddMicrosoftIdentityWebApi(Configuration.GetSection("AzureAd"),
-                       JwtBearerDefaults.AuthenticationScheme)
-                      .EnableTokenAcquisitionToCallDownstreamApi()
-                      .AddInMemoryTokenCaches();
+            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+                .AddMicrosoftIdentityWebApi(Configuration.GetSection("AzureAd"), JwtBearerDefaults.AuthenticationScheme)
+                .EnableTokenAcquisitionToCallDownstreamApi()
+                .AddInMemoryTokenCaches();
 
 
             // Allow every JS client from every location to access all resources
@@ -80,7 +81,11 @@ namespace Synigo.OneApi.Core.WebApi
 
             services.AddSwaggerGen(ConfigureSwaggerGen);
 
+            services.AddHealthChecks(); // Can be called multiple times but will get the same instance
+
             ConfigureCustomServices(_oneApiBuilder);
+
+            services.AddProductProvidersHealthChecks();
         }
 
         protected virtual void ConfigureJsonSerializerOptions(Microsoft.AspNetCore.Mvc.JsonOptions options)
@@ -89,7 +94,7 @@ namespace Synigo.OneApi.Core.WebApi
                 // it's always nice to indent JSON when debugging
                 options.JsonSerializerOptions.WriteIndented = true;
             #endif
-            options.JsonSerializerOptions.IgnoreNullValues = true;
+            options.JsonSerializerOptions.DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull;
             options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
         }
 
@@ -124,40 +129,119 @@ namespace Synigo.OneApi.Core.WebApi
 
         protected abstract void ConfigureCustomServices(OneApiBuilder builder);
 
+        protected abstract void ConfigureAppSettings(ref OneApiSettings settings);
+
+
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            var settings = new OneApiSettings();
+            ConfigureAppSettings(ref settings);
 
+            // Environmental
             if (env.IsDevelopment())
             {
-                app.UseDeveloperExceptionPage();
+                if (settings.DevelopmentSettings.EnableExceptionPage)
+                {
+                    if (settings.DevelopmentSettings.ExceptionPageOptions == null)
+                    {
+                        app.UseDeveloperExceptionPage();
+                    } else
+                    {
+                        app.UseDeveloperExceptionPage(settings.DevelopmentSettings.ExceptionPageOptions);
+                    }
+                }
             }
             else
             {
-                app.UseExceptionHandler("/Error");
-                app.UseHsts();
+                if (settings.ProductionSettings.EnableExceptionHandler)
+                {
+                    app.UseExceptionHandler(settings.ProductionSettings.ErrorHandlingPath);
+                }
+                if (settings.ProductionSettings.EnableHosts)
+                {
+                    app.UseHsts();
+                }
             }
 
-          
-
             // Defaults
-            app.UseCors("globalCorsPolicy");
-            app.UseHttpsRedirection();
-            app.UseStaticFiles();
-            app.UseRouting();
+            if (settings.GeneralSettings.EnableCors)
+            {
+                app.UseCors(settings.GeneralSettings.CorsPolicyName);
+            }
+            if (settings.GeneralSettings.EnableHttpsRedirection)
+            {
+                app.UseHttpsRedirection();
+            }
+            if (settings.GeneralSettings.EnableStaticFileServing)
+            {
+                app.UseStaticFiles();
+            }
+            if (settings.GeneralSettings.EnableStaticFileServing)
+            {
+                app.UseRouting();
+            }
 
             // Security
-            app.UseAuthentication();
-            app.UseAuthorization();
-
-            app.UseSwagger();
-
-            app.UseEndpoints(endpoints =>
+            if (settings.SecuritySettings.EnableAuthentication)
             {
-                endpoints.MapControllers();
-            });
+                app.UseAuthentication();
+            }
+            if (settings.SecuritySettings.EnableAuthorization)
+            {
+                app.UseAuthorization();
+            }
 
-       
+            // Swagger
+            if (settings.SwaggerSettings.EnableSwagger)
+            {
+                app.UseSwagger();
+            }
+            if (settings.SwaggerSettings.EnableSwaggerUI)
+            {
+                app.UseSwaggerUI(settings.SwaggerSettings.SwaggerUIOptions);
+            }
+
+            // Endpoints
+            if (settings.EndpointSettings.EnableEndpoints)
+            {
+                app.UseEndpoints(endpoints =>
+                {
+                    if (settings.EndpointSettings.EnableControllerMapping)
+                    {
+                        endpoints.MapControllers();
+                    }
+                    if (settings.EndpointSettings.EnableHealthCheckMapping)
+                    {
+                        var healthCheckOptions = new HealthCheckOptions()
+                        {
+                            ResponseWriter = HealthCheckHelper.WriteResponse
+                        };
+                        if (settings.EndpointSettings.HealthCheckOptions != null)
+                        {
+                            settings.EndpointSettings.HealthCheckOptions.Invoke(healthCheckOptions);
+                        }
+
+                        var healthCheckEndpoint = endpoints.MapHealthChecks(settings.EndpointSettings.HealthCheckPattern,
+                            healthCheckOptions);
+                        if (settings.EndpointSettings.HealthCheckRequireHosts != null)
+                        {
+                            healthCheckEndpoint.RequireHost(settings.EndpointSettings.HealthCheckRequireHosts);
+                        }
+                        if (settings.EndpointSettings.HealthCheckRequireAuthorization)
+                        {
+                            if (settings.EndpointSettings.HealthCheckAuthorizationPolicyNames == null)
+                            {
+                                healthCheckEndpoint.RequireAuthorization();
+                            } else
+                            {
+                                healthCheckEndpoint.RequireAuthorization(settings.EndpointSettings.HealthCheckAuthorizationPolicyNames);
+                            }
+                            
+                        }
+                    }
+                });
+            }
         }
     }
 }

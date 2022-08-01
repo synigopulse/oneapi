@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
-		<TargetFramework>net5.0</TargetFramework>
+		<TargetFramework>net6.0</TargetFramework>
 		<Copyright>Synigo B.V.</Copyright>
 		<NeutralLanguage>en</NeutralLanguage>
 		<Owners>Synigo</Owners>
@@ -15,6 +15,7 @@
 		<ReleaseVersion>1.0.6.1</ReleaseVersion>
 		<PackageIcon>icon.png</PackageIcon>
 		<PackageLicenseUrl>https://raw.githubusercontent.com/synigopulse/oneapi/main/LICENSE?token=AS3LW6XFENGIHTXYTTGNC43BQVKXQ</PackageLicenseUrl>
+		<Nullable>enable</Nullable>
 	</PropertyGroup>
 	<ItemGroup>
 		<None Include="images\icon.png" Pack="true" PackagePath="\" />

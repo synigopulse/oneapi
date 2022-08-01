@@ -1,12 +1,13 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net5.0</TargetFramework>
+    <TargetFramework>net6.0</TargetFramework>
     <Description>Clients Package for Synigo One API</Description>
     <Copyright>Synigo B.V.</Copyright>
     <PackageProjectUrl>https://github.com/synigopulse/oneapi</PackageProjectUrl>
     <PackageIcon>icon.png</PackageIcon>
     <NeutralLanguage>English</NeutralLanguage>
+    <Nullable>enable</Nullable>
   </PropertyGroup>
 
   <ItemGroup>
