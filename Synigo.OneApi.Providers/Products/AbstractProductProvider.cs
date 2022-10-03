@@ -85,9 +85,9 @@ namespace Synigo.OneApi.Providers.Products
         /// <exception cref="HttpRequestException"/>
         /// <exception cref="InvalidOperationException"/>
         /// <exception cref="TaskCanceledException"/>
-        /// <exception cref="JsonException" />
-        /// <exception cref="NotSupportedException" />
-        /// <exception cref="ArgumentNullException" />
+        /// <exception cref="JsonException"/>
+        /// <exception cref="NotSupportedException"/>
+        /// <exception cref="ArgumentNullException"/>
         /// <exception cref="Exception"/>
         public async Task<T?> GetAsync<T>(string uri, JsonSerializerOptions? options = null, CancellationToken cancellationToken = default)
         {

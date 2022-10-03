@@ -1,23 +1,23 @@
-﻿using System;
-using System.Text.Json.Serialization;
+﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.Identity.Web;
+using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.AspNetCore.Mvc.Authorization;
-using Microsoft.OpenApi.Models;
-using Microsoft.Identity.Client;
 using Microsoft.Graph;
+using Microsoft.Identity.Client;
+using Microsoft.Identity.Web;
+using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.SwaggerGen;
-using Synigo.OneApi.Core.WebApi.Shared;
-using Synigo.OneApi.Interfaces;
 using Synigo.OneApi.Core.Execution;
 using Synigo.OneApi.Core.WebApi.Extensions;
 using Synigo.OneApi.Core.WebApi.Helpers;
-using Microsoft.AspNetCore.Diagnostics.HealthChecks;
+using Synigo.OneApi.Core.WebApi.Shared;
+using Synigo.OneApi.Interfaces;
+using System;
+using System.Text.Json.Serialization;
 
 namespace Synigo.OneApi.Core.WebApi
 {
@@ -111,19 +111,19 @@ namespace Synigo.OneApi.Core.WebApi
             });
 
             options.AddSecurityRequirement(new OpenApiSecurityRequirement
+            {
                 {
+                    new OpenApiSecurityScheme
                     {
-                        new OpenApiSecurityScheme
+                        Reference = new OpenApiReference
                         {
-                            Reference = new OpenApiReference
-                            {
-                                Type = ReferenceType.SecurityScheme,
-                                Id = "Bearer",
-                            }
-                        },
-                        Array.Empty<string>()
-                    }
-                });
+                            Type = ReferenceType.SecurityScheme,
+                            Id = "Bearer",
+                        }
+                    },
+                    Array.Empty<string>()
+                }
+            });
             options.OperationFilter<AuthorizeCheckOperationFilter>();
         }
 

@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Synigo.OneApi.Interfaces;
+using Synigo.OneApi.Providers.Graph;
 using Synigo.OneApi.Providers.Products;
 using Synigo.OneApi.Providers.Products.Options;
 using System;
@@ -14,9 +15,9 @@ namespace Synigo.OneApi.Providers.Extensions
     public static class ServiceCollectionProviderExtensions
     {
         /// <summary>
-        /// Adds an Afas provider service of the type specified in <typeparamref name="T1"/> with an implementation
-        /// specified in <typeparamref name="T2"/> to the specified <see cref="IServiceCollection"/> and automatically
-        /// sets up an HTTP client using the specified options in <paramref name="configureOptions"/> including the proper
+        /// Adds a singleton Afas provider service of the type specified in <typeparamref name="T1"/> with an implementation
+        /// specified in <typeparamref name="T2"/> to the <see cref="IServiceCollection"/> and automatically
+        /// sets up an HTTP client using the specified <paramref name="configureOptions"/> including the proper
         /// encoding for Afas.
         /// </summary>
         /// <typeparam name="T1">The type of the service to add.</typeparam>
@@ -43,6 +44,24 @@ namespace Synigo.OneApi.Providers.Extensions
 
             // Create singleton instance of specified provider type
             services.AddSingleton(typeof(T1), typeof(T2));
+
+            return services;
+        }
+
+        /// <summary>
+        /// Adds a scoped graph provider service of the type specified in <typeparamref name="T1"/> with an implementation
+        /// specified in <typeparamref name="T2"/> to the <see cref="IServiceCollection"/>.
+        /// </summary>
+        /// <typeparam name="T1"></typeparam>
+        /// <typeparam name="T2"></typeparam>
+        /// <param name="services"></param>
+        /// <returns></returns>
+        public static IServiceCollection AddGraphProvider<T1, T2>(this IServiceCollection services)
+            where T1 : IGraphProvider
+            where T2 : AbstractGraphProvider
+        {
+            // Add the graph provider.
+            services.AddScoped(typeof(T1), typeof(T2));
 
             return services;
         }
