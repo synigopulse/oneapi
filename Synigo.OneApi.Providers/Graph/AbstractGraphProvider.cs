@@ -4,6 +4,10 @@ using Synigo.OneApi.Interfaces;
 
 namespace Synigo.OneApi.Providers.Graph
 {
+    /// <summary>
+    /// The abstract implementation for a graph provider. You should extend from this
+    /// class and either use the built in functionality or override them based on your use-case.
+    /// </summary>
     public abstract class AbstractGraphProvider : IGraphProvider
     {
         private readonly IConfidentialClientApplication _confidentialClientApplication;
@@ -18,7 +22,7 @@ namespace Synigo.OneApi.Providers.Graph
         /// containing an access token acquired for client using the specified scopes.
         /// </summary>
         /// <returns>An instance of <see cref="GraphServiceClient"/> containing the authentication provider created
-        /// for client.</returns>
+        /// using the access token for client.</returns>
         public virtual GraphServiceClient GetGraphServiceClientForClient()
         {
             var authProvider = new DelegateAuthenticationProvider(async (request) =>
@@ -39,7 +43,7 @@ namespace Synigo.OneApi.Providers.Graph
         /// </summary>
         /// <param name="jwtBearerToken">The exchange token to use when generating the new access token.</param>
         /// <returns>An instance of <see cref="GraphServiceClient"/> containing the authentication provider created
-        /// on behalf of another API.</returns>
+        /// using the access token on behalf of another API.</returns>
         public virtual GraphServiceClient GetGraphServiceClientOnBehalfOf(string jwtBearerToken)
         {
             var authProvider = new DelegateAuthenticationProvider(async (request) =>
@@ -54,6 +58,13 @@ namespace Synigo.OneApi.Providers.Graph
             return new GraphServiceClient(authProvider);
         }
 
+        /// <summary>
+        /// Creates a <see cref="GraphServiceClient"/> instance using a <see cref="DelegateAuthenticationProvider"/>
+        /// containing an access token acquired using the <paramref name="authorizationCode"/>.
+        /// </summary>
+        /// <param name="authorizationCode">The authorization code to use when acquiring the access token.</param>
+        /// <returns>An instance of <see cref="GraphServiceClient"/> containing the authentication provider created
+        /// using the access token acquired by the authorization code.</returns>
         public virtual GraphServiceClient GetGraphServiceClientByAuthorizationCode(string authorizationCode)
         {
             var authProvider = new DelegateAuthenticationProvider(async (request) =>
@@ -67,6 +78,13 @@ namespace Synigo.OneApi.Providers.Graph
             return new GraphServiceClient(authProvider);
         }
 
+        /// <summary>
+        /// Creates a <see cref="GraphServiceClient"/> instance using a <see cref="DelegateAuthenticationProvider"/>
+        /// containing an access token acquired for the <paramref name="account"/> from the user token cache.
+        /// </summary>
+        /// <param name="account">The account to acquire the access token for.</param>
+        /// <returns>An instance of <see cref="GraphServiceClient"/> containing the authentication provider created
+        /// using the access token for the account.</returns>
         public virtual GraphServiceClient GetGraphServiceClientSilent(IAccount account)
         {
             var authProvider = new DelegateAuthenticationProvider(async (request) =>
@@ -80,6 +98,13 @@ namespace Synigo.OneApi.Providers.Graph
             return new GraphServiceClient(authProvider);
         }
 
+        /// <summary>
+        /// Creates a <see cref="GraphServiceClient"/> instance using a <see cref="DelegateAuthenticationProvider"/>
+        /// containing an access token acquired for the <paramref name="loginHint"/> from the user token cache.
+        /// </summary>
+        /// <param name="loginHint">The login hint to acquire the access token for.</param>
+        /// <returns>An instance of <see cref="GraphServiceClient"/> containing the authentication provider created
+        /// using the access token for the login hint.</returns>
         public virtual GraphServiceClient GetGraphServiceClientSilent(string loginHint)
         {
             var authProvider = new DelegateAuthenticationProvider(async (request) =>
