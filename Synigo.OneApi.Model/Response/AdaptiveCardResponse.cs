@@ -1,4 +1,4 @@
-﻿using Synigo.OneApi.Model.AdaptiveCards;
+using Synigo.OneApi.Model.AdaptiveCards;
 using System.Text.Json.Serialization;
 
 namespace Synigo.OneApi.Model.Response
