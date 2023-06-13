@@ -15,7 +15,7 @@ namespace Synigo.OneApi.Model.Search
         /// Get or set page
         /// </summary>
         [JsonPropertyName("page")]
-        public int Page { get; set; }
+        public string Page { get; set; }
 
         /// <summary>
         /// Get or set page size
