@@ -7,7 +7,6 @@ namespace Synigo.OneApi.Clients
 {
     public class SynigoApiClient
     {
-        protected readonly IConfiguration Configuration;
         protected readonly string _clientId;
         protected readonly string _clientSecret;
         protected readonly string _tenantId;
@@ -16,11 +15,18 @@ namespace Synigo.OneApi.Clients
 
         public SynigoApiClient(IConfiguration configuration)
         {
-            Configuration = configuration;
-            _clientId = Configuration.GetSection("AzureAd").GetValue<string>("ClientId");
-            _clientSecret = Configuration.GetSection("AzureAd").GetValue<string>("ClientSecret");
-            _tenantId = Configuration.GetSection("AzureAd").GetValue<string>("TenantId");
-            _synigoApiUrl = Configuration.GetSection("AzureAd").GetValue<string>("SynigoApiUrl");
+            _clientId = configuration.GetSection("AzureAd").GetValue<string>("ClientId");
+            _clientSecret = configuration.GetSection("AzureAd").GetValue<string>("ClientSecret");
+            _tenantId = configuration.GetSection("AzureAd").GetValue<string>("TenantId");
+            _synigoApiUrl = configuration.GetSection("AzureAd").GetValue<string>("SynigoApiUrl");
+        }
+
+        public SynigoApiClient(string clientId, string clientSecret, string tenantId, string synigoApiUrl)
+        {
+            _clientId = clientId;
+            _clientSecret = clientSecret;
+            _tenantId = tenantId;
+            _synigoApiUrl = synigoApiUrl;
         }
 
         public async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, string token)
