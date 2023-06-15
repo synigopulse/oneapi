@@ -8,6 +8,7 @@
     <PackageIcon>icon.png</PackageIcon>
     <NeutralLanguage>English</NeutralLanguage>
     <Nullable>enable</Nullable>
+    <ReleaseVersion>1.0.6.1</ReleaseVersion>
   </PropertyGroup>
 
   <ItemGroup>

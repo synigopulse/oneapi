@@ -3,6 +3,7 @@
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
     <Nullable>enable</Nullable>
+    <ReleaseVersion>1.0.6.1</ReleaseVersion>
   </PropertyGroup>
 
   <ItemGroup>
@@ -17,7 +18,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Synigo.OneApi.Common\Synigo.OneApi.Common.csproj" />
-    <ProjectReference Include="..\Synigo.OpenEducationApi\Synigo.OpenEducationApi.csproj" />
   </ItemGroup>
 
 </Project>
