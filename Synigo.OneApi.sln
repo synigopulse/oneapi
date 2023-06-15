@@ -41,6 +41,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Synigo.OneApi.Storage", "Sy
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Synigo.OneApi.Clients", "Synigo.OneApi.Clients\Synigo.OneApi.Clients.csproj", "{48AB5984-21BE-4026-894B-84A591DAFB8D}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Demo", "Demo", "{1CFAAC9A-A51C-4026-8591-9868D2A93443}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DemoApi", "DemoApi\DemoApi.csproj", "{37D5618E-5A28-4A3A-9492-80FA0C4354CB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -99,6 +103,10 @@ Global
 		{48AB5984-21BE-4026-894B-84A591DAFB8D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{48AB5984-21BE-4026-894B-84A591DAFB8D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{48AB5984-21BE-4026-894B-84A591DAFB8D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{37D5618E-5A28-4A3A-9492-80FA0C4354CB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{37D5618E-5A28-4A3A-9492-80FA0C4354CB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{37D5618E-5A28-4A3A-9492-80FA0C4354CB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{37D5618E-5A28-4A3A-9492-80FA0C4354CB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -117,6 +125,7 @@ Global
 		{8E01D640-1106-4047-ACE2-DD8257BFDFED} = {C9F380B7-1DDE-4C9A-968A-CACAA3C3ED43}
 		{D48C4F8D-0DD2-4074-87F5-D0033D8207D4} = {32E1B95C-977F-4BCD-A861-39DF84BD768A}
 		{48AB5984-21BE-4026-894B-84A591DAFB8D} = {6A8DA0AA-2FC7-4CC4-836D-8E0E6F85C698}
+		{37D5618E-5A28-4A3A-9492-80FA0C4354CB} = {1CFAAC9A-A51C-4026-8591-9868D2A93443}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {913DD3C5-38B0-4844-B8AD-E3193D55D048}
