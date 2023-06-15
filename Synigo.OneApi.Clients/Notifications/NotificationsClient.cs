@@ -9,17 +9,22 @@ namespace Synigo.OneApi.Clients.Notifications
 {
     public class NotificationsClient : INotificationsClient
     {
-        private readonly IConfiguration Configuration;
         private readonly string _tenantId;
         private readonly string _synigoApiUrl;
         private readonly SynigoApiClient _synigoApiClient;
 
         public NotificationsClient(IConfiguration configuration)
         {
-            Configuration = configuration;
-            _tenantId = Configuration.GetSection("AzureAd").GetValue<string>("TenantId");
-            _synigoApiUrl = Configuration.GetSection("AzureAd").GetValue<string>("SynigoApiUrl");
-            _synigoApiClient = new SynigoApiClient(Configuration);
+            _tenantId = configuration.GetSection("AzureAd").GetValue<string>("TenantId");
+            _synigoApiUrl = configuration.GetSection("AzureAd").GetValue<string>("SynigoApiUrl");
+            _synigoApiClient = new SynigoApiClient(configuration);
+        }
+
+        public NotificationsClient(string clientId, string clientSecret, string tenantId, string synigoApiUrl)
+        {
+            _tenantId = tenantId;
+            _synigoApiUrl = synigoApiUrl;
+            _synigoApiClient = new SynigoApiClient(clientId, clientSecret, tenantId, synigoApiUrl);
         }
 
         /// <summary>

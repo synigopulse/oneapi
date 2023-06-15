@@ -7,10 +7,10 @@ namespace Synigo.OneApi.Clients
 {
     public class SynigoApiClient
     {
-        protected readonly string _clientId;
-        protected readonly string _clientSecret;
-        protected readonly string _tenantId;
-        protected readonly string _synigoApiUrl;
+        private readonly string _clientId;
+        private readonly string _clientSecret;
+        private readonly string _tenantId;
+        private readonly string _synigoApiUrl;
         private static HttpClient _httpClient = new HttpClient();
 
         public SynigoApiClient(IConfiguration configuration)
