@@ -52,7 +52,7 @@ namespace Synigo.DemoApi
                     { "nl-NL",$"Deze notificatie is om {now} gemaakt"},
                     { "en-US",$"This notification is created at {now}"}
                 },
-                Groups = new List<string> { "All" },
+                Individuals = new List<string> { "[someone@theirupn.com]"},
                 ImageUrl = "https://img.icons8.com/external-filled-outline-lima-studio/64/external-test-nuclear-energy-filled-outline-lima-studio.png",
                 NotificationTypeIdentifier = "",
                 Url = "https://www.google.com"
