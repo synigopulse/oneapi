@@ -27,7 +27,7 @@ namespace Synigo.OneApi.Model.Notifications
         /// Get or set list of Microsoft groups ids that will recieve push notification
         /// </summary>
         [JsonPropertyName("groups")]
-        public List<string> Groups { get; set; } = new List<string>() { "All" };
+        public List<string> Groups { get; set; } = new List<string>() { "None" };
 
         /// <summary>
         /// Get or set a list of individuals that will recieve push notification
