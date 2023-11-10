@@ -123,4 +123,5 @@ The portal and or app will send an `Accept-Language` header with the preferred l
 
 ## Some useful links
 - [https://adaptivecards.io/](https://adaptivecards.io/)
+- [https://learn.microsoft.com/en-us/adaptive-cards/authoring-cards/universal-action-model](https://learn.microsoft.com/en-us/adaptive-cards/authoring-cards/universal-action-model)
 - https://learn.microsoft.com/en-us/azure/bot-service/adaptive-expressions/adaptive-expressions-prebuilt-functions?view=azure-bot-service-4.0
