@@ -1,3 +1,4 @@
+
 # Adaptive Cards
 
 ## Introduction
@@ -17,11 +18,11 @@ Adaptive cards can be used for a wide range of purposes, including displaying no
 ## Adaptive cards in Synigo Pulse
 ### Presentation
 In Synigo Pulse we wrapped adaptive cards in a process and users are able to (re)use this process in a variety of ways:
-- **Process Widget:** This widget renders an adaptive card in a single reusable widget
+- **Process Widget:** This widget renders an adaptive card in a single reusable widget.
 - **Processes Widget:** This widget displays processes as a list, here you can select one and it will be rendered in a dialog.
 - **Process Menu Item:** This will render an Adaptive Card in our native app.
 ### Getting Data
-A process uses connections to get and send data. It does not necessarily need connections, you could create a static card. If you want to have a visualisation of  data. You need to add an incoming connection. When displaying the card, this connection is used to get the data and add it to the $data context of the adaptive card. 
+A process uses connections to get and send data. It does not necessarily need connections, you could create a static card. If you want to have a visualisation of  data, you need to add an incoming connection. When displaying the card, this connection is used to get the data and add it to the $data context of the adaptive card. 
 ### Sending data
 If you need to send data to a service, you need to define actions within your adaptive card. These action needs to have **verb** which we use to bind an outgoing connection. 
 
@@ -84,7 +85,7 @@ Description
 
 **statusCode**
 
-An HTTP response status code of 200 does NOT necessarily mean the Bot was able to  _successfully_  process the request. A client application MUST always look at the  `statucCode`  property in the response's body to know how the Bot processed the request.  `statusCode`  is a number ranging from 200-599 that mirrors HTTP status code values and is meant to be a sub-status for the result of the bot processing the Invoke. A missing, null, or undefined value for  `statusCode`  implies a 200 (Success).
+An HTTP response status code of 200 does NOT necessarily mean the Bot was able to  _successfully_  process the request. A client application MUST always look at the  `statusCode`  property in the response's body to know how the Bot processed the request.  `statusCode`  is a number ranging from 200-599 that mirrors HTTP status code values and is meant to be a sub-status for the result of the bot processing the Invoke. A missing, null, or undefined value for  `statusCode`  implies a 200 (Success).
 
 **type**
 
@@ -102,18 +103,24 @@ If the hint is `showDialog` You can use this property to add the ID of the proce
 
 **Supported status codes**
 The following table lists the allowed values for  `statusCode`,  `type`, and  `value`  in the Bot's response body:
-|  |  |
-|--|--|
-|  |  |
 
 
 |Status Code|Type|Value|Notes|
-|--|--|--|--|--|
+|--|--|--|--|
 |200|`application/vnd.microsoft.card.adaptive`|`Adaptive Card`|The request was successfully processed, and the response includes an Adaptive Card that the client should display in place of the current one.|
 |200|`application/vnd.microsoft.activity.message`|`string`|The request was successfully processed, and the response includes a message that the client should display.|
 |500|`application/vnd.microsoft.error`|[Error Object](https://learn.microsoft.com/en-us/dotnet/api/system.exception?view=net-7.0)|An unexpected error occurred.|
 
 **How the portal/app will act:**
-|StatusCode|Type|Act|
-|--|--|--|
-HTTP 200 => application/vnd.microsoft.card.adaptive
+|StatusCode|Type|Hint|CardReference|Action|
+|--|--|--|--|--|
+|200|application/vnd.microsoft.card.adaptive|showDialog|[some-id]|We will render a new card in a dialog and use the data in the field `value` as the `$data` context of the rendered card.
+|200|application/vnd.microsoft.card.message|not used|not used|We will use the `value` field to show a toaster and then refresh the adaptive card.
+|500|not used|not used|not used|We try get and show the `exception.Message` in a toaster. 
+
+### Handling languages
+The portal and or app will send an `Accept-Language` header with the preferred language code in there...
+
+## Some useful links
+- [https://adaptivecards.io/](https://adaptivecards.io/)
+- https://learn.microsoft.com/en-us/azure/bot-service/adaptive-expressions/adaptive-expressions-prebuilt-functions?view=azure-bot-service-4.0
