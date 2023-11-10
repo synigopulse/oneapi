@@ -44,7 +44,7 @@ Within our platform you can define two types of connections:
 - **One API connection:** This is a connection which is configured in your main portal settings and is generated using the accompanied Open API Specification, and OAuth Authentication.
 
 The figure below is a representation of the adaptive cards in Synigo Pulse.
-![enter image description here](https://github.com/synigopulse/oneapi/blob/main/Readme/adaptivecards.png)
+![enter image description here](https://github.com/synigopulse/oneapi/blob/main/Readme/adaptivecards.png?raw=true)
 
 
 
@@ -63,3 +63,57 @@ Your Connection -->> Portal: Give a specific response
 
 ```
 ## Handling the response of the service
+Based on the response, the portal or app will act in a different way. We comply (as best as we can to the [Universal Action Model](https://learn.microsoft.com/en-us/adaptive-cards/authoring-cards/universal-action-model) However we have added some additional instructions.
+
+#### Response format
+
+The HTTP response's status code returned by the Service must be equal to 200 and the body of the HTTP response must be formatted as follows:
+
+```
+{ 
+    "statusCode": <number (200 – 599)>, 
+    "type": "<string>", 
+    "value": "<object>",
+    "hint": "<string>",
+    "cardReference": "<string>"
+} 
+```
+Field
+
+Description
+
+**statusCode**
+
+An HTTP response status code of 200 does NOT necessarily mean the Bot was able to  _successfully_  process the request. A client application MUST always look at the  `statucCode`  property in the response's body to know how the Bot processed the request.  `statusCode`  is a number ranging from 200-599 that mirrors HTTP status code values and is meant to be a sub-status for the result of the bot processing the Invoke. A missing, null, or undefined value for  `statusCode`  implies a 200 (Success).
+
+**type**
+
+A set of well-known string constants that describe the expected shape of the value property
+
+**value**
+
+An object that is specific to the type of response body
+
+**hint**
+The hint indicates what to do next. For know we only except `showDialog` This means the service wants to show the result in another dialog.
+
+**cardReference**
+If the hint is `showDialog` You can use this property to add the ID of the process (Adaptive Card) to render as a dialog. note that the type must be of `application/vnd.microsoft.card.adaptive`
+
+**Supported status codes**
+The following table lists the allowed values for  `statusCode`,  `type`, and  `value`  in the Bot's response body:
+|  |  |
+|--|--|
+|  |  |
+
+
+|Status Code|Type|Value|Notes|
+|--|--|--|--|--|
+|200|`application/vnd.microsoft.card.adaptive`|`Adaptive Card`|The request was successfully processed, and the response includes an Adaptive Card that the client should display in place of the current one.|
+|200|`application/vnd.microsoft.activity.message`|`string`|The request was successfully processed, and the response includes a message that the client should display.|
+|500|`application/vnd.microsoft.error`|[Error Object](https://learn.microsoft.com/en-us/dotnet/api/system.exception?view=net-7.0)|An unexpected error occurred.|
+
+**How the portal/app will act:**
+|StatusCode|Type|Act|
+|--|--|--|
+HTTP 200 => application/vnd.microsoft.card.adaptive
