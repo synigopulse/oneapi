@@ -116,7 +116,7 @@ The following table lists the allowed values for  `statusCode`,  `type`, and  `v
 |--|--|--|--|--|
 |200|application/vnd.microsoft.card.adaptive|showDialog|[some-id]|We will render a new card in a dialog and use the data in the field `value` as the `$data` context of the rendered card.
 |200|application/vnd.microsoft.card.message|not used|not used|We will use the `value` field to show a toaster and then refresh the adaptive card.
-|500|not used|not used|not used|We try get and show the `exception.Message` in a toaster. 
+|500|application/vnd.microsoft.error|not used|not used|We show the `value` in an (error) toaster. 
 
 ### Handling languages
 The portal and or app will send an `Accept-Language` header with the preferred language code in there...
