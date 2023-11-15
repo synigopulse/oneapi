@@ -115,7 +115,7 @@ The following table lists the allowed values for  `statusCode`,  `type`, and  `v
 |StatusCode|Type|Hint|CardReference|Action|
 |--|--|--|--|--|
 |200|application/vnd.microsoft.card.adaptive|showDialog|[some-id]|We will render a new card in a dialog and use the data in the field `value` as the `$data` context of the rendered card.
-|200|application/vnd.microsoft.card.message|not used|not used|We will use the `value` field to show a toaster and then refresh the adaptive card.
+|200|application/vnd.microsoft.card.message|not used|not used|We will use the `value` field to show a toaster and then refresh the adaptive card. Note, the `value` field is required. If this remains empty, just a toaster will be shown. 
 |500|application/vnd.microsoft.error|not used|not used|We show the `value` in an (error) toaster. 
 
 ### Handling languages
