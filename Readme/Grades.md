@@ -7,6 +7,9 @@ The portal allows you to easily display grades retrieved from a (custom) API. Th
 The portal requires the output data to be a [OdataContainer](https://github.com/synigopulse/oneapi/blob/main/Synigo.OneApi.Model/OdataContainer.cs), see example below.
 
 ```csharp
+using Synigo.OneApi.Model;
+using Synigo.OpenEducationApi.Model.V4;
+
 ...
 
 public async Task<HttpResponseData> GetGrades(int pageNumber, int pageSize) {
