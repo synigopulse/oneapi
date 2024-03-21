@@ -7,15 +7,22 @@ The portal allows you to easily display events retrieved from a (custom) API. Th
 The portal requires the output data to be a [OdataContainer](https://github.com/synigopulse/oneapi/blob/main/Synigo.OneApi.Model/OdataContainer.cs), see example below.
 
 ```csharp
+using Microsoft.Graph;
+using Synigo.OneApi.Model;
+// using Synigo.OneApi.Model.Widgets;
+
 ...
 
 public async Task<HttpResponseData> GetEvents() {
   List<Event> events = ...; // Retrieve all relevant events from the MS Graph
+  // List<EventModel> events = ...; // if you're using the Synigo EventModel instead of Microsoft.Graph.Event
 
   // Convert the events to a model the portal can understand.
+  // OdataContainer<List<EventModel>> container = new OdataContainer<List<EventModel>> // if you're using the Synigo EventModel instead of Microsoft.Graph.Event
   OdataContainer<List<Event>> container = new OdataContainer<List<Event>>
   {
       Type = "#graph.microsoft.com/event", // this indicates that the events are MS Graph events
+      // Type = EventModel.SynigoType, // if you're using the Synigo EventModel instead of Microsoft.Graph.Event
       Value = events
   };
 
