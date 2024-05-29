@@ -121,6 +121,52 @@ The following table lists the allowed values for  `statusCode`,  `type`, and  `v
 ### Handling languages
 The portal and or app will send an `Accept-Language` header with the preferred language code in there...
 
+### Multilanguage Options
+Multilanguage variable are added to the adative card via JSON format the following code snippet will show the format in which it *must* be formated in CMS, this is set in the new field named `config Json`, 
+```json
+[{
+	"config": [
+		{
+		  "platform": "portal",
+		  "languageCode": "en-US",
+		  "label1": "english label 1",
+		  "label2": "english label 2"
+      		},
+		{
+		  "platform": "portal",
+        	  "languageCode": "nl-NL",
+        	  "label1": "dutch label 1",
+		  "label2": "dutch label 2"
+      		}
+		]
+}]
+```
+firstly `config` must set as such for purposes of the portal and or app understanding what the JSON file is setting as a multilanguage variable, the json file *must* be set like this including the initial `[{}]` parentheses, from here moving our attention to the objects inside of `config` we can see two variables `platform` and `languageCode` these variable must also be set as such `platform` refers to the platform which the multilanguage labels will target i.e. `portal` or `app` (as of the writing of this document only the portal as multilanguage options). 
+`languageCode` refers to the language the labels in the object will be set to i.e. `en-US`, `nl-NL`, `it-IT`... ect... By default the language will be set the the users `prefferedLanguage` set on the portal, however in the case that the `prefferedLanguage` of the user is not contained in the config objects then the default will be `en-US` however if no `en-US` object is available then the first object will be set as the default.
+
+The variables `label1`, `label2` ect... Are the labels that the will contain the multilangauge labels the user wishes to set, the user can set these to what ever they find applicable for the label needed.
+
+In order to load these labels into the adaptive card the user will user the following text in the *Adaptive Card JSON*,  "${$root.$config."name of the label"}" and is shown in the JSON snippet bellow.
+
+```json
+{
+	type: "Container",
+	items: [
+	{
+	type: "TextBlock",
+	size: "Medium",
+	weight: "Bolder",
+	text: "${$root.$config.label1}",
+	wrap: true
+	}
+	],
+	style: "emphasis",
+	bleed: true,
+	horizontalAlignment: "Center"
+},
+```
+Here it is shown that for the textBlock above the `label1` will be used and will give the following title in the adaptive card on the portal `english label 1` or `dutch label 1` according to the prefference of the user defined early in the text.
+
 ## Some useful links
 - [https://adaptivecards.io/](https://adaptivecards.io/)
 - [https://learn.microsoft.com/en-us/adaptive-cards/authoring-cards/universal-action-model](https://learn.microsoft.com/en-us/adaptive-cards/authoring-cards/universal-action-model)
