@@ -118,6 +118,29 @@ The following table lists the allowed values for  `statusCode`,  `type`, and  `v
 |200|application/vnd.microsoft.card.message|not used|not used|We will use the `value` field to show a toaster and then refresh the adaptive card.
 |500|application/vnd.microsoft.error|not used|not used|We show the `value` in an (error) toaster. 
 
+### Showing Toasters
+When an adaptive card has called a backend service and you just want to show a message (which comes in the form of a toaster.) You can do the following:
+
+#### Success
+``` code
+HTTP statusCode 200
+{
+  "type": "application/vnd.microsoft.message",
+  "value" : "The message about the success you want to show to your user"
+}
+```
+#### Failure
+``` code
+HTTP statusCode 200
+{
+  "type": "application/vnd.microsoft.error",
+  "value" : {
+      "Message": "The message about the failure you want to show to your user"
+  }
+}
+```
+
+
 ### Handling languages
 The portal and or app will send an `Accept-Language` header with the preferred language code in there...
 
