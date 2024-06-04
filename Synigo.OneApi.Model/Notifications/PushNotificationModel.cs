@@ -13,6 +13,8 @@ namespace Synigo.OneApi.Model.Notifications
 
         /// <summary>
         /// Get or set multi language push notification message
+        /// The keys of the dictionary should be the iso code of the languages.
+        /// Currently supported: en-US de-DE, dk-DK, nl-NL, es-ES, it-IT, pl-PL 
         /// </summary>
         [JsonPropertyName("message")]
         public Dictionary<string, string> Message { get; set; }
@@ -35,6 +37,15 @@ namespace Synigo.OneApi.Model.Notifications
         [JsonPropertyName("individuals")]
         public List<string> Individuals { get; set; }
 
+        /// <summary>
+        /// Get or set if this message is meant for debugging.
+        /// If so => You will receive a list UPNS of the recipients in the property DebugRecipients
+        /// of the DispatchNotificationResponse.
+        /// These UPNS are distincted by language, maximized at 500. The users must have signed in
+        /// the application, on their device one time or another..
+        /// </summary>
+        [JsonPropertyName("debug")]
+        public bool Debug { get; set; }
 
     }
 }
